@@ -1,6 +1,6 @@
 {
-    "name": "kraenkvisuell/nova-layout",
-    "description": "Layout Package for Laravel Nova",
+    "name": "kraenkvisuell/nova-cms",
+    "description": "CMS for Laravel Nova",
     "keywords": [
         "laravel",
         "nova",
@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Kraenkvisuell\\NovaLayout\\": "src/"
+            "Kraenkvisuell\\NovaCms\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Kraenkvisuell\\NovaLayout\\Tests\\": "tests"
+            "Kraenkvisuell\\NovaCms\\Tests\\": "tests"
         }
     },
     "config": {
@@ -39,10 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kraenkvisuell\\NovaLayout\\NovaLayoutServiceProvider"
-            ],
-            "aliases": [
-                "Kraenkvisuell\\NovaLayout\\Facades\\Layout"
+                "Kraenkvisuell\\NovaCms\\NovaCmsServiceProvider"
             ]
         }
     }
