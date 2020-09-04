@@ -11,7 +11,7 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
     
-    <link href="{{ mix("css/main.css") }}" rel="stylesheet">
+    <link href="{{ mix(config('nova-cms.main_css_path')) }}" rel="stylesheet">
 </head>
 <body>
 {{ $slot }}
