@@ -11,18 +11,6 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
-        },
-        {
-            "type": "path",
-            "url": "../nova-flexible-content"
-        },
-        {
-            "type": "path",
-            "url": "../nova-content-blocks"
-        },
-        {
-            "type": "path",
-            "url": "../nova-hero"
         }
     ],
     "require": {
