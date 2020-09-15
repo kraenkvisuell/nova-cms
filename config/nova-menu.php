@@ -36,9 +36,9 @@ return [
     | or a callable (ie 'locales' => 'nova_lang_get_all_locales').
     */
 
-    'locales' => function() {
+    'locales' => function () {
         return nova_lang_get_locales();
-    }
+    },
 
 
     /*

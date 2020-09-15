@@ -16,5 +16,9 @@ class Init extends Command
 
         $this->info('copying menu config file');
         File::copy($vendorConfigFile, $appConfigFolder);
+
+        $this->call('cms:create-first-user');
+
+        $this->call('cms:init-pages');
     }
 }

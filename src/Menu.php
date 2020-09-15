@@ -10,7 +10,7 @@ class Menu
     {
         $models = [];
 
-        if (class_exists('\Kraenkvisuell\NovaPages\Models\Page')) {
+        if (class_exists('\Kraenkvisuell\NovaCms\Models\Page')) {
             $models[] = LinkablePage::class;
         }
 

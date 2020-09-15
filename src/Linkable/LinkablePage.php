@@ -18,9 +18,9 @@ class LinkablePage extends MenuLinkable
 
     public static function getOptions($locale): array
     {
-        if (class_exists('\Kraenkvisuell\NovaPages\Models\Page')) {
+        if (class_exists('\Kraenkvisuell\NovaCms\Models\Page')) {
             $list = [];
-            \Kraenkvisuell\NovaPages\Models\Page::all()
+            \Kraenkvisuell\NovaCms\Models\Page::all()
                 ->each(function ($page) use (&$list) {
                     $list[$page->id] = $page->title;
                 });
@@ -35,13 +35,13 @@ class LinkablePage extends MenuLinkable
     {
         // Example usecase
         // return 'Page: ' . Page::find($value)->name;
-        return \Kraenkvisuell\NovaPages\Models\Page::find($value)->title;
+        return \Kraenkvisuell\NovaCms\Models\Page::find($value)->title;
     }
 
     public static function getValue($value = null, array $parameters = null)
     {
         // Example usecase
         // return Page::find($value);
-        return \Kraenkvisuell\NovaPages\Models\Page::find($value);
+        return \Kraenkvisuell\NovaCms\Models\Page::find($value);
     }
 }
