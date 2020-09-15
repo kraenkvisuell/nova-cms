@@ -2,11 +2,11 @@
 
 namespace Kraenkvisuell\NovaCms\Nova;
 
-use Eminiarts\Tabs\Tabs;
+use Kraenkvisuell\Tabs\Tabs;
 use Laravel\Nova\Resource;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Eminiarts\Tabs\TabsOnEdit;
+use Kraenkvisuell\Tabs\TabsOnEdit;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Textarea;
 use Kraenkvisuell\NovaContentBlocks\Facades\ContentBlock;

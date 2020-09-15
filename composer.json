@@ -11,11 +11,15 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "../nova-content-blocks"
         }
     ],
     "require": {
         "php": ">=7.3.0",
-        "eminiarts/nova-tabs": "^1.2",
+        "kraenkvisuell/nova-tabs": "^2.0",
         "optimistdigital/nova-menu-builder": "^2.3",
         "optimistdigital/nova-media-field": "^1.2",
         "optimistdigital/nova-translatable": "^1.5",
