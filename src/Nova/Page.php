@@ -40,12 +40,10 @@ class Page extends Resource
             'Main' => [
                 Text::make('Seitentitel', 'title')
                     ->sortable()
-                    ->rules('required', 'max:255')
                     ->translatable(),
 
                 Text::make('Text-ID', 'slug')
                     ->sortable()
-                    ->rules('required', 'max:255')
                     ->translatable()
                     ->help('Wird in der URL verwendet (außer bei der Startseite)'),
 
