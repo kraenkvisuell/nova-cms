@@ -2,15 +2,14 @@
 
 namespace Kraenkvisuell\NovaCms\Nova;
 
-use Kraenkvisuell\Tabs\Tabs;
+use Eminiarts\Tabs\Tabs;
 use Laravel\Nova\Resource;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Kraenkvisuell\Tabs\TabsOnEdit;
+use Eminiarts\Tabs\TabsOnEdit;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Textarea;
-use Kraenkvisuell\NovaContentBlocks\Facades\ContentBlock;
-use Kraenkvisuell\NovaHero\Facades\Hero;
+use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 
 class Page extends Resource
 {
@@ -20,18 +19,25 @@ class Page extends Resource
 
     public static $title = 'title';
 
+    public static $sortable = false;
+
     public static $search = [
         'title',
     ];
 
     public static function label()
     {
-        return 'Seiten';
+        return __('pages');
     }
 
     public static function singularLabel()
     {
-        return 'Seite';
+        return __('page');
+    }
+
+    protected static function applyOrderings($query, array $orderings)
+    {
+        return parent::applyOrderings($query, ['is_home' => 'desc']);
     }
 
     public function fields(Request $request)
@@ -39,23 +45,15 @@ class Page extends Resource
         $tabs = [
             'Main' => [
                 Text::make('Seitentitel', 'title')
-                    ->sortable()
                     ->translatable(),
 
                 Text::make('Text-ID', 'slug')
-                    ->sortable()
                     ->translatable()
                     ->help('Wird in der URL verwendet (außer bei der Startseite)'),
 
                 Boolean::make('Ist Startseite', 'is_home'),
             ]
         ];
-
-        if (config('nova-pages.has_hero')) {
-            $tabs['Hero'] = [
-                Hero::field(),
-            ];
-        }
 
         $tabs['Inhalt'] = [
             ContentBlock::field(),

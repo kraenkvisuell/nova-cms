@@ -11,26 +11,18 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
-        },
-        {
-            "type": "path",
-            "url": "../nova-content-blocks"
-        },
-        {
-            "type": "path",
-            "url": "../nova-hero"
         }
     ],
     "require": {
         "php": ">=7.3.0",
         "classic-o/nova-media-library": "^1.0",
-        "kraenkvisuell/nova-content-blocks": "*",
-        "kraenkvisuell/nova-hero": "*",
-        "kraenkvisuell/nova-tabs": "^2.0",
+        "eminiarts/nova-tabs": "dev-master",
         "manogi/nova-tiptap": "^1.0",
         "optimistdigital/nova-menu-builder": "^4.0",
+        "optimistdigital/nova-settings": "^2.5",
         "optimistdigital/nova-translatable": "^1.5",
-        "spatie/laravel-translatable": "^4.4"
+        "spatie/laravel-translatable": "^4.4",
+        "whitecube/nova-flexible-content": "^0.2"
     },
     "autoload": {
         "psr-4": {

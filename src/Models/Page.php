@@ -13,15 +13,19 @@ class Page extends Model
     protected $table = 'pages';
 
     protected $casts = [
-        'top_banners' => FlexibleCast::class,
+        'main_content' => FlexibleCast::class,
     ];
 
     use \Spatie\Translatable\HasTranslations;
+    use \Kraenkvisuell\NovaCms\Traits\HasContentBlocks;
+
+    public $contentBlockFields = [
+        'main_content',
+    ];
 
     public $translatable = [
         'title',
         'slug',
-        'main_content',
         'meta_description',
         'browser_title',
     ];
@@ -41,25 +45,10 @@ class Page extends Model
         }
 
         // Single-language
-        return route('nova-page-single', ['page' => $this->slug]);
-    }
-
-    public function topBanners()
-    {
-        if (!$this->top_banners) {
-            return [];
+        if ($this->is_home) {
+            return route('nova-page-single-home');
         }
 
-        $banners = [];
-
-        foreach ($this->top_banners as $topBanner) {
-            $banners[] = [
-                'headline' => optional($topBanner['headline'])->{app()->getLocale()},
-                'url' => @$topBanner['image'] ? API::getFiles($topBanner['image'], 'large') : null,
-                'alt_text' => @$topBanner['alt_text'] ?: '',
-            ];
-        };
-
-        return $banners;
+        return route('nova-page-single', ['page' => $this->slug]);
     }
 }

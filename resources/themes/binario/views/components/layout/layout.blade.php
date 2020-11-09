@@ -10,18 +10,19 @@
     <meta content="index, follow" name="robots">
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link rel="stylesheet" href="https://use.typekit.net/qir7wxz.css">
 
     <link href="{{ mix(config('nova-cms.main_css_path')) }}" rel="stylesheet">
-
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
 </head>
 <body class="
-    font-main
-    bg-white
+    bg-gray-100 font-sans leading-7 text-base overflow-x-hidden
 ">
 
-<x-cms::parts.navi />
+<x-theme.parts.navi />
 
 {{ $slot }}
+
+<x-theme.parts.footer />
 </body>
 </html>

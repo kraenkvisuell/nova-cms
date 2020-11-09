@@ -14,7 +14,7 @@ class PagesController
             abort(404);
         }
 
-        return view('cms::pages.page')->with([
+        return view('page')->with([
             'page' => $page,
         ]);
     }

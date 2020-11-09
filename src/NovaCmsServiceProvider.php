@@ -3,11 +3,15 @@
 namespace Kraenkvisuell\NovaCms;
 
 use Laravel\Nova\Nova;
+use Manogi\Tiptap\Tiptap;
+use Laravel\Nova\Fields\Text;
 use Kraenkvisuell\NovaCms\Nova\Page;
 use Illuminate\Support\ServiceProvider;
 use Kraenkvisuell\NovaCms\Console\Init;
+use Kraenkvisuell\NovaCms\Console\UseTheme;
 use Kraenkvisuell\NovaCms\Console\InitPages;
 use OptimistDigital\MenuBuilder\MenuBuilder;
+use OptimistDigital\NovaSettings\NovaSettings;
 use ClassicO\NovaMediaLibrary\NovaMediaLibrary;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
 use Kraenkvisuell\NovaCms\Console\CreateFirstUser;
@@ -19,29 +23,41 @@ class NovaCmsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $viewPaths = is_array(config('view.paths')) ? config('view.paths') : [];
+        if (!in_array(resource_path('themes/active/views'), $viewPaths)) {
+            $viewPaths[] = resource_path('themes/active/views');
+        }
+
+        config(['view.paths' => $viewPaths]);
+
+        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
+
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views/'.config('nova-cms.theme'), 'cms');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/live', 'nova-cms');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/nova-cms'),
-        ], 'nova-cms-views');
+            __DIR__ . '/../resources/views/live' => resource_path('views/vendor/nova-cms'),
+        ]);
 
         $this->publishes([
             __DIR__ . '/../config/nova-cms.php' => config_path('nova-cms.php'),
-        ], 'nova-cms-config');
-
-
+        ]);
 
         $this->publishes([
             __DIR__ . '/../config/nova-pages.php' => config_path('nova-pages.php'),
-        ], 'nova-pages-config');
+        ]);
+
+        $this->publishes([
+            __DIR__.'/../config/nova-menu.php' => config_path('nova-menu.php'),
+        ]);
 
         Nova::tools([
             new MenuBuilder,
             new NovaMediaLibrary,
+            new NovaSettings,
         ]);
 
         config(['nova-menu.locales' => config('translatable.locales')]);
@@ -53,6 +69,7 @@ class NovaCmsServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Init::class,
+                UseTheme::class,
                 InitPages::class,
                 CreateFirstUser::class,
                 RemoveExampleViews::class,
@@ -61,10 +78,31 @@ class NovaCmsServiceProvider extends ServiceProvider
         }
 
         PageModel::observe(PageObserver::class);
+
+        NovaSettings::addSettingsFields(
+            [
+                Tiptap::make(__('address'), 'address')->translatable(),
+                Text::make(__('phone'), 'phone'),
+                Text::make(__('email'), 'email'),
+            ],
+            [
+                'address' => 'array',
+            ]
+        );
+
+        require_once(__DIR__ . '/../helpers/helpers.php');
     }
 
     public function register()
     {
+        $this->app->bind('menu-maker', function () {
+            return new MenuMaker();
+        });
+
+        $this->app->bind('content-block', function () {
+            return new ContentBlock();
+        });
+
         $this->mergeConfigFrom(
             __DIR__ . '/../config/nova-cms.php',
             'nova-cms'
