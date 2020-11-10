@@ -68,9 +68,18 @@ trait HasContentBlocks
             ];
 
             foreach ($item->attributes as $attributeKey => $attributeValue) {
-                $value[$attributeKey] = is_object($attributeValue)
-                    ? $this->getTranslatedObject($attributeValue)
-                    : $attributeValue;
+                $value[$attributeKey] = $attributeValue;
+
+                if (is_array($attributeValue)) {
+                    $value[$attributeKey] = [];
+                    foreach ($attributeValue as $arrayItem) {
+                        $value[$attributeKey][] = $this->produceNestedAttribute($arrayItem);
+                    }
+                }
+
+                if (is_object($attributeValue)) {
+                    $value[$attributeKey] = $this->getTranslatedObject($attributeValue);
+                }
             }
 
             return (object) $value;

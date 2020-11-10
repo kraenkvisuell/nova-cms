@@ -7,7 +7,7 @@ use ClassicO\NovaMediaLibrary\MediaLibrary;
 use Laravel\Nova\Fields\Number;
 use Whitecube\NovaFlexibleContent\Flexible;
 
-class Slides
+class HeroSlides
 {
     public static function make()
     {
@@ -39,7 +39,6 @@ class Slides
 
         return Flexible::make(__('slides'), 'slides')
             ->addLayout(__('slide'), 'slide', $fields)
-            ->button(__('add slide'))
-            ->collapsed();
+            ->button(__('add slide'));
     }
 }

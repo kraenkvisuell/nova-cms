@@ -2,32 +2,28 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
+use Laravel\Nova\Fields\Textarea;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Images;
-use Kraenkvisuell\NovaCms\Fields\Topline;
-use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
-use Kraenkvisuell\NovaCms\Fields\EditorText;
-use Kraenkvisuell\NovaCms\Fields\ImagePosition;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
-class TextImagesLayout extends Layout
+class QuoteLayout extends Layout
 {
-    protected $name = 'text-images';
+    protected $name = 'quote';
 
     public function title()
     {
-        return __('text and image(s)');
+        return __('quote');
     }
 
     public function fields()
     {
         return [
-            Topline::make(),
-            Headline::make(),
             Anchor::make(),
-            ImagePosition::make(),
-            EditorText::make(),
+            Textarea::make(__('quote'), 'quote')
+                ->translatable(),
+
             Images::make()->stacked(),
             BottomLinks::make()->stacked(),
         ];

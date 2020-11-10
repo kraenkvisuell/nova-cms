@@ -5,17 +5,17 @@ namespace Kraenkvisuell\NovaCms\Layouts;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Kraenkvisuell\NovaCms\Fields\BottomLinks;
-use Kraenkvisuell\NovaCms\Fields\EditorText;
+use Kraenkvisuell\NovaCms\Fields\SubContentBlocks;
+use Laravel\Nova\Fields\Text;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
-class TextLayout extends Layout
+class SubContentLayout extends Layout
 {
-    protected $name = 'text';
+    protected $name = 'sub-content';
 
     public function title()
     {
-        return __('text');
+        return __('sub content');
     }
 
     public function fields()
@@ -23,9 +23,9 @@ class TextLayout extends Layout
         return [
             Topline::make(),
             Headline::make(),
+            Text::make(__('navigation headline (optional)'), 'navi_headline'),
             Anchor::make(),
-            EditorText::make(),
-            BottomLinks::make()->stacked(),
+            SubContentBlocks::make()->collapsed()->stacked(),
         ];
     }
 }

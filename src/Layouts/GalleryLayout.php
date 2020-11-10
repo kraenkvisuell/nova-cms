@@ -2,11 +2,13 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
-use Whitecube\NovaFlexibleContent\Flexible;
-use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Laravel\Nova\Fields\Textarea;
+use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Laravel\Nova\Fields\Textarea;
+use ClassicO\NovaMediaLibrary\MediaLibrary;
+use Whitecube\NovaFlexibleContent\Flexible;
+use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
 class GalleryLayout extends Layout
 {
@@ -22,9 +24,17 @@ class GalleryLayout extends Layout
         return [
             Topline::make(),
             Headline::make(),
+            Anchor::make(),
             Flexible::make(__('slides'), 'slides')
                 ->addLayout(__('slide'), 'slide', [
-                    Textarea::make(__('image caption'), 'caption')->stacked(),
+                    MediaLibrary::make('Bild', 'image')
+                        ->types(['Image'])
+                        ->stacked(),
+
+                    Textarea::make(__('image caption'), 'caption')
+                        ->rows(2)
+                        ->translatable()
+                        ->stacked(),
                 ])
                 ->button(__('add slide'))
                 ->collapsed(),

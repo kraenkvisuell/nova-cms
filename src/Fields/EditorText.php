@@ -4,7 +4,7 @@ namespace Kraenkvisuell\NovaCms\Fields;
 
 use Manogi\Tiptap\Tiptap;
 
-class Text
+class EditorText
 {
     public static function make()
     {

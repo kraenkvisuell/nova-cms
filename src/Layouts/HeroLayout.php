@@ -5,7 +5,7 @@ namespace Kraenkvisuell\NovaCms\Layouts;
 use Manogi\Tiptap\Tiptap;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
-use Kraenkvisuell\NovaCms\Fields\Slides;
+use Kraenkvisuell\NovaCms\Fields\HeroSlides;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
@@ -44,12 +44,12 @@ class HeroLayout extends Layout
             Text::make(__('secondary button text'), 'secondary_button_text')
                     ->translatable(),
 
-            Slides::make()->stacked(),
+            HeroSlides::make()->collapsed()->stacked(),
         ];
 
         if (config('nova-cms.hero.slides_can_be_resized_in_percent')) {
-            $fields[] = Number::make(__('resize slides by ... (percent)'), 'resize')
-                              ->help('Plus or minus in percent');
+            $fields[] = Number::make(__('resize slides by (percent)'), 'resize')
+                              ->help(__('plus or minus in percent'));
         }
 
         return $fields;

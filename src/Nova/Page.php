@@ -61,7 +61,8 @@ class Page extends Resource
 
         $tabs['SEO'] = [
             Text::make('Browser Title')
-                ->translatable(),
+                ->translatable()
+                ->hideFromIndex(),
 
             Textarea::make('Meta Description')
                     ->translatable(),
