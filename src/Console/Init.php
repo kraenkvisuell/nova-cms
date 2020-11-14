@@ -31,7 +31,7 @@ class Init extends Command
         }
 
         File::copy(
-            base_path('vendor/kraenkvisuell/nova-cms/resources/lang/vendor/nova-settings/de.json'),
+            base_path('vendor/kraenkvisuell/nova-cms/resources/lang/de.json'),
             base_path('resources/lang/vendor/nova-settings/de.json'),
         );
 
