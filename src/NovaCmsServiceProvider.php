@@ -14,10 +14,14 @@ use OptimistDigital\MenuBuilder\MenuBuilder;
 use OptimistDigital\NovaSettings\NovaSettings;
 use ClassicO\NovaMediaLibrary\NovaMediaLibrary;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
+use Kraenkvisuell\NovaCms\Console\CopyConfigFiles;
 use Kraenkvisuell\NovaCms\Console\CreateFirstUser;
 use Kraenkvisuell\NovaCms\Models\Page as PageModel;
+use Kraenkvisuell\NovaCms\Console\CopyLanguageFiles;
+use Kraenkvisuell\NovaCms\Console\CopyMigrationFiles;
 use Kraenkvisuell\NovaCms\Console\RemoveExampleViews;
 use Kraenkvisuell\NovaCms\Console\PublishExampleViews;
+use Kraenkvisuell\NovaCms\Console\SafelyReplaceMixFile;
 
 class NovaCmsServiceProvider extends ServiceProvider
 {
@@ -30,17 +34,30 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         config(['view.paths' => $viewPaths]);
 
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
+        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang/nova-cms', 'nova-cms');
+
+        $this->publishes([
+            __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
+        ]);
+
+        $this->loadJsonTranslationsFrom(__DIR__.'/../vendor/coderello/laravel-nova-lang/resources/lang');
+
+        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang/nova-cms');
+        $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova-cms'));
+
+        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang/nova-menu-builder');
+        $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova-menu-builder'));
+
+        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang/nova-settings');
+        $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova-settings'));
+
+        $this->loadJsonTranslationsFrom(__DIR__.'/../vendor/laravel-lang/json');
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/live', 'nova-cms');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-
-        $this->publishes([
-            __DIR__ . '/../resources/views/live' => resource_path('views/vendor/nova-cms'),
-        ]);
 
         $this->publishes([
             __DIR__ . '/../config/nova-cms.php' => config_path('nova-cms.php'),
@@ -72,8 +89,12 @@ class NovaCmsServiceProvider extends ServiceProvider
                 UseTheme::class,
                 InitPages::class,
                 CreateFirstUser::class,
+                CopyConfigFiles::class,
+                CopyLanguageFiles::class,
+                CopyMigrationFiles::class,
                 RemoveExampleViews::class,
                 PublishExampleViews::class,
+                SafelyReplaceMixFile::class,
             ]);
         }
 

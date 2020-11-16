@@ -20,9 +20,9 @@ class InitPages extends Command
                 'is_home' => true
             ]);
 
-            $this->info('Home page created.');
+            $this->comment('Home page created.');
         } else {
-            $this->info('Home page already existed.');
+            $this->comment('Home page already existed.');
         }
     }
 }

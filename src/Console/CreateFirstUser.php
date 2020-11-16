@@ -11,6 +11,8 @@ class CreateFirstUser extends Command
 
     public function handle()
     {
+        $this->info('creating first user');
+
         if (\App\User::count() == 0) {
             $this->info('creating cms user user@cms.io with password "password"');
 
@@ -21,6 +23,8 @@ class CreateFirstUser extends Command
             $user->name = 'CMS-User';
 
             $user->save();
+        } else {
+            $this->comment('a user already existed');
         }
     }
 }

@@ -16,7 +16,9 @@
     "require": {
         "php": ">=7.3.0",
         "classic-o/nova-media-library": "^1.0",
+        "coderello/laravel-nova-lang": "^1.6",
         "eminiarts/nova-tabs": "dev-master",
+        "laravel-lang/lang": "^7.0",
         "manogi/nova-tiptap": "^1.0",
         "optimistdigital/nova-menu-builder": "^4.0",
         "optimistdigital/nova-settings": "^2.5",
