@@ -28,9 +28,9 @@ class TextLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
-            Anchor::make(),
             EditorText::make(),
             BottomLinks::make()->stacked(),
+            Anchor::make(),
         ]);
     }
 }

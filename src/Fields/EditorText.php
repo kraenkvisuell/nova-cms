@@ -16,6 +16,7 @@ class EditorText
                 'link',
                 'blockquote',
                 'bullet_list',
+                'table',
             ])
             ->headingLevels([1, 2, 3, 4, 5])
             ->translatable()

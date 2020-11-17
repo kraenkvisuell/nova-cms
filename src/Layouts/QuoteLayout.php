@@ -20,12 +20,12 @@ class QuoteLayout extends Layout
     public function fields()
     {
         return [
-            Anchor::make(),
             Textarea::make(__('quote'), 'quote')
                 ->translatable(),
 
             Images::make()->stacked(),
             BottomLinks::make()->stacked(),
+            Anchor::make(),
         ];
     }
 }

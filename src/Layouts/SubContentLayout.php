@@ -29,8 +29,8 @@ class SubContentLayout extends Layout
         return array_merge($fields, [
             Headline::make(),
             Text::make(__('navigation headline (optional)'), 'navi_headline'),
-            Anchor::make(),
             SubContentBlocks::make()->collapsed()->stacked(),
+            Anchor::make(),
         ]);
     }
 }

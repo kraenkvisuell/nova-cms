@@ -30,11 +30,11 @@ class TextImagesLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
-            Anchor::make(),
             ImagePosition::make(),
             EditorText::make(),
             Images::make()->stacked(),
             BottomLinks::make()->stacked(),
+            Anchor::make(),
         ]);
     }
 }

@@ -29,7 +29,6 @@ class GalleryLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
-            Anchor::make(),
             Flexible::make(__('slides'), 'slides')
                 ->addLayout(__('slide'), 'slide', [
                     MediaLibrary::make('Bild', 'image')
@@ -43,6 +42,7 @@ class GalleryLayout extends Layout
                 ])
                 ->button(__('add slide'))
                 ->collapsed(),
+            Anchor::make(),
         ]);
     }
 }

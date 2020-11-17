@@ -25,6 +25,11 @@ return [
     ],
 
     'hero' => [
+        'has_text' => false,
+        'has_topline' => false,
+        'has_headline' => true,
+        'has_button' => false,
+        'has_secondary_button' => false,
         'slides_can_be_rotated' => false,
         'slides_can_be_resized_in_percent' => false,
         'slides_can_be_moved_in_percent' => false,

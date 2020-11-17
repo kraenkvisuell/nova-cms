@@ -51,7 +51,7 @@ class Page extends Resource
                     ->translatable()
                     ->help('Wird in der URL verwendet (außer bei der Startseite)'),
 
-                Boolean::make('Ist Startseite', 'is_home'),
+                Boolean::make('Ist Startseite', 'is_home')->hideFromIndex(),
             ]
         ];
 

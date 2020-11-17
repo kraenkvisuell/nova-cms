@@ -8,9 +8,10 @@ class ContentBlock
 {
     public function field()
     {
-        $field = Flexible::make(__('main content'), 'main_content')
+        $field = Flexible::make(__('content blocks'), 'main_content')
             ->button('Block hinzufügen')
-            ->collapsed();
+            ->collapsed()
+            ->stacked();
 
         foreach (config('nova-cms.content-blocks.default') as $layout) {
             // Add full class path when short form is used

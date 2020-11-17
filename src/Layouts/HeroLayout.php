@@ -21,30 +21,45 @@ class HeroLayout extends Layout
 
     public function fields()
     {
-        $fields = [
-            Topline::make(),
-            Headline::make(),
+        $fields = [];
 
-            Tiptap::make(__('text'), 'text')
+        if (config('nova-cms.with_toplines')) {
+            $fields[] = Topline::make();
+        }
+
+        if (config('nova-cms.hero.has_headline')) {
+            $fields[] = Headline::make();
+        }
+
+        if (config('nova-cms.hero.has_topline')) {
+            $fields[] = Topline::make();
+        }
+
+        if (config('nova-cms.hero.has_text')) {
+            $fields[] =  Tiptap::make(__('text'), 'text')
                 ->buttons([
                     'bold',
                     'italic',
                     'link',
                 ])
-                ->translatable(),
+                ->translatable();
+        }
 
-            Text::make(__('main button link'), 'main_button_link'),
+        if (config('nova-cms.hero.has_button')) {
+            $fields[] = Text::make(__('main button link'), 'main_button_link');
 
-            Text::make(__('main button text'), 'main_button_text')
-                ->translatable(),
+            $fields[] = Text::make(__('main button text'), 'main_button_text')
+                ->translatable();
+        }
 
-            Text::make(__('secondary button link'), 'secondary_button_link'),
+        if (config('nova-cms.hero.has_secondary_button')) {
+            $fields[] = Text::make(__('secondary button link'), 'secondary_button_link');
 
-            Text::make(__('secondary button text'), 'secondary_button_text')
-                    ->translatable(),
+            $fields[] = Text::make(__('secondary button text'), 'secondary_button_text')
+                ->translatable();
+        }
 
-            HeroSlides::make()->collapsed()->stacked(),
-        ];
+        $fields[] = HeroSlides::make()->collapsed()->stacked();
 
         if (config('nova-cms.hero.slides_can_be_resized_in_percent')) {
             $fields[] = Number::make(__('resize slides by (percent)'), 'resize')
