@@ -23,7 +23,6 @@ class HeroLayout extends Layout
     {
         $fields = [
             Topline::make(),
-
             Headline::make(),
 
             Tiptap::make(__('text'), 'text')

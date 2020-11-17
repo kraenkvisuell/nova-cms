@@ -21,8 +21,13 @@ class GalleryLayout extends Layout
 
     public function fields()
     {
-        return [
-            Topline::make(),
+        $fields = [];
+
+        if (config('nova-cms.with_toplines')) {
+            $fields[] = Topline::make();
+        }
+
+        return array_merge($fields, [
             Headline::make(),
             Anchor::make(),
             Flexible::make(__('slides'), 'slides')
@@ -38,6 +43,6 @@ class GalleryLayout extends Layout
                 ])
                 ->button(__('add slide'))
                 ->collapsed(),
-        ];
+        ]);
     }
 }

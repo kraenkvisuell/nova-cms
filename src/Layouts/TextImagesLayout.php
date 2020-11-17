@@ -22,14 +22,19 @@ class TextImagesLayout extends Layout
 
     public function fields()
     {
-        return [
-            Topline::make(),
+        $fields = [];
+
+        if (config('nova-cms.with_toplines')) {
+            $fields[] = Topline::make();
+        }
+
+        return array_merge($fields, [
             Headline::make(),
             Anchor::make(),
             ImagePosition::make(),
             EditorText::make(),
             Images::make()->stacked(),
             BottomLinks::make()->stacked(),
-        ];
+        ]);
     }
 }

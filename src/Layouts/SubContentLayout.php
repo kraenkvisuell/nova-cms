@@ -20,12 +20,17 @@ class SubContentLayout extends Layout
 
     public function fields()
     {
-        return [
-            Topline::make(),
+        $fields = [];
+
+        if (config('nova-cms.with_toplines')) {
+            $fields[] = Topline::make();
+        }
+
+        return array_merge($fields, [
             Headline::make(),
             Text::make(__('navigation headline (optional)'), 'navi_headline'),
             Anchor::make(),
             SubContentBlocks::make()->collapsed()->stacked(),
-        ];
+        ]);
     }
 }
