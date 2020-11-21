@@ -8,6 +8,12 @@ class EditorText
 {
     public static function make()
     {
+        $headingLevels = [3, 4, 5];
+
+        if (is_array(config('nova-cms.heading_levels'))) {
+            $headingLevels = config('nova-cms.heading_levels');
+        }
+
         return Tiptap::make(__('text'), 'text')
             ->buttons([
                 'heading',
@@ -18,7 +24,7 @@ class EditorText
                 'bullet_list',
                 'table',
             ])
-            ->headingLevels([1, 2, 3, 4, 5])
+            ->headingLevels($headingLevels)
             ->translatable()
             ->stacked();
     }
