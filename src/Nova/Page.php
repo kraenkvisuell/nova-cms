@@ -42,24 +42,33 @@ class Page extends Resource
 
     public function fields(Request $request)
     {
-        $tabs = [
-            'Main' => [
-                Text::make('Seitentitel', 'title')
-                    ->translatable(),
+        $tabs = [];
 
-                Text::make('Text-ID', 'slug')
-                    ->translatable()
-                    ->help('Wird in der URL verwendet (außer bei der Startseite)'),
-
-                Boolean::make('Ist Startseite', 'is_home')->hideFromIndex(),
-            ]
-        ];
-
-        $tabs['Inhalt'] = [
+        $contentTab = [
             ContentBlock::field(),
         ];
 
-        $tabs['SEO'] = [
+
+        $settingsTab = [
+            Text::make('Seitentitel', 'title')
+                ->translatable(),
+
+            Text::make('Text-ID', 'slug')
+                ->translatable()
+                ->help('Wird in der URL verwendet (außer bei der Startseite)'),
+
+            Boolean::make('Ist Startseite', 'is_home')->hideFromIndex(),
+        ];
+
+        if ($request->resourceId === null) {
+            $tabs[__('settings')] =  $settingsTab;
+            $tabs[__('content')] =  $contentTab;
+        } else {
+            $tabs[__('content')] =  $contentTab;
+            $tabs[__('settings')] =  $settingsTab;
+        }
+
+        $tabs[__('seo')] = [
             Text::make('Browser Title')
                 ->translatable()
                 ->hideFromIndex(),

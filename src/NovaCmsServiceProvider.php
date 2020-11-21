@@ -71,12 +71,6 @@ class NovaCmsServiceProvider extends ServiceProvider
             __DIR__.'/../config/nova-menu.php' => config_path('nova-menu.php'),
         ]);
 
-        Nova::tools([
-            new MenuBuilder,
-            new NovaMediaLibrary,
-            new NovaSettings,
-        ]);
-
         config(['nova-menu.locales' => config('translatable.locales')]);
 
         Nova::resources([
