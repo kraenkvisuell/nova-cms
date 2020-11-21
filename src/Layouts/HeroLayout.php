@@ -5,9 +5,10 @@ namespace Kraenkvisuell\NovaCms\Layouts;
 use Manogi\Tiptap\Tiptap;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
-use Kraenkvisuell\NovaCms\Fields\HeroSlides;
+use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
+use Kraenkvisuell\NovaCms\Fields\HeroSlides;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
 class HeroLayout extends Layout
@@ -21,7 +22,9 @@ class HeroLayout extends Layout
 
     public function fields()
     {
-        $fields = [];
+        $fields = [
+            Hide::make(),
+        ];
 
         if (config('nova-cms.with_toplines')) {
             $fields[] = Topline::make();

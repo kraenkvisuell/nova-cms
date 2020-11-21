@@ -3,6 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Layouts;
 
 use Laravel\Nova\Fields\Textarea;
+use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Images;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
@@ -20,6 +21,7 @@ class QuoteLayout extends Layout
     public function fields()
     {
         return [
+            Hide::make(),
             Textarea::make(__('quote'), 'quote')
                 ->translatable(),
 

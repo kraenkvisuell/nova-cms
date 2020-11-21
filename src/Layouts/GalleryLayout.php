@@ -3,6 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Layouts;
 
 use Laravel\Nova\Fields\Textarea;
+use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
@@ -21,7 +22,9 @@ class GalleryLayout extends Layout
 
     public function fields()
     {
-        $fields = [];
+        $fields = [
+            Hide::make(),
+        ];
 
         if (config('nova-cms.with_toplines')) {
             $fields[] = Topline::make();

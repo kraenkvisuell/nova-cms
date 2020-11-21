@@ -16,6 +16,8 @@
     "hero": "Hero",
     "hero explanation": "(große Galerie, oft bildschirmfüllend)",
     "headline": "Überschrift",
+    "hidden": "Versteckt",
+    "hide": "Verstecken",
     "image": "Bild",
     "in degrees (negative turns left)": "In Grad (negativ dreht nach links)",
     "in percent (negative moves to the left)": "In Prozent (negativ rückt nach links)",
@@ -59,5 +61,7 @@
     "text": "Text",
     "text and image(s)": "Text und Bild(er)",
     "top": "oben",
-    "topline": "Topline"
+    "topline": "Topline",
+    "visibility": "Sichtbarkeit",
+    "visible": "Sichtbar"
 }

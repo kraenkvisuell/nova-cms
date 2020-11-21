@@ -2,12 +2,13 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
+use Laravel\Nova\Fields\Text;
+use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Kraenkvisuell\NovaCms\Fields\SubContentBlocks;
-use Laravel\Nova\Fields\Text;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCms\Fields\SubContentBlocks;
 
 class SubContentLayout extends Layout
 {
@@ -20,7 +21,9 @@ class SubContentLayout extends Layout
 
     public function fields()
     {
-        $fields = [];
+        $fields = [
+            Hide::make(),
+        ];
 
         if (config('nova-cms.with_toplines')) {
             $fields[] = Topline::make();
