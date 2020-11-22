@@ -5,13 +5,13 @@ namespace Kraenkvisuell\NovaCms\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class SafelyReplaceMixFile extends Command
+class SafelyReplaceWebpackMix extends Command
 {
-    public $signature = 'cms:safely-replace-mix-file';
+    public $signature = 'cms:safely-replace-webpack-mix';
 
     public function handle()
     {
-        $this->info('safely replacing mix file');
+        $this->info('safely replacing webpack.mix.js');
         $mixFile = base_path('webpack.mix.js');
 
         if (File::exists($mixFile)) {

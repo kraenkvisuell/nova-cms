@@ -24,6 +24,8 @@ class Init extends Command
 
         $this->call('cms:init-pages');
 
-        $this->call('cms:safely-replace-mix-file');
+        $this->call('cms:safely-replace-webpack-mix');
+
+        $this->call('cms:safely-replace-package-json');
     }
 }

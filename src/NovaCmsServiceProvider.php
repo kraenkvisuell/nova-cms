@@ -10,9 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Kraenkvisuell\NovaCms\Console\Init;
 use Kraenkvisuell\NovaCms\Console\UseTheme;
 use Kraenkvisuell\NovaCms\Console\InitPages;
-use OptimistDigital\MenuBuilder\MenuBuilder;
 use OptimistDigital\NovaSettings\NovaSettings;
-use ClassicO\NovaMediaLibrary\NovaMediaLibrary;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
 use Kraenkvisuell\NovaCms\Console\CopyConfigFiles;
 use Kraenkvisuell\NovaCms\Console\CreateFirstUser;
@@ -21,7 +19,8 @@ use Kraenkvisuell\NovaCms\Console\CopyLanguageFiles;
 use Kraenkvisuell\NovaCms\Console\CopyMigrationFiles;
 use Kraenkvisuell\NovaCms\Console\RemoveExampleViews;
 use Kraenkvisuell\NovaCms\Console\PublishExampleViews;
-use Kraenkvisuell\NovaCms\Console\SafelyReplaceMixFile;
+use Kraenkvisuell\NovaCms\Console\SafelyReplacePackageJson;
+use Kraenkvisuell\NovaCms\Console\SafelyReplaceWebpackMix;
 
 class NovaCmsServiceProvider extends ServiceProvider
 {
@@ -88,7 +87,8 @@ class NovaCmsServiceProvider extends ServiceProvider
                 CopyMigrationFiles::class,
                 RemoveExampleViews::class,
                 PublishExampleViews::class,
-                SafelyReplaceMixFile::class,
+                SafelyReplaceWebpackMix::class,
+                SafelyReplacePackageJson::class,
             ]);
         }
 
