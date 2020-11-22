@@ -8,9 +8,9 @@ function nova_cms_menu($slug)
     return MenuMaker::make($slug);
 }
 
-function nova_cms_image($id)
+function nova_cms_image($id, $imgSize = null)
 {
-    return API::getFiles($id, null, false);
+    return API::getFiles($id, $imgSize, false);
 }
 
 function nova_cms_parse_link($link)
