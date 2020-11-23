@@ -19,8 +19,10 @@ use Kraenkvisuell\NovaCms\Console\CopyLanguageFiles;
 use Kraenkvisuell\NovaCms\Console\CopyMigrationFiles;
 use Kraenkvisuell\NovaCms\Console\RemoveExampleViews;
 use Kraenkvisuell\NovaCms\Console\PublishExampleViews;
-use Kraenkvisuell\NovaCms\Console\SafelyReplacePackageJson;
+use Kraenkvisuell\NovaCms\Console\DownloadProductionDb;
 use Kraenkvisuell\NovaCms\Console\SafelyReplaceWebpackMix;
+use Kraenkvisuell\NovaCms\Console\DownloadProductionAssets;
+use Kraenkvisuell\NovaCms\Console\SafelyReplacePackageJson;
 
 class NovaCmsServiceProvider extends ServiceProvider
 {
@@ -87,7 +89,9 @@ class NovaCmsServiceProvider extends ServiceProvider
                 CopyMigrationFiles::class,
                 RemoveExampleViews::class,
                 PublishExampleViews::class,
+                DownloadProductionDb::class,
                 SafelyReplaceWebpackMix::class,
+                DownloadProductionAssets::class,
                 SafelyReplacePackageJson::class,
             ]);
         }

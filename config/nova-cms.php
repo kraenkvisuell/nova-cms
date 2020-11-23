@@ -33,5 +33,20 @@ return [
         'slides_can_be_rotated' => false,
         'slides_can_be_resized_in_percent' => false,
         'slides_can_be_moved_in_percent' => false,
+    ],
+
+    'production' => [
+        'host' => [
+            'host' => env('PRODUCTION_HOST', 'localhost'),
+            'username' => env('PRODUCTION_HOST_USERNAME', 'forge'),
+            'path' => env('PRODUCTION_HOST_PATH', ''),
+        ],
+        'db' => [
+            'database'  => env('PRODUCTION_DB_DATABASE', 'forge'),
+            'host' => env('PRODUCTION_HOST', 'localhost'),
+            'port' => env('PRODUCTION_DB_PORT', '3306'),
+            'username'  => env('PRODUCTION_DB_USERNAME', 'forge'),
+            'password'  => env('PRODUCTION_DB_PASSWORD', ''),
+        ],
     ]
 ];
