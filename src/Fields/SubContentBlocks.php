@@ -18,6 +18,12 @@ class SubContentBlocks
                 ->addLayout(__('images'), 'images', [
                     Images::make(),
                 ])
+                ->addLayout(__('videos'), 'videos', [
+                    Videos::make(),
+                ])
+                ->addLayout(__('sounds'), 'sounds', [
+                    Sounds::make(),
+                ])
                 ->button(__('add item'))
                 ->collapsed()
                 ->stacked(),

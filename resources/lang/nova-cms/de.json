@@ -4,7 +4,9 @@
     "add image": "Bild hinzufügen",
     "add item": "Element hinzufügen",
     "add link": "Link hinzufügen",
+    "add sound": "Sound hinzufügen",
     "add sub content block": "Unter-Bereich-Block hinzufügen",
+    "add video": "Video hinzufügen",
     "address": "Adresse",
     "anchor": "Anker",
     "bottom": "oben",
@@ -12,6 +14,7 @@
     "content": "Inhalt",
     "content blocks": "Inhaltsblöcke",
     "email": "E-mail",
+    "embed code": "Embed Code",
     "gallery": "Galerie",
     "hero": "Hero",
     "hero explanation": "(große Galerie, oft bildschirmfüllend)",
@@ -55,6 +58,7 @@
     "slide": "Slide",
     "slide rotation": "Drehung der Slide",
     "slides": "Slides",
+    "sounds": "Sounds",
     "sub content": "Unter-Bereich",
     "sub content block": "Unter-Bereich-Block",
     "sub content blocks": "Unter-Bereich-Blöcke",
@@ -62,6 +66,7 @@
     "text and image(s)": "Text und Bild(er)",
     "top": "oben",
     "topline": "Topline",
+    "videos": "Videos",
     "visibility": "Sichtbarkeit",
     "visible": "Sichtbar"
 }

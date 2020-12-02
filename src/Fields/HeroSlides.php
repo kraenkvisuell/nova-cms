@@ -22,6 +22,11 @@ class HeroSlides
                 ->stacked(),
         ];
 
+        if (config('nova-cms.hero.single_slide_can_be_resized_in_percent')) {
+            $fields[] = Number::make(__('resize slide by (percent)'), 'resize')
+                              ->help(__('plus or minus in percent'));
+        }
+
         if (config('nova-cms.hero.slides_can_be_rotated')) {
             $fields[] = Number::make(__('slide rotation'), 'rotation')
                               ->help(__('in degrees (negative turns left)'));
