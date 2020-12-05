@@ -33,21 +33,7 @@ function nova_cms_setting($slug)
 {
     $setting = nova_get_setting($slug);
 
-    if ($slug == 'social_links') {
-        dd($setting);
-    }
-
-    if (is_array($setting)) {
-        if (@$setting[app()->getLocale()]) {
-            return $setting[app()->getLocale()];
-        }
-
-        if (@$setting[config('translatable.fallback_locale')]) {
-            return $setting[config('translatable.fallback_locale')];
-        }
-
-        return collect($setting)->first();
-    }
+    $setting = ContentParser::produceAttribute($setting);
 
     return $setting;
 }

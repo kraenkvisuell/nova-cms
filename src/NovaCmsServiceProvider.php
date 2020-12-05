@@ -124,13 +124,9 @@ class NovaCmsServiceProvider extends ServiceProvider
                         ->button(__('add social link'))
                         ->stacked()
             ], [
-                'social_links' => 'array',
-                // ...
-              ]);
-
-
-
-
+                'social_links' => 'object',
+                'address' => 'object',
+            ]);
 
         require_once(__DIR__ . '/../helpers/helpers.php');
     }

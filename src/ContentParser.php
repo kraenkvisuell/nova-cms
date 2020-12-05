@@ -4,6 +4,17 @@ namespace Kraenkvisuell\NovaCms;
 
 class ContentParser
 {
+    public function produceAttributes($fieldAttributes)
+    {
+        $attributes = [];
+
+        foreach ($fieldAttributes as $key => $value) {
+            $attributes[$key] = $this->produceAttribute($value);
+        }
+
+        return (object) $attributes;
+    }
+
     public function produceAttribute($value)
     {
         if (is_string($value)) {
