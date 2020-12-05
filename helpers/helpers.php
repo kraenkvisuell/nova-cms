@@ -2,6 +2,7 @@
 
 use ClassicO\NovaMediaLibrary\API;
 use Kraenkvisuell\NovaCms\Facades\MenuMaker;
+use Kraenkvisuell\NovaCms\Facades\ContentParser;
 
 function nova_cms_menu($slug)
 {
@@ -31,6 +32,10 @@ function nova_cms_parse_link($link)
 function nova_cms_setting($slug)
 {
     $setting = nova_get_setting($slug);
+
+    if ($slug == 'social_links') {
+        dd($setting);
+    }
 
     if (is_array($setting)) {
         if (@$setting[app()->getLocale()]) {

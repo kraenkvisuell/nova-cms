@@ -3,12 +3,16 @@
 namespace Kraenkvisuell\NovaCms;
 
 use Laravel\Nova\Nova;
+use Eminiarts\Tabs\Tabs;
 use Manogi\Tiptap\Tiptap;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
 use Kraenkvisuell\NovaCms\Nova\Page;
 use Illuminate\Support\ServiceProvider;
 use Kraenkvisuell\NovaCms\Console\Init;
+use ClassicO\NovaMediaLibrary\MediaLibrary;
 use Kraenkvisuell\NovaCms\Console\UseTheme;
+use Whitecube\NovaFlexibleContent\Flexible;
 use Kraenkvisuell\NovaCms\Console\InitPages;
 use OptimistDigital\NovaSettings\NovaSettings;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
@@ -35,7 +39,7 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         config(['view.paths' => $viewPaths]);
 
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang/nova-cms', 'nova-cms');
+        //$this->loadTranslationsFrom(__DIR__.'/../resources/lang/nova-cms', 'nova-cms');
 
         $this->publishes([
             __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
@@ -98,16 +102,35 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         PageModel::observe(PageObserver::class);
 
-        NovaSettings::addSettingsFields(
-            [
-                Tiptap::make(__('address'), 'address')->translatable(),
-                Text::make(__('phone'), 'phone'),
-                Text::make(__('email'), 'email'),
-            ],
-            [
-                'address' => 'array',
-            ]
-        );
+        NovaSettings::addSettingsFields([
+
+                    Tiptap::make(__('address'), 'address')->translatable(),
+                    Text::make(__('phone'), 'phone'),
+                    Text::make(__('email'), 'email'),
+
+                    Flexible::make(__('social links'), 'social_links')
+                        ->addLayout(__('link'), 'link', [
+                            Text::make(__('link title'), 'link_title')
+                                ->translatable(),
+
+                            Text::make(__('link url'), 'link_url')
+                                ->translatable(),
+
+                            MediaLibrary::make(__('link icon'), 'link_icon')
+                                ->types(['Image']),
+
+                            Code::make(__('svg tag'), 'svg_tag')->language('xml'),
+                        ])
+                        ->button(__('add social link'))
+                        ->stacked()
+            ], [
+                'social_links' => 'array',
+                // ...
+              ]);
+
+
+
+
 
         require_once(__DIR__ . '/../helpers/helpers.php');
     }
@@ -120,6 +143,10 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         $this->app->bind('content-block', function () {
             return new ContentBlock();
+        });
+
+        $this->app->bind('content-parser', function () {
+            return new ContentParser();
         });
 
         $this->mergeConfigFrom(
