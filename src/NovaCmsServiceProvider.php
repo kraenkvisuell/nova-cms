@@ -39,16 +39,13 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         config(['view.paths' => $viewPaths]);
 
-        //$this->loadTranslationsFrom(__DIR__.'/../resources/lang/nova-cms', 'nova-cms');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang/nova-cms', 'nova-cms');
 
         $this->publishes([
             __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
         ]);
 
         $this->loadJsonTranslationsFrom(__DIR__.'/../vendor/coderello/laravel-nova-lang/resources/lang');
-
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang/nova-cms');
-        $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova-cms'));
 
         $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang/nova-menu-builder');
         $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova-menu-builder'));
@@ -104,24 +101,24 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         NovaSettings::addSettingsFields([
 
-                    Tiptap::make(__('address'), 'address')->translatable(),
-                    Text::make(__('phone'), 'phone'),
-                    Text::make(__('email'), 'email'),
+                    Tiptap::make(__('nova-cms::content_blocks.address'), 'address')->translatable(),
+                    Text::make(__('nova-cms::content_blocks.phone'), 'phone'),
+                    Text::make(__('nova-cms::content_blocks.email'), 'email'),
 
-                    Flexible::make(__('social links'), 'social_links')
-                        ->addLayout(__('link'), 'link', [
-                            Text::make(__('link title'), 'link_title')
+                    Flexible::make(__('nova-cms::content_blocks.social_links'), 'social_links')
+                        ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
+                            Text::make(__('nova-cms::content_blocks.link_title'), 'link_title')
                                 ->translatable(),
 
-                            Text::make(__('link url'), 'link_url')
+                            Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
                                 ->translatable(),
 
-                            MediaLibrary::make(__('link icon'), 'link_icon')
+                            MediaLibrary::make(__('nova-cms::content_blocks.link_icon'), 'link_icon')
                                 ->types(['Image']),
 
-                            Code::make(__('svg tag'), 'svg_tag')->language('xml'),
+                            Code::make(__('nova-cms::content_blocks.svg_tag'), 'svg_tag')->language('xml'),
                         ])
-                        ->button(__('add social link'))
+                        ->button(__('nova-cms::content_blocks.add_social_link'))
                         ->stacked()
             ], [
                 'social_links' => 'object',

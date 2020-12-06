@@ -17,7 +17,7 @@ class HeroLayout extends Layout
 
     public function title()
     {
-        return __('hero').' '.__('hero explanation');
+        return __('nova-cms::content_blocks.hero').' '.__('nova-cms::content_blocks.hero_explanation');
     }
 
     public function fields()
@@ -39,7 +39,7 @@ class HeroLayout extends Layout
         }
 
         if (config('nova-cms.hero.has_text')) {
-            $fields[] =  Tiptap::make(__('text'), 'text')
+            $fields[] =  Tiptap::make(__('nova-cms::content_blocks.text'), 'text')
                 ->buttons([
                     'bold',
                     'italic',
@@ -49,24 +49,24 @@ class HeroLayout extends Layout
         }
 
         if (config('nova-cms.hero.has_button')) {
-            $fields[] = Text::make(__('main button link'), 'main_button_link');
+            $fields[] = Text::make(__('nova-cms::content_blocks.main_button_link'), 'main_button_link');
 
-            $fields[] = Text::make(__('main button text'), 'main_button_text')
+            $fields[] = Text::make(__('nova-cms::content_blocks.main_button_text'), 'main_button_text')
                 ->translatable();
         }
 
         if (config('nova-cms.hero.has_secondary_button')) {
-            $fields[] = Text::make(__('secondary button link'), 'secondary_button_link');
+            $fields[] = Text::make(__('nova-cms::content_blocks.secondary_button_link'), 'secondary_button_link');
 
-            $fields[] = Text::make(__('secondary button text'), 'secondary_button_text')
+            $fields[] = Text::make(__('nova-cms::content_blocks.secondary_button_text'), 'secondary_button_text')
                 ->translatable();
         }
 
         $fields[] = HeroSlides::make()->collapsed()->stacked();
 
         if (config('nova-cms.hero.slides_can_be_resized_in_percent')) {
-            $fields[] = Number::make(__('resize slides by (percent)'), 'resize')
-                              ->help(__('plus or minus in percent'));
+            $fields[] = Number::make(__('nova-cms::content_blocks.resize_slides_by_percent'), 'resize')
+                              ->help(__('nova-cms::content_blocks.plus_or_minus_in_percent'));
         }
 
         return $fields;

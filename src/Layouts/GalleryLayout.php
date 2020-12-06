@@ -17,7 +17,7 @@ class GalleryLayout extends Layout
 
     public function title()
     {
-        return __('gallery');
+        return __('nova-cms::content_blocks.gallery');
     }
 
     public function fields()
@@ -32,18 +32,18 @@ class GalleryLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
-            Flexible::make(__('slides'), 'slides')
-                ->addLayout(__('slide'), 'slide', [
-                    MediaLibrary::make('Bild', 'image')
+            Flexible::make(__('nova-cms::content_blocks.slides'), 'slides')
+                ->addLayout(__('nova-cms::content_blocks.slide'), 'slide', [
+                    MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')
                         ->types(['Image'])
                         ->stacked(),
 
-                    Textarea::make(__('image caption'), 'caption')
+                    Textarea::make(__('nova-cms::content_blocks.image_caption'), 'caption')
                         ->rows(2)
                         ->translatable()
                         ->stacked(),
                 ])
-                ->button(__('add slide'))
+                ->button(__('nova-cms::content_blocks.add_slide'))
                 ->collapsed(),
             Anchor::make(),
         ]);

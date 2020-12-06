@@ -8,6 +8,6 @@ class Anchor
 {
     public static function make()
     {
-        return Text::make(__('anchor'), 'anchor')->translatable();
+        return Text::make(__('nova-cms::content_blocks.anchor'), 'anchor')->translatable();
     }
 }

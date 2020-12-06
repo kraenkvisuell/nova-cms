@@ -27,12 +27,12 @@ class Page extends Resource
 
     public static function label()
     {
-        return __('pages');
+        return __('nova-cms::pages.pages');
     }
 
     public static function singularLabel()
     {
-        return __('page');
+        return __('nova-cms::pages.page');
     }
 
     protected static function applyOrderings($query, array $orderings)
@@ -50,35 +50,35 @@ class Page extends Resource
 
 
         $settingsTab = [
-            Text::make('Seitentitel', 'title')
+            Text::make(__('nova-cms::pages.page_title'), 'title')
                 ->translatable(),
 
-            Text::make('Text-ID', 'slug')
+            Text::make(__('nova-cms::pages.slug'), 'slug')
                 ->translatable()
-                ->help('Wird in der URL verwendet (außer bei der Startseite)'),
+                ->help(__('nova-cms::pages.slug_explanation')),
 
-            Boolean::make('Ist Startseite', 'is_home')->hideFromIndex(),
+            Boolean::make(__('nova-cms::pages.is_home'), 'is_home')->hideFromIndex(),
         ];
 
         if ($request->resourceId === null) {
-            $tabs[__('settings')] =  $settingsTab;
-            $tabs[__('content')] =  $contentTab;
+            $tabs[__('nova-cms::settings.settings')] =  $settingsTab;
+            $tabs[__('nova-cms::pages.content')] =  $contentTab;
         } else {
-            $tabs[__('content')] =  $contentTab;
-            $tabs[__('settings')] =  $settingsTab;
+            $tabs[__('nova-cms::pages.content')] =  $contentTab;
+            $tabs[__('nova-cms::settings.settings')] =  $settingsTab;
         }
 
-        $tabs[__('seo')] = [
-            Text::make('Browser Title')
+        $tabs[__('nova-cms::pages.seo')] = [
+            Text::make(__('nova-cms::pages.browser_title'), 'browser_title')
                 ->translatable()
                 ->hideFromIndex(),
 
-            Textarea::make('Meta Description')
+            Textarea::make(__('nova-cms::pages.meta_description'), 'meta_description')
                     ->translatable(),
         ];
 
         return [
-            (new Tabs('Seite', $tabs))->withToolbar(),
+            (new Tabs(__('nova-cms::pages.page'), $tabs))->withToolbar(),
         ];
     }
 }

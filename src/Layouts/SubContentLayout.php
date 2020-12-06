@@ -31,7 +31,7 @@ class SubContentLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
-            Text::make(__('navigation headline (optional)'), 'navi_headline'),
+            Text::make(__('nova-cms::content_blocks.navigation_headline').' ('.__('nova-cms::content_blocks.optional').')', 'navi_headline'),
             SubContentBlocks::make()->collapsed()->stacked(),
             Anchor::make(),
         ]);

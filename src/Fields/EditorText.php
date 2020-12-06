@@ -14,7 +14,7 @@ class EditorText
             $headingLevels = config('nova-cms.heading_levels');
         }
 
-        return Tiptap::make(__('text'), 'text')
+        return Tiptap::make(__('nova-cms::content_blocks.text'), 'text')
             ->buttons([
                 'heading',
                 'bold',

@@ -12,34 +12,34 @@ class Images
     public static function make()
     {
         $fields = [
-            MediaLibrary::make('Bild', 'image')
+            MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')
                 ->types(['Image'])
                 ->stacked(),
 
-            Textarea::make(__('image caption'), 'caption')
+            Textarea::make(__('nova-cms::content_blocks.image_caption'), 'caption')
                 ->rows(2)
                 ->translatable()
                 ->stacked(),
         ];
 
         if (config('nova-cms.images.images_can_be_rotated')) {
-            $fields[] = Number::make(__('image rotation'), 'rotation')
-                              ->help(__('in degrees (negative turns left)'));
+            $fields[] = Number::make(__('nova-cms::content_blocks.image_rotation'), 'rotation')
+                              ->help(__('nova-cms::content_blocks.in degrees_negative_turns_left'));
         }
 
         if (config('nova-cms.images.images_can_be_moved_in_percent')) {
-            $fields[] = Number::make(__('move image to the right'), 'move_right')
-                              ->help(__('in percent (negative moves to the left)'));
+            $fields[] = Number::make(__('nova-cms::content_blocks.move_image_to_the_right'), 'move_right')
+                              ->help(__('nova-cms::content_blocks.in_percent_negative_moves_to_the_left'));
         }
 
         if (config('nova-cms.images.images_can_be_moved_in_percent')) {
-            $fields[] = Number::make(__('move image down'), 'move_down')
-                              ->help(__('in percent (negative moves up)'));
+            $fields[] = Number::make(__('nova-cms::content_blocks.move_image_down'), 'move_down')
+                              ->help(__('nova-cms::content_blocks.in_percent_negative_moves_up'));
         }
 
-        return Flexible::make(__('images'), 'images')
-            ->addLayout(__('image'), 'image', $fields)
-            ->button(__('add image'))
+        return Flexible::make(__('nova-cms::content_blocks.images'), 'images')
+            ->addLayout(__('nova-cms::content_blocks.image'), 'image', $fields)
+            ->button(__('nova-cms::content_blocks.add_image'))
             ->collapsed();
     }
 }

@@ -11,20 +11,20 @@ class SubContentBlocks
         $fields = [
             Headline::make(),
             Anchor::make(),
-            Flexible::make(__('items'), 'items')
-                ->addLayout(__('text'), 'text', [
+            Flexible::make(__('nova-cms::content_blocks.items'), 'items')
+                ->addLayout(__('nova-cms::content_blocks.text'), 'text', [
                     EditorText::make(),
                 ])
-                ->addLayout(__('images'), 'images', [
+                ->addLayout(__('nova-cms::content_blocks.images'), 'images', [
                     Images::make(),
                 ])
-                ->addLayout(__('videos'), 'videos', [
+                ->addLayout(__('nova-cms::content_blocks.videos'), 'videos', [
                     Videos::make(),
                 ])
-                ->addLayout(__('sounds'), 'sounds', [
+                ->addLayout(__('nova-cms::content_blocks.sounds'), 'sounds', [
                     Sounds::make(),
                 ])
-                ->button(__('add item'))
+                ->button(__('nova-cms::content_blocks.add_item'))
                 ->collapsed()
                 ->stacked(),
             BottomLinks::make()->stacked(),
@@ -32,8 +32,8 @@ class SubContentBlocks
 
 
 
-        return Flexible::make(__('sub content blocks'), 'sub_content_blocks')
-            ->addLayout(__('sub content block'), 'sub_content_block', $fields)
-            ->button(__('add sub content block'));
+        return Flexible::make(__('nova-cms::content_blocks.sub_content_blocks'), 'sub_content_blocks')
+            ->addLayout(__('nova-cms::content_blocks.sub_content_block'), 'sub_content_block', $fields)
+            ->button(__('nova-cms::content_blocks.add_sub_content_block'));
     }
 }

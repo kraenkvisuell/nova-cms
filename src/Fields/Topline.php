@@ -8,7 +8,7 @@ class Topline
 {
     public static function make()
     {
-        return Textarea::make(__('topline'), 'topline')
+        return Textarea::make(__('nova-cms::content_blocks.topline'), 'topline')
             ->rows(1)
             ->translatable();
     }

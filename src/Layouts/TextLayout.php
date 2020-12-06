@@ -16,7 +16,7 @@ class TextLayout extends Layout
 
     public function title()
     {
-        return __('text');
+        return __('nova-cms::content_blocks.text');
     }
 
     public function fields()

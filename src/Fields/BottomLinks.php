@@ -10,16 +10,16 @@ class BottomLinks
     public static function make()
     {
         $fields = [
-            Text::make(__('link text'), 'link_text')
+            Text::make(__('nova-cms::content_blocks.link_text'), 'link_text')
                 ->translatable(),
 
-            Text::make(__('link url'), 'link_url')
+            Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
                 ->translatable(),
         ];
 
-        return Flexible::make(__('bottom links'), 'bottom_links')
-            ->addLayout(__('link'), 'link', $fields)
-            ->button(__('add link'))
+        return Flexible::make(__('nova-cms::content_blocks.bottom_links'), 'bottom_links')
+            ->addLayout(__('nova-cms::content_blocks.link'), 'link', $fields)
+            ->button(__('nova-cms::content_blocks.add_link'))
             ->stacked();
     }
 }

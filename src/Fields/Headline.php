@@ -8,7 +8,7 @@ class Headline
 {
     public static function make()
     {
-        return Textarea::make(__('headline'), 'headline')
+        return Textarea::make(__('nova-cms::content_blocks.headline'), 'headline')
             ->rows(2)
             ->translatable();
     }

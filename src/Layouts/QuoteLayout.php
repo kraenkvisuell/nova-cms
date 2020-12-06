@@ -15,14 +15,14 @@ class QuoteLayout extends Layout
 
     public function title()
     {
-        return __('quote');
+        return __('nova-cms::content_blocks.quote');
     }
 
     public function fields()
     {
         return [
             Hide::make(),
-            Textarea::make(__('quote'), 'quote')
+            Textarea::make(__('nova-cms::content_blocks.quote'), 'quote')
                 ->translatable(),
 
             Images::make()->stacked(),
