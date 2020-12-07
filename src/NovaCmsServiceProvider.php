@@ -3,7 +3,6 @@
 namespace Kraenkvisuell\NovaCms;
 
 use Laravel\Nova\Nova;
-use Eminiarts\Tabs\Tabs;
 use Manogi\Tiptap\Tiptap;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
@@ -41,19 +40,11 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang/nova-cms', 'nova-cms');
 
+        $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova'));
+
         $this->publishes([
             __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
         ]);
-
-        $this->loadJsonTranslationsFrom(__DIR__.'/../vendor/coderello/laravel-nova-lang/resources/lang');
-
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang/nova-menu-builder');
-        $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova-menu-builder'));
-
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang/nova-settings');
-        $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova-settings'));
-
-        $this->loadJsonTranslationsFrom(__DIR__.'/../vendor/laravel-lang/json');
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
