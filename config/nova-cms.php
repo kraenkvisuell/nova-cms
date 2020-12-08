@@ -14,7 +14,14 @@ return [
     'theme' => 'default',
 
     // Available default layouts:
-    // Text, Gallery, Hero
+    // [
+    //     'Hero',
+    //     'TextImages',
+    //     'Quote',
+    //     'Text',
+    //     'Gallery',
+    //     'SubContent',
+    // ]
 
     'content-blocks' => [
         'default' => [
@@ -34,6 +41,10 @@ return [
         'slides_can_be_resized_in_percent' => false,
         'slides_can_be_moved_in_percent' => false,
         'single_slide_can_be_resized_in_percent' => false,
+    ],
+
+    'permissions'=> [
+        'lockableLayouts' => []
     ],
 
     'production' => [

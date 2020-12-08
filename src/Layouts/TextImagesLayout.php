@@ -18,7 +18,7 @@ class TextImagesLayout extends Layout
 
     public function title()
     {
-        return __('text and image(s)');
+        return __('nova-cms::content_blocks.text_and_image_s');
     }
 
     public function fields()

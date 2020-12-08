@@ -10,9 +10,12 @@ use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\HeroSlides;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCms\Traits\HasLockableFields;
 
 class HeroLayout extends Layout
 {
+    use HasLockableFields;
+
     protected $name = 'hero';
 
     public function title()
@@ -62,11 +65,15 @@ class HeroLayout extends Layout
                 ->translatable();
         }
 
-        $fields[] = HeroSlides::make()->collapsed()->stacked();
+        if ($this->userCanEditLayout(request()->user())) {
+            $fields[] = HeroSlides::make()
+            ->collapsed()
+            ->stacked();
 
-        if (config('nova-cms.hero.slides_can_be_resized_in_percent')) {
-            $fields[] = Number::make(__('nova-cms::content_blocks.resize_slides_by_percent'), 'resize')
-                              ->help(__('nova-cms::content_blocks.plus_or_minus_in_percent'));
+            if (config('nova-cms.hero.slides_can_be_resized_in_percent')) {
+                $fields[] = Number::make(__('nova-cms::content_blocks.resize_slides_by_percent'), 'resize')
+                                  ->help(__('nova-cms::content_blocks.plus_or_minus_in_percent'));
+            }
         }
 
         return $fields;

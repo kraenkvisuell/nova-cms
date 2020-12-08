@@ -67,7 +67,7 @@ return [
     'sub_content_blocks' => 'Unter-Bereich-Blöcke',
     'svg_tag' => 'SVG-Tag',
     'text' => 'Text',
-    'text and image(s)' => 'Text und Bild(er)',
+    'text_and_image_s' => 'Text und Bild(er)',
     'top' => 'oben',
     'topline' => 'Topline',
     'videos' => 'Videos',

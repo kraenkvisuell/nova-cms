@@ -16,7 +16,7 @@ class SubContentLayout extends Layout
 
     public function title()
     {
-        return __('sub content');
+        return __('nova-cms::content_blocks.sub_content');
     }
 
     public function fields()
