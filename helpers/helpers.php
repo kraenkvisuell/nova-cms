@@ -1,6 +1,7 @@
 <?php
 
 use ClassicO\NovaMediaLibrary\API;
+use Illuminate\Support\Facades\URL;
 use Kraenkvisuell\NovaCms\Facades\MenuMaker;
 use Kraenkvisuell\NovaCms\Facades\ContentParser;
 
@@ -36,4 +37,13 @@ function nova_cms_setting($slug)
     $setting = ContentParser::produceAttribute($setting);
 
     return $setting;
+}
+
+function nova_cms_currently_on_home()
+{
+    if(request()->path() == '/') {
+        return true;
+    }
+
+    return false;
 }

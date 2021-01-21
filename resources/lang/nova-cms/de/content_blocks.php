@@ -11,6 +11,7 @@ return [
     'add_video' => 'Video hinzufügen',
     'address' => 'Adresse',
     'anchor' => 'Anker',
+    'author' => 'Autor',
     'bottom' => 'oben',
     'bottom_links' => 'Links',
     'content' => 'Inhalt',
