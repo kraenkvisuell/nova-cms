@@ -24,6 +24,10 @@ class SubContentBlocks
                 ->addLayout(__('nova-cms::content_blocks.sounds'), 'sounds', [
                     Sounds::make(),
                 ])
+                ->addLayout(__('nova-cms::content_blocks.downloads'), 'downloads', [
+                    Headline::make(),
+                    Downloads::make(),
+                ])
                 ->button(__('nova-cms::content_blocks.add_item'))
                 ->collapsed()
                 ->stacked(),

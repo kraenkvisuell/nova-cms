@@ -1,7 +1,6 @@
 <?php
 
 use ClassicO\NovaMediaLibrary\API;
-use Illuminate\Support\Facades\URL;
 use Kraenkvisuell\NovaCms\Facades\MenuMaker;
 use Kraenkvisuell\NovaCms\Facades\ContentParser;
 
@@ -13,6 +12,11 @@ function nova_cms_menu($slug)
 function nova_cms_image($id, $imgSize = null)
 {
     return API::getFiles($id, $imgSize, false);
+}
+
+function nova_cms_file($id)
+{
+    return API::getFiles($id);
 }
 
 function nova_cms_parse_link($link)
