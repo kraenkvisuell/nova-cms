@@ -72,12 +72,12 @@ function nova_cms_magify_links($str, $open_urls_in_new_tab = false)
                 if ($open_urls_in_new_tab) {
                     $newUrl .= '" target="_blank';
                 }
-                $str = str_replace($url, $newUrl, $str);
+                $str = str_replace('"'.$url.'"', '"'.$newUrl.'"', $str);
             }
 
             if ($open_urls_in_new_tab && substr($url, 0, 4) == 'http') {
                 $newUrl = $url.'" target="_blank';
-                $str = str_replace($url, $newUrl, $str);
+                $str = str_replace('"'.$url.'"', '"'.$newUrl.'"', $str);
             }
         }
     }
