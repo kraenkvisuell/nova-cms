@@ -18,7 +18,7 @@ class ContentParser
     public function produceAttribute($value)
     {
         if (is_string($value)) {
-            return $value;
+            return nova_cms_magify_links($value, config('nova-cms.content.open_urls_in_new_tab'));
         }
 
         if (is_object($value)) {
@@ -71,11 +71,11 @@ class ContentParser
     protected function getTranslatedObject($value)
     {
         if (@$value->{app()->getLocale()}) {
-            return $value->{app()->getLocale()};
+            return nova_cms_magify_links($value->{app()->getLocale()}, config('nova-cms.content.open_urls_in_new_tab'));
         }
 
         if (@$value->{config('translatable.fallback_locale')}) {
-            return $value->{config('translatable.fallback_locale')};
+            return nova_cms_magify_links($value->{config('translatable.fallback_locale')}, config('nova-cms.content.open_urls_in_new_tab'));
         }
 
         return '';

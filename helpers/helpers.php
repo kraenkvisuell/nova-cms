@@ -51,3 +51,31 @@ function nova_cms_currently_on_home()
 
     return false;
 }
+
+function nova_cms_magify_links($str, $open_urls_in_new_tab = false)
+{
+    $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
+    if(preg_match_all("/$regexp/siU", $str, $matches)) {
+        foreach($matches[2] as $url) {
+            $url = trim($url);
+            if (
+                substr($url, 0, 1) != '/'
+                && substr($url, 0, 1) != '['
+                && substr($url, 0, 1) != '#'
+                && substr($url, 0, 1) != '{'
+                && substr($url, 0, 7) != 'http://'
+                && substr($url, 0, 8) != 'https://'
+                && substr($url, 0, 4) != 'ftp:'
+                && substr($url, 0, 7) != 'mailto:'
+            ) {
+                $newUrl = 'http://'.$url;
+                if ($open_urls_in_new_tab) {
+                    $newUrl .= '" target="_blank';
+                }
+                $str = str_replace($url, $newUrl, $str);
+            }
+        }
+    }
+
+    return $str;
+}

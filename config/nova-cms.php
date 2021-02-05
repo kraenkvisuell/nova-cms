@@ -43,6 +43,10 @@ return [
         'single_slide_can_be_resized_in_percent' => false,
     ],
 
+    'content' => [
+        'open_urls_in_new_tab' => false,
+    ],
+
     'permissions'=> [
         'lockableLayouts' => []
     ],
