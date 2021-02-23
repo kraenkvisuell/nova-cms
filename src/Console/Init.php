@@ -14,11 +14,15 @@ class Init extends Command
 
         $this->call('nova-lang:publish', ['locales' => 'de']);
 
+        $this->call('vendor:publish', [
+            '--provider' => 'Kraenkvisuell\NovaCms\NovaCmsServiceProvider'
+        ]);
+
         $this->call('cms:copy-config-files');
 
         $this->call('cms:copy-migration-files');
 
-        $this->call('cms:copy-language-files');
+        //$this->call('cms:copy-language-files');
 
         $this->call('cms:create-first-user');
 

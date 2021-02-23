@@ -13,13 +13,13 @@ class CreateFirstUser extends Command
     {
         $this->info('creating first user');
 
-        if (\App\User::count() == 0) {
-            $this->info('creating cms user user@cms.io with password "password"');
+        if (\App\Models\User::count() == 0) {
+            $this->info('creating cms user cms@kraenk.de with password "password"');
 
-            $user = \App\User::make();
+            $user = \App\Models\User::make();
 
             $user->password = Hash::make('password');
-            $user->email = 'user@cms.io';
+            $user->email = 'cms@kraenk.de';
             $user->name = 'CMS-User';
 
             $user->save();
