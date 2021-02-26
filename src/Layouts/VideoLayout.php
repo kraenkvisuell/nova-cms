@@ -6,18 +6,16 @@ use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Kraenkvisuell\NovaCms\Fields\EditorText;
-use Kraenkvisuell\NovaCms\Fields\BottomLinks;
-use Laravel\Nova\Fields\Boolean;
+use Kraenkvisuell\NovaCms\Fields\EmbedCode;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
-class TextLayout extends Layout
+class VideoLayout extends Layout
 {
-    protected $name = 'text';
+    protected $name = 'video';
 
     public function title()
     {
-        return __('nova-cms::content_blocks.text');
+        return __('nova-cms::content_blocks.video');
     }
 
     public function fields()
@@ -32,9 +30,7 @@ class TextLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
-            EditorText::make(),
-            Boolean::make(__('nova-cms::content_blocks.center_text'), 'is_centered'),
-            BottomLinks::make()->stacked(),
+            EmbedCode::make(),
             Anchor::make(),
         ]);
     }

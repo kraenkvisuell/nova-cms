@@ -45,7 +45,10 @@ return [
     'menus' => [
         'main' => [
             'name' => 'normale Navigation',
-        ]
+        ],
+        'footer' => [
+            'name' => 'Footer-Navigation',
+        ],
     ],
 
 

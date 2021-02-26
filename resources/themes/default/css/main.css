@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,300;0,600;1,300;1,600&family=Limelight&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+* {
+    position: relative;
+}
+
+[x-cloak] {
+    @apply hidden;
+}
+
+.editor {
+    @apply text-grey;
+}
+
+.editor h1,
+.editor h2,
+.editor h3,
+.editor h4,
+.editor h5,
+.editor h6 {
+    @apply text-xl font-display mt-6;
+}
+
+.editor h3 {
+    @apply text-xl;
+}
+
+.editor h4 {
+    @apply text-lg;
+}
+
+.editor h5 {
+    @apply text-base;
+}
+
+.editor p {
+    @apply text-base;
+}
+
+.editor a {
+    @apply underline text-main-red;
+}
+
+.editor td {
+    vertical-align: top;
+}
+.editor td:first-child {
+    padding-right: 12px;
+}
+
+.editor > * {
+    margin-top: .5rem;
+}
+
+@screen lg {
+    .editor h1,
+    .editor h2,
+    .editor h3,
+    .editor h4,
+    .editor h5,
+    .editor h6 {
+        @apply text-3xl;
+    }
+
+    .editor h3,
+    .editor h4,
+    .editor h5,
+    .editor h6 {
+        @apply text-2xl;
+    }
+
+    .editor p {
+        @apply text-lg;
+    }
+
+    .editor > * {
+        margin-top: .75rem;
+    }
+}
+
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    content: '';
+}

@@ -3,6 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Fields;
 
 use Laravel\Nova\Fields\Text;
+use ClassicO\NovaMediaLibrary\MediaLibrary;
 use Whitecube\NovaFlexibleContent\Flexible;
 
 class BottomLinks
@@ -15,6 +16,8 @@ class BottomLinks
 
             Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
                 ->translatable(),
+
+            MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file'),
         ];
 
         return Flexible::make(__('nova-cms::content_blocks.bottom_links'), 'bottom_links')

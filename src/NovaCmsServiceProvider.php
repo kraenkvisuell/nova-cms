@@ -121,6 +121,10 @@ class NovaCmsServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->app->bind('proxy-object', function () {
+            return new ProxyObject();
+        });
+
         $this->app->bind('menu-maker', function () {
             return new MenuMaker();
         });
