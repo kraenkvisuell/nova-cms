@@ -32,6 +32,7 @@ return [
     'headline' => 'Überschrift',
     'hidden' => 'Versteckt',
     'hide' => 'Verstecken',
+    'id' => 'ID',
     'image' => 'Bild',
     'in_degrees_negative_turns_left' => 'In Grad (negativ dreht nach links)',
     'in_percent_negative_moves_to_the_left' => 'In Prozent (negativ rückt nach links)',

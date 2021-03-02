@@ -104,6 +104,8 @@ class NovaCmsServiceProvider extends ServiceProvider
                             Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
                                 ->translatable(),
 
+                            Text::make(__('nova-cms::content_blocks.id'), 'slug'),
+
                             MediaLibrary::make(__('nova-cms::content_blocks.link_icon'), 'link_icon')
                                 ->types(['Image']),
 
