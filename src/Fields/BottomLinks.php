@@ -8,8 +8,10 @@ use Whitecube\NovaFlexibleContent\Flexible;
 
 class BottomLinks
 {
-    public static function make()
+    public static function make($fieldTitle = null, $fieldSlug = 'bottom_links')
     {
+        $fieldTitle = $fieldTitle ?: __('nova-cms::content_blocks.bottom_links');
+
         $fields = [
             Text::make(__('nova-cms::content_blocks.link_text'), 'link_text')
                 ->translatable(),
@@ -20,7 +22,7 @@ class BottomLinks
             MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file'),
         ];
 
-        return Flexible::make(__('nova-cms::content_blocks.bottom_links'), 'bottom_links')
+        return Flexible::make($fieldTitle, $fieldSlug)
             ->addLayout(__('nova-cms::content_blocks.link'), 'link', $fields)
             ->button(__('nova-cms::content_blocks.add_link'))
             ->stacked();

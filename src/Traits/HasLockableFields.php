@@ -6,7 +6,7 @@ trait HasLockableFields
 {
     protected function userCanEditLayout($user)
     {
-        if (method_exists($user, 'canEditLayout')) {
+        if ($user && method_exists($user, 'canEditLayout')) {
             return $user->canEditLayout('\\'.get_class($this));
         }
 
