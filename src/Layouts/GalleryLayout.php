@@ -42,6 +42,9 @@ class GalleryLayout extends Layout
                         ->rows(2)
                         ->translatable()
                         ->stacked(),
+
+                    MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file')
+                        ->stacked(),
                 ])
                 ->button(__('nova-cms::content_blocks.add_slide'))
                 ->collapsed(),

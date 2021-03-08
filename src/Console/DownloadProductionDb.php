@@ -19,21 +19,25 @@ class DownloadProductionDb extends Command
 
         $filename = config('nova-cms.production.db.database')."-".time().".gz";
 
-        $execString = "ssh -C forge@"
+        $execString = 'ssh -C '
+        . config('nova-cms.production.host.username')
+        .'@'
         . config('nova-cms.production.db.host')
-        ." '"
-        . "mysqldump -u "
+        .' -p '
+        . config('nova-cms.production.db.port')
+        .' "'
+        . 'mysqldump -u '
         . config('nova-cms.production.db.username');
 
         if (config('nova-cms.production.db.password')) {
-            $execString .= " -p"
+            $execString .= ' -p '
                 . config('nova-cms.production.db.password');
         }
 
-        $execString .= " "
+        $execString .= ' '
         . config('nova-cms.production.db.database')
-        . " | gzip"
-        ."' > ~/Downloads/".$filename;
+        . ' | gzip'
+        .'" > /Downloads/'.$filename;
 
         exec($execString);
 

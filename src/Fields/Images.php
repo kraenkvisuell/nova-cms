@@ -20,6 +20,9 @@ class Images
                 ->rows(2)
                 ->translatable()
                 ->stacked(),
+
+            MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file')
+                ->stacked(),
         ];
 
         if (config('nova-cms.images.images_can_be_rotated')) {
