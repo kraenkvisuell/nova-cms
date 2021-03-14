@@ -10,6 +10,7 @@ use Kraenkvisuell\NovaCms\Nova\Page;
 use Illuminate\Support\ServiceProvider;
 use Kraenkvisuell\NovaCms\Console\Init;
 use ClassicO\NovaMediaLibrary\MediaLibrary;
+use Kraenkvisuell\NovaCms\Console\ForceMix;
 use Kraenkvisuell\NovaCms\Console\UseTheme;
 use Whitecube\NovaFlexibleContent\Flexible;
 use Kraenkvisuell\NovaCms\Console\InitPages;
@@ -74,6 +75,7 @@ class NovaCmsServiceProvider extends ServiceProvider
             $this->commands([
                 Init::class,
                 UseTheme::class,
+                ForceMix::class,
                 InitPages::class,
                 CreateFirstUser::class,
                 CopyConfigFiles::class,

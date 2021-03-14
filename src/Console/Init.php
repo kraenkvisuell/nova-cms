@@ -27,9 +27,5 @@ class Init extends Command
         $this->call('cms:create-first-user');
 
         $this->call('cms:init-pages');
-
-        $this->call('cms:safely-replace-webpack-mix');
-
-        $this->call('cms:safely-replace-package-json');
     }
 }

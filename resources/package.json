@@ -17,10 +17,10 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.2.0",
         "autoprefixer": "^10.0.2",
         "body-scroll-lock": "^3.1.5",
         "postcss": "^8.1.8",
-        "tailwindcss": "^2.0.1",
-        "tailwindcss-aspect-ratio": "^3.0.0"
+        "tailwindcss": "^2.0.1"
     }
 }
