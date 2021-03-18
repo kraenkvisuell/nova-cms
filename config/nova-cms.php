@@ -1,6 +1,10 @@
 <?php
 
 return [
+    // Base folder for route urls - if this is empty, page rotes start 
+    // directly at "/" (and the home page is "/")
+    'base_route_folder' => '',
+
     // Path for your main CSS file - defaults to "css/main.css"
     'main_css_path' => 'css/main.css',
 
