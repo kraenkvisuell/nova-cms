@@ -30,6 +30,7 @@ return [
     'hero' => 'Hero',
     'hero_explanation' => '(große Galerie, oft bildschirmfüllend)',
     'headline' => 'Überschrift',
+    'headline_link' => 'Link für Überschrift',
     'hidden' => 'Versteckt',
     'hide' => 'Verstecken',
     'id' => 'ID',

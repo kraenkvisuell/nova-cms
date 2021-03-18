@@ -8,6 +8,7 @@ use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\EditorText;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
+use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Laravel\Nova\Fields\Boolean;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
@@ -32,6 +33,7 @@ class TextLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
+            HeadlineLink::make(),
             EditorText::make(),
             Boolean::make(__('nova-cms::content_blocks.center_text'), 'is_centered'),
             BottomLinks::make()->stacked(),

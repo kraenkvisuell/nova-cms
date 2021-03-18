@@ -9,6 +9,7 @@ use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use ClassicO\NovaMediaLibrary\MediaLibrary;
 use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
 class GalleryLayout extends Layout
@@ -32,6 +33,7 @@ class GalleryLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
+            HeadlineLink::make(),
             Flexible::make(__('nova-cms::content_blocks.slides'), 'slides')
                 ->addLayout(__('nova-cms::content_blocks.slide'), 'slide', [
                     MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')

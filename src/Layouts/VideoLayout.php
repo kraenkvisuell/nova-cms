@@ -7,6 +7,7 @@ use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\EmbedCode;
+use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
 class VideoLayout extends Layout
@@ -30,6 +31,7 @@ class VideoLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
+            HeadlineLink::make(),
             EmbedCode::make(),
             Anchor::make(),
         ]);

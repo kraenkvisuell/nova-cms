@@ -9,6 +9,7 @@ use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\EditorText;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
+use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCms\Fields\ImagePosition;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
@@ -33,6 +34,7 @@ class TextImagesLayout extends Layout
 
         return array_merge($fields, [
             Headline::make(),
+            HeadlineLink::make(),
             ImagePosition::make(),
             EditorText::make(),
             Images::make()->stacked(),
