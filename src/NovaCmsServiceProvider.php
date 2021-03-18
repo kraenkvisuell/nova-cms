@@ -141,6 +141,10 @@ class NovaCmsServiceProvider extends ServiceProvider
             return new ContentParser();
         });
 
+        $this->app->bind('routes-helper', function () {
+            return new RoutesHelper();
+        });
+
         $this->mergeConfigFrom(
             __DIR__ . '/../config/nova-cms.php',
             'nova-cms'
