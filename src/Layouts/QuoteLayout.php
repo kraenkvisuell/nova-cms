@@ -8,7 +8,7 @@ use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Images;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
-use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 
 class QuoteLayout extends Layout
 {

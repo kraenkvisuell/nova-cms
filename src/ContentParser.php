@@ -41,6 +41,10 @@ class ContentParser
         if (is_string($item)) {
             return $item;
         }
+        
+        if (is_array($item) && @$item['key'] && @$item['attributes'] && @$item['layout']) {
+            $item = (object) $item;
+        }
 
         if (is_object($item) && @$item->key && @$item->attributes && @$item->layout) {
             $value = [

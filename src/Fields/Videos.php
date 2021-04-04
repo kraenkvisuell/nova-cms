@@ -3,7 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Fields;
 
 use Laravel\Nova\Fields\Textarea;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class Videos
 {
@@ -15,7 +15,7 @@ class Videos
                 ->stacked(),
         ];
 
-        return Flexible::make(__('nova-cms::content_blocks.videos'), 'videos')
+        return Blocks::make(__('nova-cms::content_blocks.videos'), 'videos')
             ->addLayout(__('nova-cms::content_blocks.video'), 'video', $fields)
             ->button(__('nova-cms::content_blocks.add_video'))
             ->collapsed();

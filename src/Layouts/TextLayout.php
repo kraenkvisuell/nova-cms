@@ -10,7 +10,7 @@ use Kraenkvisuell\NovaCms\Fields\EditorText;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Laravel\Nova\Fields\Boolean;
-use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 
 class TextLayout extends Layout
 {

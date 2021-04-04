@@ -8,7 +8,7 @@ use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\EmbedCode;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
-use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 
 class VideoLayout extends Layout
 {

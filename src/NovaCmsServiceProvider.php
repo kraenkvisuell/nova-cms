@@ -12,7 +12,7 @@ use Kraenkvisuell\NovaCms\Console\Init;
 use ClassicO\NovaMediaLibrary\MediaLibrary;
 use Kraenkvisuell\NovaCms\Console\ForceMix;
 use Kraenkvisuell\NovaCms\Console\UseTheme;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCms\Console\InitPages;
 use OptimistDigital\NovaSettings\NovaSettings;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
@@ -98,7 +98,7 @@ class NovaCmsServiceProvider extends ServiceProvider
                     Text::make(__('nova-cms::content_blocks.phone'), 'phone'),
                     Text::make(__('nova-cms::content_blocks.email'), 'email'),
 
-                    Flexible::make(__('nova-cms::content_blocks.social_links'), 'social_links')
+                    Blocks::make(__('nova-cms::content_blocks.social_links'), 'social_links')
                         ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
                             Text::make(__('nova-cms::content_blocks.link_title'), 'link_title')
                                 ->translatable(),

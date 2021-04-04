@@ -4,7 +4,7 @@ namespace Kraenkvisuell\NovaCms\Fields;
 
 use Laravel\Nova\Fields\Text;
 use ClassicO\NovaMediaLibrary\MediaLibrary;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class BottomLinks
 {
@@ -22,7 +22,7 @@ class BottomLinks
             MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file'),
         ];
 
-        return Flexible::make($fieldTitle, $fieldSlug)
+        return Blocks::make($fieldTitle, $fieldSlug)
             ->addLayout(__('nova-cms::content_blocks.link'), 'link', $fields)
             ->button(__('nova-cms::content_blocks.add_link'))
             ->stacked();

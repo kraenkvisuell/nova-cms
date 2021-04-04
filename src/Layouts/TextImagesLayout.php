@@ -11,7 +11,7 @@ use Kraenkvisuell\NovaCms\Fields\EditorText;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCms\Fields\ImagePosition;
-use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 
 class TextImagesLayout extends Layout
 {

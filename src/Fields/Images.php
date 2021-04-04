@@ -5,7 +5,7 @@ namespace Kraenkvisuell\NovaCms\Fields;
 use Laravel\Nova\Fields\Textarea;
 use ClassicO\NovaMediaLibrary\MediaLibrary;
 use Laravel\Nova\Fields\Number;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class Images
 {
@@ -40,7 +40,7 @@ class Images
                               ->help(__('nova-cms::content_blocks.in_percent_negative_moves_up'));
         }
 
-        return Flexible::make(__('nova-cms::content_blocks.images'), 'images')
+        return Blocks::make(__('nova-cms::content_blocks.images'), 'images')
             ->addLayout(__('nova-cms::content_blocks.image'), 'image', $fields)
             ->button(__('nova-cms::content_blocks.add_image'))
             ->collapsed();

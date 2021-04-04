@@ -4,7 +4,7 @@ namespace Kraenkvisuell\NovaCms\Models;
 
 use ClassicO\NovaMediaLibrary\API;
 use Illuminate\Database\Eloquent\Model;
-use Whitecube\NovaFlexibleContent\Value\FlexibleCast;
+use Kraenkvisuell\NovaCmsBlocks\Value\BlocksCast;
 
 class Page extends Model
 {
@@ -13,7 +13,7 @@ class Page extends Model
     protected $table = 'pages';
 
     protected $casts = [
-        'main_content' => FlexibleCast::class,
+        'main_content' => BlocksCast::class,
     ];
 
     use \Spatie\Translatable\HasTranslations;

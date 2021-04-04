@@ -7,7 +7,7 @@ use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 use Kraenkvisuell\NovaCms\Fields\SubContentBlocks;
 
 class SubContentLayout extends Layout

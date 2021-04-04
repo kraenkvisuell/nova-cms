@@ -2,7 +2,7 @@
 
 namespace Kraenkvisuell\NovaCms\Fields;
 
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class SubContentBlocks
 {
@@ -11,7 +11,7 @@ class SubContentBlocks
         $fields = [
             Headline::make(),
             Anchor::make(),
-            Flexible::make(__('nova-cms::content_blocks.items'), 'items')
+            Blocks::make(__('nova-cms::content_blocks.items'), 'items')
                 ->addLayout(__('nova-cms::content_blocks.text'), 'text', [
                     EditorText::make(),
                 ])
@@ -36,7 +36,7 @@ class SubContentBlocks
 
 
 
-        return Flexible::make(__('nova-cms::content_blocks.sub_content_blocks'), 'sub_content_blocks')
+        return Blocks::make(__('nova-cms::content_blocks.sub_content_blocks'), 'sub_content_blocks')
             ->addLayout(__('nova-cms::content_blocks.sub_content_block'), 'sub_content_block', $fields)
             ->button(__('nova-cms::content_blocks.add_sub_content_block'));
     }

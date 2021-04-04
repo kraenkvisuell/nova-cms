@@ -3,7 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Fields;
 
 use Laravel\Nova\Fields\Textarea;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class Sounds
 {
@@ -15,7 +15,7 @@ class Sounds
                 ->stacked(),
         ];
 
-        return Flexible::make(__('nova-cms::content_blocks.sounds'), 'sounds')
+        return Blocks::make(__('nova-cms::content_blocks.sounds'), 'sounds')
             ->addLayout(__('nova-cms::content_blocks.sound'), 'sound', $fields)
             ->button(__('nova-cms::content_blocks.add_sound'))
             ->collapsed();

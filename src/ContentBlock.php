@@ -2,13 +2,13 @@
 
 namespace Kraenkvisuell\NovaCms;
 
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class ContentBlock
 {
     public function field()
     {
-        $field = Flexible::make(__('nova-cms::content_blocks.content_blocks'), 'main_content')
+        $field = Blocks::make(__('nova-cms::content_blocks.content_blocks'), 'main_content')
             ->button(__('nova-cms::content_blocks.add_content_block'))
             ->collapsed()
             ->stacked();

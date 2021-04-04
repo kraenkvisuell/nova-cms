@@ -4,7 +4,7 @@ namespace Kraenkvisuell\NovaCms\Fields;
 
 use Laravel\Nova\Fields\Text;
 use ClassicO\NovaMediaLibrary\MediaLibrary;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class Downloads
 {
@@ -19,7 +19,7 @@ class Downloads
                 ->stacked(),
         ];
 
-        return Flexible::make(__('nova-cms::content_blocks.downloads'), 'downloads')
+        return Blocks::make(__('nova-cms::content_blocks.downloads'), 'downloads')
             ->addLayout(__('nova-cms::content_blocks.download'), 'download', $fields)
             ->button(__('nova-cms::content_blocks.add_download'))
             ->collapsed();

@@ -9,7 +9,7 @@ use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\HeroSlides;
-use Whitecube\NovaFlexibleContent\Layouts\Layout;
+use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 use Kraenkvisuell\NovaCms\Traits\HasLockableFields;
 
 class HeroLayout extends Layout
