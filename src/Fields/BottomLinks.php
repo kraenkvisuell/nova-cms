@@ -3,7 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Fields;
 
 use Laravel\Nova\Fields\Text;
-use ClassicO\NovaMediaLibrary\MediaLibrary;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
 
 class BottomLinks

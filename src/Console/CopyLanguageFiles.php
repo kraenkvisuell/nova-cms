@@ -13,14 +13,14 @@ class CopyLanguageFiles extends Command
     {
         $this->info('copying language files');
 
-        $langFolder = base_path('resources/lang/vendor/nova-media-library');
+        $langFolder = base_path('resources/lang/vendor/nova-cms-media');
         if (!is_dir($langFolder)) {
             mkdir($langFolder);
         }
 
         File::copy(
-            base_path('vendor/kraenkvisuell/nova-cms/resources/lang/nova-media-library/de.json'),
-            base_path('resources/lang/vendor/nova-media-library/de.json'),
+            base_path('vendor/kraenkvisuell/nova-cms/resources/lang/nova-cms-media/de.json'),
+            base_path('resources/lang/vendor/nova-cms-media/de.json'),
         );
 
         $langFolder = base_path('resources/lang/vendor/nova-settings');

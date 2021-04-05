@@ -3,7 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Fields;
 
 use Laravel\Nova\Fields\Textarea;
-use ClassicO\NovaMediaLibrary\MediaLibrary;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Laravel\Nova\Fields\Number;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
 

@@ -2,7 +2,7 @@
 
 namespace Kraenkvisuell\NovaCms\Models;
 
-use ClassicO\NovaMediaLibrary\API;
+use Kraenkvisuell\NovaCmsMedia\API;
 use Illuminate\Database\Eloquent\Model;
 use Kraenkvisuell\NovaCmsBlocks\Value\BlocksCast;
 

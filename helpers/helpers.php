@@ -1,6 +1,6 @@
 <?php
 
-use ClassicO\NovaMediaLibrary\API;
+use Kraenkvisuell\NovaCmsMedia\API;
 use Kraenkvisuell\NovaCms\Facades\MenuMaker;
 use Kraenkvisuell\NovaCms\Facades\ContentParser;
 

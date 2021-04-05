@@ -9,7 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Kraenkvisuell\NovaCms\Nova\Page;
 use Illuminate\Support\ServiceProvider;
 use Kraenkvisuell\NovaCms\Console\Init;
-use ClassicO\NovaMediaLibrary\MediaLibrary;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCms\Console\ForceMix;
 use Kraenkvisuell\NovaCms\Console\UseTheme;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
