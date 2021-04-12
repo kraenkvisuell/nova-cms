@@ -94,6 +94,7 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         NovaSettings::addSettingsFields([
 
+                    Text::make(__('nova-cms::settings.website_title'), 'website_title'),
                     Tiptap::make(__('nova-cms::content_blocks.address'), 'address')->translatable(),
                     Text::make(__('nova-cms::content_blocks.phone'), 'phone'),
                     Text::make(__('nova-cms::content_blocks.email'), 'email'),

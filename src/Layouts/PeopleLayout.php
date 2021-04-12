@@ -2,8 +2,9 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
+use Manogi\Tiptap\Tiptap;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Textarea;
 use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
@@ -13,13 +14,13 @@ use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 
-class GalleryLayout extends Layout
+class PeopleLayout extends Layout
 {
-    protected $name = 'gallery';
+    protected $name = 'people';
 
     public function title()
     {
-        return __('nova-cms::content_blocks.gallery');
+        return __('nova-cms::content_blocks.people');
     }
 
     public function fields()
@@ -39,21 +40,32 @@ class GalleryLayout extends Layout
         return array_merge($fields, [
             Headline::make(),
             HeadlineLink::make(),
-            Blocks::make(__('nova-cms::content_blocks.slides'), 'slides')
-                ->addLayout(__('nova-cms::content_blocks.slide'), 'slide', [
+            Blocks::make(__('nova-cms::content_blocks.people'), 'people')
+                ->addLayout(__('nova-cms::content_blocks.person'), 'person', [
+                    Text::make(__('nova-cms::content_blocks.name'), 'name')
+                        ->stacked(),
+                    
+                    Text::make(__('nova-cms::content_blocks.role'), 'role')
+                        ->translatable()
+                        ->stacked(),
+
                     MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')
                         ->types(['Image'])
                         ->stacked(),
 
-                    Textarea::make(__('nova-cms::content_blocks.image_caption'), 'caption')
-                        ->rows(2)
+                    Tiptap::make(__('nova-cms::content_blocks.description'), 'description')
+                        ->buttons([
+                            'bold',
+                            'italic',
+                            'link',
+                            'bullet_list',
+                        ])
                         ->translatable()
                         ->stacked(),
-
-                    MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file')
-                        ->stacked(),
+                    
                 ])
-                ->button(__('nova-cms::content_blocks.add_slide'))
+                ->button(__('nova-cms::content_blocks.add_attribute', ['attribute' => __('nova-cms::content_blocks.person')]))
+                ->useAsTitle(['person' => 'name'])
                 ->collapsed(),
             Anchor::make(),
         ]);

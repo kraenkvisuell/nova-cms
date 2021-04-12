@@ -19,6 +19,41 @@ function nova_cms_file($id)
     return API::getFiles($id);
 }
 
+function nova_cms_link_url($link)
+{
+    if ($link->link_url) {
+        return nova_cms_parse_link($link->link_url);
+    }
+
+    if ($link->file) {
+        return nova_cms_file($link->file);
+    }
+
+    return '#';
+}
+
+function nova_cms_link_is_file($link)
+{
+    if ($link->link_url) {
+        return false;
+    }
+
+    if ($link->file) {
+        return true;
+    }
+
+    return false;
+}
+
+function nova_cms_link_is_external($link)
+{
+    if ($link->link_url && strpos(nova_cms_parse_link($link->link_url), '://') > 0) {
+        return true;   
+    }
+
+    return false;
+}
+
 function nova_cms_parse_link($link)
 {
     $link = trim($link);
@@ -37,7 +72,7 @@ function nova_cms_parse_link($link)
 function nova_cms_setting($slug)
 {
     $setting = nova_get_setting($slug);
-
+    
     $setting = ContentParser::produceAttribute($setting);
 
     return $setting;
@@ -79,6 +114,19 @@ function nova_cms_magify_links($str, $open_urls_in_new_tab = false)
                 $newUrl = $url.'" target="_blank';
                 $str = str_replace('"'.$url.'"', '"'.$newUrl.'"', $str);
             }
+        }
+    }
+
+    return $str;
+}
+
+function nova_cms_obfuscate_emails($str)
+{
+    $regex = "[^0-9][_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})";
+    if(preg_match_all("/$regex/siU", $str, $matches)) {
+        foreach($matches[0] as $email) {
+            $obfuscatedEmail = '<span obfuscated-email>'.base64_encode($email).'</span>';
+            $str = str_replace($email, $obfuscatedEmail, $str);   
         }
     }
 

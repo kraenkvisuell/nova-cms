@@ -29,7 +29,7 @@ class HeroLayout extends Layout
             Hide::make(),
         ];
 
-        if (config('nova-cms.with_toplines')) {
+        if (config('nova-cms.content.with_toplines')) {
             $fields[] = Topline::make();
         }
 

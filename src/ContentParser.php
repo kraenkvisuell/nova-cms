@@ -18,7 +18,11 @@ class ContentParser
     public function produceAttribute($value)
     {
         if (is_string($value)) {
-            return nova_cms_magify_links($value, config('nova-cms.content.open_urls_in_new_tab'));
+            if (substr($value, 0, 2) == '[{') {
+                $value = json_decode($value);
+            } else {
+                return nova_cms_magify_links($value, config('nova-cms.content.open_urls_in_new_tab'));
+            }
         }
 
         if (is_object($value)) {

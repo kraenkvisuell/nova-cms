@@ -27,17 +27,28 @@ class TextLayout extends Layout
             Hide::make(),
         ];
 
-        if (config('nova-cms.with_toplines')) {
+        if (config('nova-cms.content.with_collapsed_fields')) {
+            $fields[] = Boolean::make(__('nova-cms::content_blocks.collapsed'), 'is_collapsed');
+        }
+
+        if (config('nova-cms.content.with_toplines')) {
             $fields[] = Topline::make();
         }
 
-        return array_merge($fields, [
+        $fields = array_merge($fields, [
             Headline::make(),
             HeadlineLink::make(),
             EditorText::make(),
             Boolean::make(__('nova-cms::content_blocks.center_text'), 'is_centered'),
-            BottomLinks::make()->stacked(),
-            Anchor::make(),
+            
         ]);
+
+        if (config('nova-cms.content.with_bottom_links')) {
+            $fields[] = BottomLinks::make()->stacked();
+        }
+
+        $fields[] = Anchor::make();
+
+        return $fields;
     }
 }

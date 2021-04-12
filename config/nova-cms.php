@@ -24,7 +24,11 @@ return [
     //     'Quote',
     //     'Text',
     //     'Gallery',
+    //     'Image',
+    //     'Links',
     //     'Video',
+    //     'People',
+    //     'Timeline',
     //     'SubContent',
     // ]
 
@@ -48,15 +52,18 @@ return [
         'single_slide_can_be_resized_in_percent' => false,
     ],
 
-    'text-images-positions' => [
-        'left',
-        'right',
-        'top',
-        'bottom',
-    ],
+    
 
     'content' => [
         'open_urls_in_new_tab' => false,
+        'with_subcaptions' => false,
+        'with_toplines' => false,
+        'with_collapsed_fields' => false,
+        'with_bottom_links' => true,
+        'text_images_positions' => [
+            'left',
+            'right',
+        ],
     ],
 
     'permissions'=> [

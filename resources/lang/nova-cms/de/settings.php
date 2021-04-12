@@ -1,5 +1,6 @@
 <?php
 
 return [
-    "settings" => "Einstellungen",
+    'settings' => 'Einstellungen',
+    'website_title' => 'Website-Titel',
 ];

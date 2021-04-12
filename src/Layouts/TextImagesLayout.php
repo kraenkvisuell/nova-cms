@@ -2,6 +2,7 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
+use Laravel\Nova\Fields\Boolean;
 use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Images;
@@ -28,18 +29,28 @@ class TextImagesLayout extends Layout
             Hide::make(),
         ];
 
-        if (config('nova-cms.with_toplines')) {
+        if (config('nova-cms.content.with_collapsed_fields')) {
+            $fields[] = Boolean::make(__('nova-cms::content_blocks.collapsed'), 'is_collapsed');
+        }
+
+        if (config('nova-cms.content.with_toplines')) {
             $fields[] = Topline::make();
         }
 
-        return array_merge($fields, [
+        $fields = array_merge($fields, [
             Headline::make(),
             HeadlineLink::make(),
             ImagePosition::make(),
             EditorText::make(),
             Images::make()->stacked(),
-            BottomLinks::make()->stacked(),
-            Anchor::make(),
         ]);
+
+        if (config('nova-cms.content.with_bottom_links')) {
+            $fields[] = BottomLinks::make()->stacked();
+        }
+
+        $fields[] = Anchor::make();
+
+        return $fields;
     }
 }
