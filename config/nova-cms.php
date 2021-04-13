@@ -1,7 +1,7 @@
 <?php
 
 return [
-    // Base folder for route urls - if this is empty, page rotes start 
+    // Base folder for route urls - if this is empty, page rotes start
     // directly at "/" (and the home page is "/")
     'base_route_folder' => '',
 
@@ -64,6 +64,7 @@ return [
             'left',
             'right',
         ],
+        'editor' => [],
     ],
 
     'permissions'=> [
