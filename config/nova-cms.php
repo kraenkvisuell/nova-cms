@@ -66,6 +66,9 @@ return [
             'left',
             'right',
         ],
+        'images' => [
+            'orientations' => [],
+        ],
         'editor' => [],
     ],
 

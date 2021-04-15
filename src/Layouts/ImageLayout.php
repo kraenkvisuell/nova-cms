@@ -13,6 +13,7 @@ use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCms\Fields\Subcaption;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
+use Laravel\Nova\Fields\Select;
 
 class ImageLayout extends Layout
 {
@@ -43,6 +44,14 @@ class ImageLayout extends Layout
         
         if (config('nova-cms.content.with_subcaptions')) {
             $fields[] = Subcaption::make();
+        }
+
+        if (
+            config('nova-cms.content.images.orientations')
+            && is_array(config('nova-cms.content.images.orientations'))
+        ) {
+            $fields[] = Select::make(__('nova-cms::content_blocks.orientation'), 'orientation')
+                ->options(config('nova-cms.content.images.orientations'));
         }
 
         $fields[] = Text::make(__('nova-cms::content_blocks.credits'), 'credits');

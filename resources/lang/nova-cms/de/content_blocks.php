@@ -70,6 +70,7 @@ return [
     'name' => 'Name',
     'navigation_headline' => 'Überschrift Navigation',
     'optional' => 'Optional',
+    'orientation' => 'Format',
     'people' => 'Personen',
     'person' => 'Person',
     'plus_or_minus_in_percent' => 'Plus oder Minus in Prozent',
