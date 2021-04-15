@@ -61,6 +61,7 @@ return [
         'with_toplines' => false,
         'with_collapsed_fields' => false,
         'with_bottom_links' => true,
+        'sound_with_subtitle' => false,
         'text_images_positions' => [
             'left',
             'right',
