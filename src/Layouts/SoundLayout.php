@@ -13,13 +13,13 @@ use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 
-class VideoLayout extends Layout
+class SoundLayout extends Layout
 {
-    protected $name = 'video';
+    protected $name = 'sound';
 
     public function title()
     {
-        return __('nova-cms::content_blocks.video');
+        return __('nova-cms::content_blocks.sound');
     }
 
     public function fields()
@@ -35,10 +35,8 @@ class VideoLayout extends Layout
         $fields[] = Headline::make();
         $fields[] = HeadlineLink::make();
         $fields[] = EmbedCode::make();
-        if (config('nova-cms.content.video_with_file')) {
-            $fields[] = MediaLibrary::make(__('nova-cms::content_blocks.file'), 'file')
+        $fields[] = MediaLibrary::make(__('nova-cms::content_blocks.file'), 'file')
                 ->stacked();
-        }
         $fields[] = Caption::make();
         if (config('nova-cms.content.with_subcaptions')) {
             $fields[] = Subcaption::make();

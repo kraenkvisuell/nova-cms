@@ -39,6 +39,7 @@ class DownloadProductionDb extends Command
         . ' | gzip'
         .'" > /Downloads/'.$filename;
 
+        dd($execString);
         exec($execString);
 
         $this->info('done');

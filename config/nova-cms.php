@@ -27,6 +27,7 @@ return [
     //     'Image',
     //     'Links',
     //     'Video',
+    //     'Sound',
     //     'People',
     //     'Timeline',
     //     'SubContent',
