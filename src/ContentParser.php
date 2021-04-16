@@ -2,6 +2,8 @@
 
 namespace Kraenkvisuell\NovaCms;
 
+use Kraenkvisuell\NovaCms\ProxyObject;
+
 class ContentParser
 {
     public function produceAttributes($fieldAttributes)
@@ -11,8 +13,9 @@ class ContentParser
         foreach ($fieldAttributes as $key => $value) {
             $attributes[$key] = $this->produceAttribute($value);
         }
-
-        return (object) $attributes;
+        
+        
+        return new ProxyObject((object) $attributes);
     }
 
     public function produceAttribute($value)
@@ -69,8 +72,7 @@ class ContentParser
                     $value[$attributeKey] = $this->getTranslatedObject($attributeValue);
                 }
             }
-
-            return (object) $value;
+            return new ProxyObject((object) $value);
         }
 
         return $item;

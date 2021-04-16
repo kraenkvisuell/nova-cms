@@ -3,17 +3,14 @@
 namespace Kraenkvisuell\NovaCms\Layouts;
 
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Select;
 use Kraenkvisuell\NovaCms\Fields\Hide;
-use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Caption;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Kraenkvisuell\NovaCms\Fields\EmbedCode;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
-use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCms\Fields\Subcaption;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
-use Laravel\Nova\Fields\Select;
 
 class ImageLayout extends Layout
 {
