@@ -87,7 +87,7 @@ function nova_cms_setting($slug)
                 ]
             );
         });
-        ray($contentBlocks);
+        
         return $contentBlocks;
     }
 
