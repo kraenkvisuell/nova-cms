@@ -48,7 +48,7 @@ function nova_cms_link_is_file($link)
 function nova_cms_link_is_external($link)
 {
     if ($link->link_url && strpos(nova_cms_parse_link($link->link_url), '://') > 0) {
-        return true;   
+        return true;
     }
 
     return false;
@@ -73,14 +73,30 @@ function nova_cms_setting($slug)
 {
     $setting = nova_get_setting($slug);
     
-    $setting = ContentParser::produceAttribute($setting);
+    if (is_string($setting) && substr($setting, 0, 10) == '[{"layout"') {
+        $setting = collect(json_decode($setting));
+        
+        $contentBlocks = collect([]);
 
-    return $setting;
+
+        $setting->each(function ($item) use (&$contentBlocks) {
+            $contentBlocks->push(
+                (object) [
+                    'block' => $item->layout,
+                    'field' => ContentParser::produceAttributes($item->attributes),
+                ]
+            );
+        });
+        ray($contentBlocks);
+        return $contentBlocks;
+    }
+
+    return ContentParser::produceAttribute($setting);
 }
 
 function nova_cms_currently_on_home()
 {
-    if(request()->path() == '/') {
+    if (request()->path() == '/') {
         return true;
     }
 
@@ -90,8 +106,8 @@ function nova_cms_currently_on_home()
 function nova_cms_magify_links($str, $open_urls_in_new_tab = false)
 {
     $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
-    if(preg_match_all("/$regexp/siU", $str, $matches)) {
-        foreach($matches[2] as $url) {
+    if (preg_match_all("/$regexp/siU", $str, $matches)) {
+        foreach ($matches[2] as $url) {
             $url = trim($url);
             if (
                 substr($url, 0, 1) != '/'
@@ -123,10 +139,10 @@ function nova_cms_magify_links($str, $open_urls_in_new_tab = false)
 function nova_cms_obfuscate_emails($str)
 {
     $regex = "[^0-9][_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})";
-    if(preg_match_all("/$regex/siU", $str, $matches)) {
-        foreach($matches[0] as $email) {
+    if (preg_match_all("/$regex/siU", $str, $matches)) {
+        foreach ($matches[0] as $email) {
             $obfuscatedEmail = '<span obfuscated-email>'.base64_encode($email).'</span>';
-            $str = str_replace($email, $obfuscatedEmail, $str);   
+            $str = str_replace($email, $obfuscatedEmail, $str);
         }
     }
 
