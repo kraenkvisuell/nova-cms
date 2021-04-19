@@ -16,7 +16,10 @@ class ContentBlock
             ->collapsed()
             ->useAsTitle([
                 'gallery' => 'headline',
-                'image' => 'image',
+                'image' => [
+                    'key' => 'image',
+                    'usePreview' => true,
+                ],
                 'hero' => 'headline',
                 'people' => 'headline',
                 'quote' => 'quote',
@@ -24,7 +27,7 @@ class ContentBlock
                 'text_images' => 'headline',
                 'text' => 'headline',
                 'timeline' => 'headline',
-                'video' => 'headline',  
+                'video' => 'headline',
             ])
             ->stacked();
 
