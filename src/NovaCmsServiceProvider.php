@@ -7,12 +7,12 @@ use Manogi\Tiptap\Tiptap;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
 use Kraenkvisuell\NovaCms\Nova\Page;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Illuminate\Support\ServiceProvider;
 use Kraenkvisuell\NovaCms\Console\Init;
-use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCms\Console\ForceMix;
 use Kraenkvisuell\NovaCms\Console\UseTheme;
-use Kraenkvisuell\NovaCmsBlocks\Blocks;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCms\Console\InitPages;
 use OptimistDigital\NovaSettings\NovaSettings;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
@@ -47,7 +47,7 @@ class NovaCmsServiceProvider extends ServiceProvider
             __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        //$this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/live', 'nova-cms');
 

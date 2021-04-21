@@ -59,7 +59,7 @@ module.exports = {
         display: ['responsive', 'hover', 'focus', 'group-hover'],
     },
     plugins: [
-        require('tailwindcss-aspect-ratio'),
+        require('@tailwindcss/aspect-ratio'),
     ],
     future: {
         removeDeprecatedGapUtilities: true,
