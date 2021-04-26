@@ -47,7 +47,7 @@ class NovaCmsServiceProvider extends ServiceProvider
             __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
         ]);
 
-        //$this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/live', 'nova-cms');
 

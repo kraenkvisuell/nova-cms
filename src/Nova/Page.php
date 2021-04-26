@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\Text;
 use Eminiarts\Tabs\TabsOnEdit;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Textarea;
+use Kraenkvisuell\NovaCms\Tabs\Seo;
 use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 
 class Page extends \App\Nova\Resource
@@ -67,14 +68,7 @@ class Page extends \App\Nova\Resource
             $tabs[__('nova-cms::settings.settings')] =  $settingsTab;
         }
 
-        $tabs[__('nova-cms::pages.seo')] = [
-            Text::make(__('nova-cms::pages.browser_title'), 'browser_title')
-                ->translatable()
-                ->hideFromIndex(),
-
-            Textarea::make(__('nova-cms::pages.meta_description'), 'meta_description')
-                    ->translatable(),
-        ];
+        $tabs[__('nova-cms::seo.seo')] = Seo::make();
 
         return [
             (new Tabs(__('nova-cms::pages.page'), $tabs))->withToolbar(),

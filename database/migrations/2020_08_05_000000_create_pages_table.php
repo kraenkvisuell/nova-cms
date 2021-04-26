@@ -22,6 +22,7 @@ class CreatePagesTable extends Migration
             $table->json('main_content')->nullable();
             $table->json('meta_description')->nullable();
             $table->json('browser_title')->nullable();
+            $table->json('robots')->nullable();
             $table->timestamps();
         });
     }

@@ -2,22 +2,24 @@
 
 namespace Kraenkvisuell\NovaCms\Models;
 
-use Kraenkvisuell\NovaCmsMedia\API;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 use Kraenkvisuell\NovaCmsBlocks\Value\BlocksCast;
+use Kraenkvisuell\NovaCms\Traits\HasContentBlocks;
 
 class Page extends Model
 {
+    use HasTranslations;
+    use HasContentBlocks;
+
     protected $guarded = [];
 
     protected $table = 'pages';
 
     protected $casts = [
         'main_content' => BlocksCast::class,
+        'robots' => 'array',
     ];
-
-    use \Spatie\Translatable\HasTranslations;
-    use \Kraenkvisuell\NovaCms\Traits\HasContentBlocks;
 
     public $contentBlockFields = [
         'main_content',
@@ -26,8 +28,8 @@ class Page extends Model
     public $translatable = [
         'title',
         'slug',
-        'meta_description',
         'browser_title',
+        'meta_description',
     ];
 
     public function url()
