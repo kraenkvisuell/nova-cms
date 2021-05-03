@@ -1,20 +1,18 @@
-<x-layout.layout
-    :browserTitle="($page->browser_title ?: 'Schloss Bödigheim | '.$page->title)"
-    :metaDescription="$page->meta_description"
->
+<x-layout.layout :browserTitle="'Titel || '.($page->browser_title ?: $page->title)">
+
+    <x-parts.navi />
+
+    <div class="w-full h-32"></div>
+
     @if($page->contentBlocks())
         @foreach($page->contentBlocks() as $contentBlock)
-            @if ($loop->first && $contentBlock->block != 'hero')
-                <div class="bg-lightest-grey h-12"></div>
-            @endif
-
-            @if(!@optional($contentBlock->field)->hide)
-                <x-parts.content-block :contentBlock="$contentBlock" :index="$loop->index" />
-            @endif
-
-            @if ($loop->last)
-                <div class="bg-lightest-grey h-12"></div>
-            @endif
+            <a name="{{ $contentBlock->field->topline }}"></a>
+            <x-parts.content-block
+                :contentBlock="$contentBlock"
+                :loop="$loop"
+                context="page"
+            />
         @endforeach
     @endif
+
 </x-layout.layout>
