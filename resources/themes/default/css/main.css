@@ -1,90 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,300;0,600;1,300;1,600&family=Limelight&display=swap');
-
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
 
+
 * {
     position: relative;
 }
 
 [x-cloak] {
-    @apply hidden;
+    display: none;
 }
+
+:target {
+    display: inline;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+}
+
+
+/* editor */
 
 .editor {
-    @apply text-grey;
+    @apply font-text text-base;
 }
 
-.editor h1,
-.editor h2,
-.editor h3,
-.editor h4,
-.editor h5,
-.editor h6 {
-    @apply text-xl font-display mt-6;
-}
-
-.editor h3 {
-    @apply text-xl;
-}
-
-.editor h4 {
-    @apply text-lg;
-}
-
-.editor h5 {
-    @apply text-base;
-}
-
-.editor p {
-    @apply text-base;
+.editor h1, .editor h2, .editor h3,
+.editor h4, .editor h5, .editor h6 {
+    @apply text-4xl text-primary font-title font-bold;
 }
 
 .editor a {
-    @apply underline text-main-red;
+    @apply underline;
 }
 
-.editor td {
-    vertical-align: top;
-}
-.editor td:first-child {
-    padding-right: 12px;
+.editor strong {
+    @apply font-bold font-title;
 }
 
-.editor > * {
-    margin-top: .5rem;
-}
-
-@screen lg {
-    .editor h1,
-    .editor h2,
-    .editor h3,
-    .editor h4,
-    .editor h5,
-    .editor h6 {
-        @apply text-3xl;
-    }
-
-    .editor h3,
-    .editor h4,
-    .editor h5,
-    .editor h6 {
-        @apply text-2xl;
-    }
-
-    .editor p {
-        @apply text-lg;
-    }
-
-    .editor > * {
-        margin-top: .75rem;
+@screen xl {
+    .editor h1, .editor h2, .editor h3,
+    .editor h4, .editor h5, .editor h6 {
+        @apply text-5xl;
     }
 }
 
+
+/* video */
+
+.video-container p {
+    display: none;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* sound */
+
+.sound-container div {
+    display: none;
+}
+
+.sound-container iframe {
+    width: 100%;
+    height: 150px;
+}
+
+
+/* gallery */
 
 .swiper-button-next:after, .swiper-button-prev:after {
     content: '';
+}
+
+.swiper-button-next, .swiper-button-prev {
+    display: flex;
+    justify-content: flex-end;
+    @apply w-6 h-full absolute top-0 left-0 mt-0;
+}
+
+.swiper-button-next {
+    justify-content: flex-start;
+    @apply left-auto right-0;
+}
+
+.swiper-pagination-bullet {
+    @apply bg-primary mx-2 w-2 h-2;
 }

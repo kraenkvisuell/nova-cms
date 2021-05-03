@@ -2,8 +2,6 @@
 
 namespace Kraenkvisuell\NovaCms\Fields;
 
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BooleanGroup;
 
 class Permissions
