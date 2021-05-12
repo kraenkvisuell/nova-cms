@@ -148,3 +148,29 @@ function nova_cms_obfuscate_emails($str)
 
     return $str;
 }
+
+function nova_cms_anonymize_embed_code($str)
+{
+    $regex = '<iframe.*src=\"(.*)\".*><\/iframe>';
+    if (preg_match_all("/$regex/siU", $str, $matches)) {
+        foreach ($matches[1] as $src) {
+            $newSrc = $src;
+            if (stristr($src, 'vimeo') && !stristr($src, 'dnt=1')) {
+                if (stristr($src, '?')) {
+                    $newSrc .= '&';
+                } else {
+                    $newSrc .= '?';
+                }
+                $newSrc .= 'dnt=1';
+
+                $str = str_replace($src, $newSrc, $str);
+            }
+
+            if (stristr($src, 'youtube.com')) {
+                $str = str_replace('youtube.com', 'youtube-nocookie.com', $str);
+            }
+        }
+    }
+
+    return $str;
+}

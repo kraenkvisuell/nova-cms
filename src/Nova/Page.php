@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Eminiarts\Tabs\TabsOnEdit;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Textarea;
 use Kraenkvisuell\NovaCms\Tabs\Seo;
 use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 
