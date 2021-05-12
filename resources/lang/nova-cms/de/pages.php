@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'content' => 'Inhalt',
     'browser_title' => 'Browsertitel',
     'meta_description' => 'Meta-Description',
     'page' => 'Seite',

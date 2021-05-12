@@ -4,7 +4,7 @@ namespace Kraenkvisuell\NovaCms;
 
 class RoutesHelper
 {
-    function prefix()
+    public function prefix()
     {
         $prefix = trim(config('nova-cms.base_route_folder'));
         if (!$prefix) {

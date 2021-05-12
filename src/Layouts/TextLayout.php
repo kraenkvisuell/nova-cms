@@ -40,7 +40,6 @@ class TextLayout extends Layout
             HeadlineLink::make(),
             EditorText::make(),
             Boolean::make(__('nova-cms::content_blocks.center_text'), 'is_centered'),
-            
         ]);
 
         if (config('nova-cms.content.with_bottom_links')) {
