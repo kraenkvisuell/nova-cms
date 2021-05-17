@@ -101,11 +101,9 @@ class NovaCmsServiceProvider extends ServiceProvider
 
                     Blocks::make(__('nova-cms::content_blocks.social_links'), 'social_links')
                         ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
-                            Text::make(__('nova-cms::content_blocks.link_title'), 'link_title')
-                                ->translatable(),
+                            Text::make(__('nova-cms::content_blocks.link_title'), 'link_title'),
 
-                            Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
-                                ->translatable(),
+                            Text::make(__('nova-cms::content_blocks.link_url'), 'link_url'),
 
                             Text::make(__('nova-cms::content_blocks.id'), 'slug'),
 
