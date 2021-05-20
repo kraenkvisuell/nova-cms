@@ -9,6 +9,11 @@ function nova_cms_menu($slug)
     return MenuMaker::make($slug);
 }
 
+function nova_cms_empty_image()
+{
+    return 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+}
+
 function nova_cms_image($id, $imgSize = null)
 {
     return API::getFiles($id, $imgSize, false);
