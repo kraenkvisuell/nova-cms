@@ -14,6 +14,16 @@ function nova_cms_empty_image()
     return 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 }
 
+function nova_cms_mime($id)
+{
+    return API::getMime($id);
+}
+
+function nova_cms_extension($id)
+{
+    return API::getExtension($id);
+}
+
 function nova_cms_image($id, $imgSize = null)
 {
     return API::getFiles($id, $imgSize, false);
