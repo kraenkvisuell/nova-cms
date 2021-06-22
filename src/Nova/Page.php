@@ -26,12 +26,12 @@ class Page extends \App\Nova\Resource
 
     public static function label()
     {
-        return __('nova-cms::pages.pages');
+        return ucfirst(__('nova-cms::pages.pages'));
     }
 
     public static function singularLabel()
     {
-        return __('nova-cms::pages.page');
+        return ucfirst(__('nova-cms::pages.page'));
     }
 
     protected static function applyOrderings($query, array $orderings)
