@@ -116,8 +116,8 @@ class NovaCmsServiceProvider extends ServiceProvider
                         ->button(__('nova-cms::content_blocks.add_social_link'))
                         ->stacked(),
             ], [
-                'social_links' => BlocksCast::class,
-                'address' => BlocksCast::class,
+                'social_links' => 'object',
+                'address' => 'object',
             ]);
 
         require_once __DIR__.'/../helpers/helpers.php';
