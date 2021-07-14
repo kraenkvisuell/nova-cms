@@ -2,38 +2,39 @@
 
 namespace Kraenkvisuell\NovaCms;
 
-use Laravel\Nova\Nova;
-use Manogi\Tiptap\Tiptap;
-use Laravel\Nova\Fields\Code;
-use Laravel\Nova\Fields\Text;
-use Kraenkvisuell\NovaCms\Nova\Page;
-use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Illuminate\Support\ServiceProvider;
-use Kraenkvisuell\NovaCms\Console\Init;
-use Kraenkvisuell\NovaCms\Console\ForceMix;
-use Kraenkvisuell\NovaCms\Console\UseTheme;
-use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
-use Kraenkvisuell\NovaCms\Console\InitPages;
-use OptimistDigital\NovaSettings\NovaSettings;
-use Kraenkvisuell\NovaCms\Observers\PageObserver;
 use Kraenkvisuell\NovaCms\Console\CopyConfigFiles;
-use Kraenkvisuell\NovaCms\Console\CreateFirstUser;
-use Kraenkvisuell\NovaCms\Models\Page as PageModel;
 use Kraenkvisuell\NovaCms\Console\CopyLanguageFiles;
 use Kraenkvisuell\NovaCms\Console\CopyMigrationFiles;
-use Kraenkvisuell\NovaCms\Console\RemoveExampleViews;
-use Kraenkvisuell\NovaCms\Console\PublishExampleViews;
-use Kraenkvisuell\NovaCms\Console\DownloadProductionDb;
-use Kraenkvisuell\NovaCms\Console\SafelyReplaceWebpackMix;
+use Kraenkvisuell\NovaCms\Console\CreateFirstUser;
 use Kraenkvisuell\NovaCms\Console\DownloadProductionAssets;
+use Kraenkvisuell\NovaCms\Console\DownloadProductionDb;
+use Kraenkvisuell\NovaCms\Console\ForceMix;
+use Kraenkvisuell\NovaCms\Console\Init;
+use Kraenkvisuell\NovaCms\Console\InitPages;
+use Kraenkvisuell\NovaCms\Console\PublishExampleViews;
+use Kraenkvisuell\NovaCms\Console\RemoveExampleViews;
 use Kraenkvisuell\NovaCms\Console\SafelyReplacePackageJson;
+use Kraenkvisuell\NovaCms\Console\SafelyReplaceWebpackMix;
+use Kraenkvisuell\NovaCms\Console\UseTheme;
+use Kraenkvisuell\NovaCms\Models\Page as PageModel;
+use Kraenkvisuell\NovaCms\Nova\Page;
+use Kraenkvisuell\NovaCms\Observers\PageObserver;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
+use Kraenkvisuell\NovaCmsBlocks\Value\BlocksCast;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Nova;
+use Manogi\Tiptap\Tiptap;
+use OptimistDigital\NovaSettings\NovaSettings;
 
 class NovaCmsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
         $viewPaths = is_array(config('view.paths')) ? config('view.paths') : [];
-        if (!in_array(resource_path('themes/active/views'), $viewPaths)) {
+        if (! in_array(resource_path('themes/active/views'), $viewPaths)) {
             $viewPaths[] = resource_path('themes/active/views');
         }
 
@@ -47,18 +48,18 @@ class NovaCmsServiceProvider extends ServiceProvider
             __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views/live', 'nova-cms');
+        $this->loadViewsFrom(__DIR__.'/../resources/views/live', 'nova-cms');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         $this->publishes([
-            __DIR__ . '/../config/nova-cms.php' => config_path('nova-cms.php'),
+            __DIR__.'/../config/nova-cms.php' => config_path('nova-cms.php'),
         ]);
 
         $this->publishes([
-            __DIR__ . '/../config/nova-pages.php' => config_path('nova-pages.php'),
+            __DIR__.'/../config/nova-pages.php' => config_path('nova-pages.php'),
         ]);
 
         $this->publishes([
@@ -101,9 +102,9 @@ class NovaCmsServiceProvider extends ServiceProvider
 
                     Blocks::make(__('nova-cms::content_blocks.social_links'), 'social_links')
                         ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
-                            Text::make(__('nova-cms::content_blocks.link_title'), 'link_title'),
+                            Text::make(__('nova-cms::content_blocks.link_title'), 'link_title')->translatable(),
 
-                            Text::make(__('nova-cms::content_blocks.link_url'), 'link_url'),
+                            Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')->translatable(),
 
                             Text::make(__('nova-cms::content_blocks.id'), 'slug'),
 
@@ -113,13 +114,13 @@ class NovaCmsServiceProvider extends ServiceProvider
                             Code::make(__('nova-cms::content_blocks.svg_tag'), 'svg_tag')->language('xml'),
                         ])
                         ->button(__('nova-cms::content_blocks.add_social_link'))
-                        ->stacked()
+                        ->stacked(),
             ], [
-                'social_links' => 'object',
-                'address' => 'object',
+                'social_links' => BlocksCast::class,
+                'address' => BlocksCast::class,
             ]);
 
-        require_once(__DIR__ . '/../helpers/helpers.php');
+        require_once __DIR__.'/../helpers/helpers.php';
     }
 
     public function register()
@@ -141,17 +142,17 @@ class NovaCmsServiceProvider extends ServiceProvider
         });
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/nova-cms.php',
+            __DIR__.'/../config/nova-cms.php',
             'nova-cms'
         );
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/nova-pages.php',
+            __DIR__.'/../config/nova-pages.php',
             'nova-pages'
         );
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/nova-menu.php',
+            __DIR__.'/../config/nova-menu.php',
             'nova-menu'
         );
     }
