@@ -12,34 +12,30 @@ class DownloadProductionDb extends Command
     {
         $this->comment('downloading production db');
 
-        if (!config('nova-cms.production.db.database')) {
+        if (! config('nova-cms.production.db.database')) {
             $this->error('no production db defined.');
+
             return false;
         }
 
-        $filename = config('nova-cms.production.db.database')."-".time().".gz";
+        $filename = config('nova-cms.production.db.database').'-'.time().'.gz';
 
-        $execString = 'ssh -C '
-        . config('nova-cms.production.host.username')
-        .'@'
-        . config('nova-cms.production.db.host')
-        .' -p '
-        . config('nova-cms.production.db.port')
-        .' "'
-        . 'mysqldump -u '
-        . config('nova-cms.production.db.username');
+        $execString = 'ssh -C '.config('nova-cms.production.host.username').'@'
+        .config('nova-cms.production.db.host')
+        ." '"
+        .'mysqldump -u '
+        .config('nova-cms.production.db.username');
 
         if (config('nova-cms.production.db.password')) {
-            $execString .= ' -p '
-                . config('nova-cms.production.db.password');
+            $execString .= ' -p'
+                .config('nova-cms.production.db.password');
         }
 
         $execString .= ' '
-        . config('nova-cms.production.db.database')
-        . ' | gzip'
-        .'" > /Downloads/'.$filename;
+        .config('nova-cms.production.db.database')
+        .' | gzip'
+        ."' > ~/Downloads/".$filename;
 
-        dd($execString);
         exec($execString);
 
         $this->info('done');
