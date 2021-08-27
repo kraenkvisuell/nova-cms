@@ -20,7 +20,7 @@
         "kraenkvisuell/nova-cms-blocks": "^1.1.0",
         "kraenkvisuell/nova-cms-media": "^1.2.1",
         "laravel-lang/lang": "^7.0",
-        "manogi/nova-tiptap": "^1.0",
+        "manogi/nova-tiptap": "^2.0",
         "optimistdigital/nova-menu-builder": "^5.0",
         "optimistdigital/nova-settings": "^3.0",
         "optimistdigital/nova-translatable": "^1.6.11",
