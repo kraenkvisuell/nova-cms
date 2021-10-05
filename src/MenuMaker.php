@@ -15,7 +15,7 @@ class MenuMaker
         ->map(function ($item) use ($onlyActive) {
             return $this->createMenuItem($item, $onlyActive);
         });
-        
+
         return $menu;
     }
 
@@ -29,10 +29,11 @@ class MenuMaker
                 return $this->createMenuItem($item, $onlyActive);
             }) : [];
 
-        $isCurrent = $item['type'] == 'page'
+        $isCurrent = $item['value'] && $item['type'] == 'page'
             ? ($item['value']->url() == url()->current())
             : false;
-        return (object)[
+
+        return (object) [
             'url' => $item['type'] == 'page' ? $item['value']->url() : $item['value'],
             'title' => $item['name'],
             'type' => $item['type'],
