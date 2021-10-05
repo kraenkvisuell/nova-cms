@@ -34,7 +34,7 @@ class MenuMaker
             : false;
 
         return (object) [
-            'url' => $item['type'] == 'page' ? $item['value']->url() : $item['value'],
+            'url' => ($item['value'] && $item['type']) == 'page' ? $item['value']->url() : $item['value'],
             'title' => $item['name'],
             'type' => $item['type'],
             'target' => $item['target'],
