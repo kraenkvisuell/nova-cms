@@ -2,28 +2,40 @@
 
 namespace Kraenkvisuell\NovaCms\Fields;
 
-use Laravel\Nova\Fields\Textarea;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Laravel\Nova\Fields\Number;
-use Kraenkvisuell\NovaCmsBlocks\Blocks;
+use Laravel\Nova\Fields\Textarea;
 
 class Images
 {
     public static function make()
     {
+        $imageField = MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')
+            ->types(['Image'])
+            ->stacked();
+
+        if (config('nova-cms.content.media.upload_only')) {
+            $imageField->uploadOnly();
+        }
+
         $fields = [
-            MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')
-                ->types(['Image'])
-                ->stacked(),
+            $imageField,
 
             Textarea::make(__('nova-cms::content_blocks.image_caption'), 'caption')
                 ->rows(2)
                 ->translatable()
                 ->stacked(),
-
-            MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file')
-                ->stacked(),
         ];
+
+        $fileField = MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file')
+            ->stacked();
+
+        if (config('nova-cms.content.media.upload_only')) {
+            $fileField->uploadOnly();
+        }
+
+        $fields[] = $fileField;
 
         if (config('nova-cms.images.images_can_be_rotated')) {
             $fields[] = Number::make(__('nova-cms::content_blocks.image_rotation'), 'rotation')

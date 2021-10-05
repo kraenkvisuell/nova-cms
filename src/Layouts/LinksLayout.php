@@ -2,14 +2,14 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
-use Laravel\Nova\Fields\Text;
-use Kraenkvisuell\NovaCms\Fields\Hide;
-use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
-use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Kraenkvisuell\NovaCms\Fields\Hide;
+use Kraenkvisuell\NovaCms\Fields\Topline;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Laravel\Nova\Fields\Text;
 
 class LinksLayout extends Layout
 {
@@ -30,9 +30,15 @@ class LinksLayout extends Layout
             $fields[] = Topline::make();
         }
 
+        $fileField = MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file');
+
+        if (config('nova-cms.content.media.upload_only')) {
+            $fileField->uploadOnly();
+        }
+
         return array_merge($fields, [
             Headline::make(),
-            
+
             Blocks::make(__('nova-cms::content_blocks.links'), 'links')
                 ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
                     Text::make(__('nova-cms::content_blocks.link_text'), 'link_text')
@@ -41,10 +47,10 @@ class LinksLayout extends Layout
                     Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
                         ->translatable(),
 
-                    MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file'),
+                    $fileField,
                 ])
                 ->button(
-                    __('nova-cms::content_blocks.add_attribute', 
+                    __('nova-cms::content_blocks.add_attribute',
                     ['attribute' => __('nova-cms::content_blocks.link')])
                 )
                 ->useAsTitle(['link' => 'link_text'])

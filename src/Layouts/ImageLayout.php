@@ -2,15 +2,15 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Select;
-use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Caption;
-use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCms\Fields\Headline;
-use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Subcaption;
+use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 
 class ImageLayout extends Layout
 {
@@ -33,12 +33,18 @@ class ImageLayout extends Layout
 
         $fields[] = Headline::make();
 
-        $fields[] = MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')
+        $imageField = MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')
             ->types(['Image'])
             ->stacked();
-            
+
+        if (config('nova-cms.content.media.upload_only')) {
+            $imageField->uploadOnly();
+        }
+
+        $fields[] = $imageField;
+
         $fields[] = Caption::make();
-        
+
         if (config('nova-cms.content.with_subcaptions')) {
             $fields[] = Subcaption::make();
         }
