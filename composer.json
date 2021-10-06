@@ -18,7 +18,7 @@
         "coderello/laravel-nova-lang": "^1.6",
         "eminiarts/nova-tabs": "^1.3.1",
         "kraenkvisuell/nova-cms-blocks": "^1.1.0",
-        "kraenkvisuell/nova-cms-media": "^1.2.2",
+        "kraenkvisuell/nova-cms-media": "^1.2.3",
         "laravel-lang/lang": "^7.0",
         "manogi/nova-tiptap": "^2.0",
         "optimistdigital/nova-menu-builder": "^5.0",
