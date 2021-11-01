@@ -13,7 +13,9 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        $prefix = config('nova-cms.db_prefix');
+
+        Schema::create($prefix.'pages', function (Blueprint $table) {
             $table->id();
             $table->json('title');
             $table->json('slug');
@@ -34,6 +36,8 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        $prefix = config('nova-cms.db_prefix');
+        
+        Schema::dropIfExists($prefix.'pages');
     }
 }

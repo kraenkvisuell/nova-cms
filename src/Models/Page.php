@@ -14,7 +14,10 @@ class Page extends Model
 
     protected $guarded = [];
 
-    protected $table = 'pages';
+    public function getTable()
+    {
+        return config('nova-cms.db_prefix').'pages';
+    }
 
     protected $casts = [
         'main_content' => BlocksCast::class,
