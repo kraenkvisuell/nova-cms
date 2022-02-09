@@ -21,7 +21,7 @@
         "kraenkvisuell/nova-cms-media": "^1.2.3",
         "laravel-lang/lang": "^10.0",
         "manogi/nova-tiptap": "^2.0",
-        "optimistdigital/nova-menu-builder": "^6.1",
+        "kraenkvisuell/nova-menu-builder": "^7.0",
         "optimistdigital/nova-settings": "^3.5",
         "optimistdigital/nova-translatable": "^1.11",
         "spatie/laravel-translatable": "^5.2"
