@@ -21,10 +21,10 @@
         "kraenkvisuell/nova-cms-media": "^1.2.3",
         "laravel-lang/lang": "^10.0",
         "manogi/nova-tiptap": "^2.0",
-        "optimistdigital/nova-menu-builder": "^5.0",
-        "optimistdigital/nova-settings": "^3.0",
-        "optimistdigital/nova-translatable": "^1.6.11",
-        "spatie/laravel-translatable": "^4.4"
+        "optimistdigital/nova-menu-builder": "^6.1",
+        "optimistdigital/nova-settings": "^3.5",
+        "optimistdigital/nova-translatable": "^1.11",
+        "spatie/laravel-translatable": "^5.2"
     },
     "autoload": {
         "psr-4": {
