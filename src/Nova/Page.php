@@ -9,6 +9,7 @@ use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 use Kraenkvisuell\NovaCms\Tabs\Seo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Text;
+use Timothyasp\Color\Color;
 
 class Page extends \App\Nova\Resource
 {
@@ -58,11 +59,10 @@ class Page extends \App\Nova\Resource
             Boolean::make(__('nova-cms::pages.is_home'), 'is_home')->hideFromIndex(),
         ];
 
-        ray('bar');
         if (config('nova-pages.has_bg_color')) {
-            ray('foo');
-            $settingsTab[] = Text::make(__('nova-cms::pages.bg_color'), 'bg_color')
-                ->nullable();
+            $settingsTab[] = Color::make(__('nova-cms::pages.bg_color'), 'bg_color')
+            ->sketch()
+            ->hideFromDetail();
         }
 
         if ($request->resourceId === null) {

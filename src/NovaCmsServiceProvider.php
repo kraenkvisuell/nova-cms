@@ -68,7 +68,6 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         config(['nova-menu.locales' => config('translatable.locales')]);
 
-        ray('baz');
         Nova::resources([
             Page::class,
         ]);

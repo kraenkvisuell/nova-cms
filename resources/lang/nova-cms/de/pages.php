@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'bg_color' => 'Hintergrundfarbe',
     'browser_title' => 'Browsertitel',
     'content' => 'Inhalt',
     'is_home' => 'Ist Startseite',
