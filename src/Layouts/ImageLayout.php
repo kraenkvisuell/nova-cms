@@ -57,6 +57,14 @@ class ImageLayout extends Layout
                 ->options(config('nova-cms.content.images.orientations'));
         }
 
+        if (
+            config('nova-cms.content.images.width')
+            && is_array(config('nova-cms.content.images.width'))
+        ) {
+            $fields[] = Select::make(__('nova-cms::content_blocks.image_width'), 'width')
+                ->options(config('nova-cms.content.images.width'));
+        }
+
         $fields[] = Text::make(__('nova-cms::content_blocks.credits'), 'credits');
 
         return $fields;

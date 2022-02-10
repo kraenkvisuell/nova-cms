@@ -3,12 +3,12 @@
 namespace Kraenkvisuell\NovaCms\Nova;
 
 use Eminiarts\Tabs\Tabs;
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
 use Eminiarts\Tabs\TabsOnEdit;
-use Laravel\Nova\Fields\Boolean;
-use Kraenkvisuell\NovaCms\Tabs\Seo;
+use Illuminate\Http\Request;
 use Kraenkvisuell\NovaCms\Facades\ContentBlock;
+use Kraenkvisuell\NovaCms\Tabs\Seo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Text;
 
 class Page extends \App\Nova\Resource
 {
@@ -47,7 +47,6 @@ class Page extends \App\Nova\Resource
             ContentBlock::field(),
         ];
 
-
         $settingsTab = [
             Text::make(__('nova-cms::pages.page_title'), 'title')
                 ->translatable(),
@@ -59,12 +58,19 @@ class Page extends \App\Nova\Resource
             Boolean::make(__('nova-cms::pages.is_home'), 'is_home')->hideFromIndex(),
         ];
 
+        ray('bar');
+        if (config('nova-pages.has_bg_color')) {
+            ray('foo');
+            $settingsTab[] = Text::make(__('nova-cms::pages.bg_color'), 'bg_color')
+                ->nullable();
+        }
+
         if ($request->resourceId === null) {
-            $tabs[__('nova-cms::settings.settings')] =  $settingsTab;
-            $tabs[__('nova-cms::pages.content')] =  $contentTab;
+            $tabs[__('nova-cms::settings.settings')] = $settingsTab;
+            $tabs[__('nova-cms::pages.content')] = $contentTab;
         } else {
-            $tabs[__('nova-cms::pages.content')] =  $contentTab;
-            $tabs[__('nova-cms::settings.settings')] =  $settingsTab;
+            $tabs[__('nova-cms::pages.content')] = $contentTab;
+            $tabs[__('nova-cms::settings.settings')] = $settingsTab;
         }
 
         $tabs[__('nova-cms::seo.seo')] = Seo::make();

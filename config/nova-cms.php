@@ -5,13 +5,13 @@ return [
     // directly at "/" (and the home page is "/")
     'base_route_folder' => '',
 
-    // Path for your main CSS file - defaults to "css/main.css"
-    'main_css_path' => 'css/main.css',
+    // Path for your main CSS file - defaults to "css/app.css"
+    'main_css_path' => 'css/app.css',
 
     // available themes - you can add to this array your own themes.
     // Nova CMS provides the following themes atm: default.
     'themes' => [
-        'default'
+        'default',
     ],
 
     // selected theme
@@ -37,7 +37,7 @@ return [
             'Hero',
             'Text',
             'Gallery',
-        ]
+        ],
     ],
 
     'hero' => [
@@ -52,8 +52,6 @@ return [
         'single_slide_can_be_resized_in_percent' => false,
     ],
 
-    
-
     'content' => [
         'open_urls_in_new_tab' => false,
         'with_subcaptions' => false,
@@ -67,12 +65,13 @@ return [
         ],
         'images' => [
             'orientations' => [],
+            'width' => [],
         ],
         'editor' => [],
     ],
 
     'permissions'=> [
-        'lockableLayouts' => []
+        'lockableLayouts' => [],
     ],
 
     'production' => [
@@ -88,5 +87,5 @@ return [
             'username'  => env('PRODUCTION_DB_USERNAME', 'forge'),
             'password'  => env('PRODUCTION_DB_PASSWORD', ''),
         ],
-    ]
+    ],
 ];

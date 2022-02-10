@@ -1,8 +1,8 @@
 <?php
 
-use Kraenkvisuell\NovaCmsMedia\API;
-use Kraenkvisuell\NovaCms\Facades\MenuMaker;
 use Kraenkvisuell\NovaCms\Facades\ContentParser;
+use Kraenkvisuell\NovaCms\Facades\MenuMaker;
+use Kraenkvisuell\NovaCmsMedia\API;
 
 function nova_cms_menu($slug)
 {
@@ -81,18 +81,17 @@ function nova_cms_parse_link($link)
         return $link;
     }
 
-    return 'https://' . $link;
+    return 'https://'.$link;
 }
 
 function nova_cms_setting($slug)
 {
     $setting = nova_get_setting($slug);
-    
+
     if (is_string($setting) && substr($setting, 0, 10) == '[{"layout"') {
         $setting = collect(json_decode($setting));
-        
-        $contentBlocks = collect([]);
 
+        $contentBlocks = collect([]);
 
         $setting->each(function ($item) use (&$contentBlocks) {
             $contentBlocks->push(
@@ -102,7 +101,7 @@ function nova_cms_setting($slug)
                 ]
             );
         });
-        
+
         return $contentBlocks;
     }
 
@@ -170,7 +169,7 @@ function nova_cms_anonymize_embed_code($str)
     if (preg_match_all("/$regex/siU", $str, $matches)) {
         foreach ($matches[1] as $src) {
             $newSrc = $src;
-            if (stristr($src, 'vimeo') && !stristr($src, 'dnt=1')) {
+            if (stristr($src, 'vimeo') && ! stristr($src, 'dnt=1')) {
                 if (stristr($src, '?')) {
                     $newSrc .= '&';
                 } else {

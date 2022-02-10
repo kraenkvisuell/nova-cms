@@ -56,18 +56,19 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../config/nova-cms.php' => config_path('nova-cms.php'),
-        ]);
+        ], 'cms');
 
         $this->publishes([
             __DIR__.'/../config/nova-pages.php' => config_path('nova-pages.php'),
-        ]);
+        ], 'pages');
 
         $this->publishes([
             __DIR__.'/../config/nova-menu.php' => config_path('nova-menu.php'),
-        ]);
+        ], 'menu');
 
         config(['nova-menu.locales' => config('translatable.locales')]);
 
+        ray('baz');
         Nova::resources([
             Page::class,
         ]);
