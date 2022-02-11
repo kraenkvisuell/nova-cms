@@ -3,6 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Layouts;
 
 use Kraenkvisuell\NovaCms\Fields\Caption;
+use Kraenkvisuell\NovaCms\Fields\ContentPosition;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Subcaption;
@@ -63,6 +64,10 @@ class ImageLayout extends Layout
         ) {
             $fields[] = Select::make(__('nova-cms::content_blocks.image_width'), 'width')
                 ->options(config('nova-cms.content.images.width'));
+        }
+
+        if (config('nova-cms.content.content_positions')) {
+            $fields[] = ContentPosition::make();
         }
 
         $fields[] = Text::make(__('nova-cms::content_blocks.credits'), 'credits');

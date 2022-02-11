@@ -2,15 +2,16 @@
 
 namespace Kraenkvisuell\NovaCms\Layouts;
 
-use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Anchor;
-use Kraenkvisuell\NovaCms\Fields\Topline;
-use Kraenkvisuell\NovaCms\Fields\Headline;
-use Kraenkvisuell\NovaCms\Fields\EditorText;
 use Kraenkvisuell\NovaCms\Fields\BottomLinks;
+use Kraenkvisuell\NovaCms\Fields\ContentPosition;
+use Kraenkvisuell\NovaCms\Fields\EditorText;
+use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
-use Laravel\Nova\Fields\Boolean;
+use Kraenkvisuell\NovaCms\Fields\Hide;
+use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
+use Laravel\Nova\Fields\Boolean;
 
 class TextLayout extends Layout
 {
@@ -41,6 +42,10 @@ class TextLayout extends Layout
             EditorText::make(),
             Boolean::make(__('nova-cms::content_blocks.center_text'), 'is_centered'),
         ]);
+
+        if (config('nova-cms.content.content_positions')) {
+            $fields[] = ContentPosition::make();
+        }
 
         if (config('nova-cms.content.with_bottom_links')) {
             $fields[] = BottomLinks::make()->stacked();
