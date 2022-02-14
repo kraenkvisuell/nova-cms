@@ -9,6 +9,7 @@ return [
     'page_title' => 'page title',
     'page' => 'page',
     'pages' => 'pages',
+    'published' => 'published',
     'slug_explanation' => 'used in URL (except home page)',
     'slug' => 'slug',
     'title' => 'title',

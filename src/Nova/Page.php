@@ -56,7 +56,9 @@ class Page extends \App\Nova\Resource
                 ->translatable()
                 ->help(__('nova-cms::pages.slug_explanation')),
 
-            Boolean::make(__('nova-cms::pages.is_home'), 'is_home')->hideFromIndex(),
+            Boolean::make(__('nova-cms::pages.is_home'), 'is_home'),
+
+            Boolean::make(__('nova-cms::pages.published'), 'is_published'),
         ];
 
         if (config('nova-pages.has_bg_color')) {

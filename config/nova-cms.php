@@ -34,7 +34,7 @@ return [
 
     'content-blocks' => [
         'default' => [
-            'Hero',
+            'Image',
             'Text',
             'Gallery',
         ],
@@ -66,6 +66,9 @@ return [
         'images' => [
             'orientations' => [],
             'width' => [],
+        ],
+        'media' => [
+            'upload_only' => false,
         ],
         'editor' => [],
     ],
