@@ -5,17 +5,17 @@
     'loop',
 ])
 
-<x-building-blocks.section>
+<x-blocks.section>
     @if($field->topline)
-        <x-building-blocks.topline>
+        <x-blocks.topline>
             {{ $field->topline }}
-        </x-building-blocks.topline>
+        </x-blocks.topline>
     @endif
 
     @if($field->headline)
-        <x-building-blocks.headline>
+        <x-blocks.headline>
             {{ $field->headline }}
-        </x-building-blocks.headline>
+        </x-blocks.headline>
     @endif
 
     <div>
@@ -27,6 +27,6 @@
     </div>
 
     @if($field->caption)
-        <x-building-blocks.caption :caption="$field->caption" />
+        <x-blocks.caption :caption="$field->caption" />
     @endif
-</x-building-blocks.section>
+</x-blocks.section>

@@ -10,6 +10,6 @@
     justify-center items-center flex flex-col tracking-wide py-12
 ">
     @if($field->slides)
-        <x-content-blocks.hero.slides :slides="$field->slides"/>
+        <x-content.hero.slides :slides="$field->slides"/>
     @endif
 </div>

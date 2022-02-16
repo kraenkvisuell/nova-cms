@@ -88,21 +88,16 @@ function nova_cms_setting($slug)
 {
     $setting = nova_get_setting($slug);
 
-    if (is_string($setting) && substr($setting, 0, 10) == '[{"layout"') {
-        $setting = collect(json_decode($setting));
+    $jsonCheck = json_decode($setting);
 
-        $contentBlocks = collect([]);
+    if (is_object($jsonCheck) && property_exists($jsonCheck, app()->getLocale())) {
+        if (! $jsonCheck->{app()->getLocale()}) {
+            if (property_exists($jsonCheck, config('translatable.fallback_locale'))) {
+                return $jsonCheck->{config('translatable.fallback_locale')};
+            }
+        }
 
-        $setting->each(function ($item) use (&$contentBlocks) {
-            $contentBlocks->push(
-                (object) [
-                    'block' => $item->layout,
-                    'field' => ContentParser::produceAttributes($item->attributes),
-                ]
-            );
-        });
-
-        return $contentBlocks;
+        return $jsonCheck->{app()->getLocale()};
     }
 
     return ContentParser::produceAttribute($setting);

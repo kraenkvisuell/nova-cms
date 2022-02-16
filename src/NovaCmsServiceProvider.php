@@ -95,10 +95,14 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         NovaSettings::addSettingsFields([
 
-                    Text::make(__('nova-cms::settings.website_title'), 'website_title'),
-                    Tiptap::make(__('nova-cms::content_blocks.address'), 'address')->translatable(),
-                    Text::make(__('nova-cms::content_blocks.phone'), 'phone'),
-                    Text::make(__('nova-cms::content_blocks.email'), 'email'),
+                    Text::make(__('nova-cms::settings.website_title'), 'website_title')
+                        ->translatable(),
+                    Tiptap::make(__('nova-cms::content_blocks.address'), 'address')
+                        ->translatable(),
+                    Text::make(__('nova-cms::content_blocks.phone'), 'phone')
+                        ->translatable(),
+                    Text::make(__('nova-cms::content_blocks.email'), 'email')
+                        ->translatable(),
 
                     Blocks::make(__('nova-cms::content_blocks.social_links'), 'social_links')
                         ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
@@ -115,10 +119,7 @@ class NovaCmsServiceProvider extends ServiceProvider
                         ])
                         ->button(__('nova-cms::content_blocks.add_social_link'))
                         ->stacked(),
-            ], [
-                'social_links' => 'object',
-                'address' => 'object',
-            ]);
+            ], []);
 
         require_once __DIR__.'/../helpers/helpers.php';
     }

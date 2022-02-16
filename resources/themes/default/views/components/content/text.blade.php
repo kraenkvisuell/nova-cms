@@ -5,12 +5,12 @@
     'loop',
 ])
 
-<x-building-blocks.section>
+<x-blocks.section>
     <div>
         @if($field->headline)
-            <x-building-blocks.headline>
+            <x-blocks.headline>
                 {!! $field->headline !!}
-            </x-building-blocks.headline>
+            </x-blocks.headline>
         @endif
 
         <div>
@@ -18,7 +18,7 @@
         </div>
 
         @if($field->bottom_links)
-            <x-building-blocks.links :links="$field->bottom_links" />
+            <x-blocks.links :links="$field->bottom_links" />
         @endif
     </div>
-</x-building-blocks.section>
+</x-blocks.section>

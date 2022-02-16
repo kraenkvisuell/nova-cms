@@ -6,7 +6,7 @@
 ])
 
 
-<x-building-blocks.section>
+<x-blocks.section>
     <blockquote>
         @if($field->quote)
             <div>
@@ -21,4 +21,4 @@
         @endif
 
     </blockquote>
-</x-building-blocks.section>
+</x-blocks.section>

@@ -6,11 +6,13 @@ use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCms\Fields\Hide;
+use Kraenkvisuell\NovaCms\Fields\Ratios;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Textarea;
 
 class GalleryLayout extends Layout
@@ -34,6 +36,14 @@ class GalleryLayout extends Layout
 
         if (config('nova-cms.content.with_toplines')) {
             $fields[] = Topline::make();
+        }
+
+        if (is_array(config('nova-cms.content.images.ratios'))) {
+            $fields[] = Ratios::make();
+        }
+
+        if (config('nova-cms.content.images.has_max_columns')) {
+            $fields[] = Number::make(__('nova-cms::content_blocks.max_columns'), 'max_columns');
         }
 
         $imageField = MediaLibrary::make(__('nova-cms::content_blocks.image'), 'image')

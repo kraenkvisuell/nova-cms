@@ -9,17 +9,17 @@
     $swiperId = Str::random(12);
 @endphp
 
-<x-building-blocks.section>
+<x-blocks.section>
     @if($field->topline)
-        <x-building-blocks.topline>
+        <x-blocks.topline>
             {{ $field->topline }}
-        </x-building-blocks.topline>
+        </x-blocks.topline>
     @endif
 
     @if($field->headline)
-        <x-building-blocks.headline>
+        <x-blocks.headline>
             {{ $field->headline }}
-        </x-building-blocks.headline>
+        </x-blocks.headline>
     @endif
 
     <div>
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-</x-building-blocks.section>
+</x-blocks.section>
 
 <script>
     (function(){

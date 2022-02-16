@@ -6,22 +6,22 @@
     'layout' => 'links',
 ])
 
-<x-building-blocks.section>
+<x-blocks.section>
     @if($field->topline)
-        <x-building-blocks.topline>
+        <x-blocks.topline>
             {{ $field->topline }}
-        </x-building-blocks.topline>
+        </x-blocks.topline>
     @endif
 
     @if($field->headline)
-        <x-building-blocks.headline>
+        <x-blocks.headline>
             {{ $field->headline }}
-        </x-building-blocks.headline>
+        </x-blocks.headline>
     @endif
 
     @if($field->links)
-    <x-building-blocks.links
+    <x-blocks.links
         :links="$field->links"
     />
     @endif
-</x-building-blocks.section>
+</x-blocks.section>

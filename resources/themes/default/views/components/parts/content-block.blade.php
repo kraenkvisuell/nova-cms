@@ -9,7 +9,7 @@
 
 @if(!@$contentBlock->field->attributes->hide)
     <x-dynamic-component
-        :component="'content-blocks.'.$contentBlock->block"
+        :component="'content.'.$contentBlock->block"
         :field="$contentBlock->field"
         :nextBlock="$nextBlock"
         :prevBlock="$prevBlock"

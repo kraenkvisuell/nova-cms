@@ -7,7 +7,7 @@
 
 
 
-<x-building-blocks.section>
+<x-blocks.section>
     <div class="md:flex flex-row
         @if($field->images_position == "left")
             flex-row-reverse
@@ -22,15 +22,15 @@
             @endif
         ">
             @if($field->topline)
-                <x-building-blocks.topline>
+                <x-blocks.topline>
                     {{ $field->topline }}
-                </x-building-blocks.topline>
+                </x-blocks.topline>
             @endif
 
             @if($field->headline)
-                <x-building-blocks.headline>
+                <x-blocks.headline>
                     {{ $field->headline }}
-                </x-building-blocks.headline>
+                </x-blocks.headline>
             @endif
 
           
@@ -40,7 +40,7 @@
 
 
             @if($field->bottom_links)
-                <x-building-blocks.links
+                <x-blocks.links
                     :links="$field->bottom_links"
                 />
             @endif
@@ -49,7 +49,7 @@
         <div class="md:w-1/2">
             @if($field->images)
                 @foreach($field->images as $image)
-                    <x-building-blocks.image
+                    <x-blocks.image
                         :title="$image->title"
                         :src="$image->image"
                     />
@@ -57,4 +57,4 @@
             @endif
         </div>
     </div>
-</x-building-blocks.section>
+</x-blocks.section>

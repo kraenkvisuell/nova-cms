@@ -10,7 +10,7 @@ if (
     && ! Request::is('api/*')
     && ! Request::is('draft/*')
 ) {
-    Route::get('/{locale}/'.RoutesHelper::prefix().'/{page}', 'Kraenkvisuell\NovaCms\Controllers\PagesController@show')->name('nova-page-multi');
+    Route::get('/{locale}'.RoutesHelper::prefix().'/{page}', 'Kraenkvisuell\NovaCms\Controllers\PagesController@show')->name('nova-page-multi');
     Route::get(RoutesHelper::prefix().'/', 'Kraenkvisuell\NovaCms\Controllers\PagesController@show')->name('nova-page-single-home');
     Route::get(RoutesHelper::prefix().'/{page}', 'Kraenkvisuell\NovaCms\Controllers\PagesController@show')->name('nova-page-single');
 }
