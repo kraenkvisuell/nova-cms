@@ -26,7 +26,7 @@ class AddCmsPermissionsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumns('cms_permissions');
+            $table->dropColumn('cms_permissions');
         });
     }
 }

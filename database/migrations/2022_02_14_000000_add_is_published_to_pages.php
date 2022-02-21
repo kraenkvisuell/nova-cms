@@ -24,7 +24,7 @@ return new class extends Migration {
         $prefix = config('nova-cms.db_prefix');
 
         Schema::table($prefix.'pages', function (Blueprint $table) {
-            $table->dropColumns('is_published');
+            $table->dropColumn('is_published');
         });
     }
 };

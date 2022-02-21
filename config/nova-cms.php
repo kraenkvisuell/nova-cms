@@ -91,4 +91,9 @@ return [
             'password'  => env('PRODUCTION_DB_PASSWORD', ''),
         ],
     ],
+
+    'pages' => [
+        'has_types' => false,
+        'types' => [],
+    ],
 ];

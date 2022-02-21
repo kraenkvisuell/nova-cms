@@ -10,7 +10,7 @@ return new class extends Migration {
         $prefix = config('nova-cms.db_prefix');
 
         Schema::table($prefix.'pages', function (Blueprint $table) {
-            $table->string('bg_color')->nullable();
+            $table->string('page_type')->nullable();
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration {
         $prefix = config('nova-cms.db_prefix');
 
         Schema::table($prefix.'pages', function (Blueprint $table) {
-            $table->dropColumn('bg_color');
+            $table->dropColumn('page_type');
         });
     }
 };
