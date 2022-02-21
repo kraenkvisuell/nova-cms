@@ -57,6 +57,7 @@ return [
     'items' => 'Elemente',
     'left' => 'left',
     'link_icon' => 'Link-Icon',
+    'link_page_id' => 'Link to page',
     'link_text' => 'Link-Text',
     'link_title' => 'Link-Titel',
     'link_url' => 'Link URL',

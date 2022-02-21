@@ -2,9 +2,11 @@
 
 namespace Kraenkvisuell\NovaCms\Fields;
 
-use Laravel\Nova\Fields\Text;
-use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Kraenkvisuell\NovaCms\Models\Page;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 
 class BottomLinks
 {
@@ -18,6 +20,10 @@ class BottomLinks
 
             Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
                 ->translatable(),
+
+            Select::make(__('nova-cms::content_blocks.link_page_id'), 'link_page_id')->options(function () {
+                return Page::pluck('slug', 'id');
+            }),
 
             MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file'),
         ];
