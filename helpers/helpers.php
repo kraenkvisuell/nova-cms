@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Kraenkvisuell\NovaCms\Facades\ContentParser;
 use Kraenkvisuell\NovaCms\Facades\MenuMaker;
 use Kraenkvisuell\NovaCmsMedia\API;
@@ -16,7 +17,11 @@ function nova_cms_empty_image()
 
 function nova_cms_mime($id)
 {
-    return API::getMime($id);
+    return Cache::rememberForever(
+        'nova_cms_mime.'.$id,
+        function () use ($id) {
+            return API::getMime($id);
+        });
 }
 
 function nova_cms_extension($id)
@@ -26,12 +31,22 @@ function nova_cms_extension($id)
 
 function nova_cms_image($id, $imgSize = null)
 {
-    return API::getFiles($id, $imgSize, false);
+    return Cache::rememberForever(
+        'nova_cms_image.'.$id.'.'.$imgSize,
+        function () use ($id, $imgSize) {
+            return API::getFiles($id, $imgSize, false);
+        });
 }
 
 function nova_cms_file($id)
 {
     return API::getFiles($id);
+
+    return Cache::rememberForever(
+        'nova_cms_file.'.$id,
+        function () use ($id) {
+            return API::getFiles($id);
+        });
 }
 
 function nova_cms_link_url($link)
