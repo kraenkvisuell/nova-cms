@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 use Kraenkvisuell\NovaCms\Tabs\Seo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Timothyasp\Color\Color;
 
@@ -64,6 +65,13 @@ class Page extends \App\Nova\Resource
         if (config('nova-pages.has_bg_color')) {
             $settingsTab[] = Color::make(__('nova-cms::pages.bg_color'), 'bg_color')
             ->sketch()
+            ->hideFromDetail();
+        }
+
+        if (config('nova-cms.pages.types')) {
+            ray('fpp');
+            $settingsTab[] = Select::make(__('nova-cms::pages.page_type'), 'page_type')
+            ->options(config('nova-cms.pages.types'))
             ->hideFromDetail();
         }
 

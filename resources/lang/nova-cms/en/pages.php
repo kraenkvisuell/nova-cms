@@ -7,6 +7,7 @@ return [
     'is_home' => 'is home page',
     'meta_description' => 'meta description',
     'page_title' => 'page title',
+    'page_type' => 'page type',
     'page' => 'page',
     'pages' => 'pages',
     'published' => 'published',
