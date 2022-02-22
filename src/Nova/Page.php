@@ -69,7 +69,6 @@ class Page extends \App\Nova\Resource
         }
 
         if (config('nova-cms.pages.types')) {
-            ray('fpp');
             $settingsTab[] = Select::make(__('nova-cms::pages.page_type'), 'page_type')
             ->options(config('nova-cms.pages.types'))
             ->hideFromDetail();

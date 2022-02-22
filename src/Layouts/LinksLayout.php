@@ -6,9 +6,11 @@ use Kraenkvisuell\NovaCms\Fields\Anchor;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Topline;
+use Kraenkvisuell\NovaCms\Models\Page;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 
 class LinksLayout extends Layout
@@ -46,6 +48,10 @@ class LinksLayout extends Layout
 
                     Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')
                         ->translatable(),
+
+                    Select::make(__('nova-cms::content_blocks.link_page_id'), 'link_page_id')->options(function () {
+                        return Page::pluck('slug', 'id');
+                    }),
 
                     $fileField,
                 ])

@@ -2,6 +2,7 @@
 
 namespace Kraenkvisuell\NovaCms;
 
+use Kraenkvisuell\NovaCms\Models\Page;
 use Kraenkvisuell\NovaCms\ProxyObject;
 
 class ContentParser
@@ -13,8 +14,7 @@ class ContentParser
         foreach ($fieldAttributes as $key => $value) {
             $attributes[$key] = $this->produceAttribute($value);
         }
-        
-        
+
         return new ProxyObject((object) $attributes);
     }
 
@@ -37,6 +37,7 @@ class ContentParser
             foreach ($value as $item) {
                 $newValue[] = $this->produceNestedAttribute($item);
             }
+
             return $newValue;
         }
 
@@ -48,7 +49,7 @@ class ContentParser
         if (is_string($item)) {
             return $item;
         }
-        
+
         if (is_array($item) && @$item['key'] && @$item['attributes'] && @$item['layout']) {
             $item = (object) $item;
         }
@@ -68,10 +69,19 @@ class ContentParser
                     }
                 }
 
+                if ($attributeKey == 'link_page_id') {
+                    $page = Page::find($attributeValue);
+                    if ($page) {
+                        $value['page_link_url'] = route('nova-page-single', [$page->slug]);
+                        $value['page_link_type'] = $page->page_type;
+                    }
+                }
+
                 if (is_object($attributeValue)) {
                     $value[$attributeKey] = $this->getTranslatedObject($attributeValue);
                 }
             }
+
             return new ProxyObject((object) $value);
         }
 
