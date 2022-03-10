@@ -20,9 +20,9 @@
         "kraenkvisuell/nova-cms-blocks": "^1.1.1",
         "kraenkvisuell/nova-cms-media": "^2.0.1",
         "kraenkvisuell/nova-menu-builder": "^7.0",
+        "kraenkvisuell/nova-settings": "^4.0",
         "laravel-lang/lang": "^10.0",
         "manogi/nova-tiptap": "^2.0",
-        "optimistdigital/nova-settings": "^3.5",
         "optimistdigital/nova-translatable": "^1.11",
         "spatie/laravel-translatable": "^5.2",
         "timothyasp/nova-color-field": "^1.0"
