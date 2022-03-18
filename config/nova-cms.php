@@ -71,6 +71,8 @@ return [
             'upload_only' => false,
         ],
         'editor' => [],
+        'with_subcontent_bg_color' => false,
+
     ],
 
     'permissions'=> [

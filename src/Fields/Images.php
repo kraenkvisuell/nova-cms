@@ -26,6 +26,11 @@ class Images
                 ->rows(2)
                 ->translatable()
                 ->stacked(),
+
+            Textarea::make(__('nova-cms::content_blocks.credits'), 'credits')
+                ->rows(2)
+                ->translatable()
+                ->stacked(),
         ];
 
         $fileField = MediaLibrary::make(__('nova-cms::content_blocks.download_file'), 'file')
