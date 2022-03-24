@@ -14,6 +14,7 @@ use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Textarea;
+use Manogi\Tiptap\Tiptap;
 
 class GalleryLayout extends Layout
 {
@@ -68,8 +69,12 @@ class GalleryLayout extends Layout
                 ->addLayout(__('nova-cms::content_blocks.slide'), 'slide', [
                     $imageField,
 
-                    Textarea::make(__('nova-cms::content_blocks.image_caption'), 'caption')
-                        ->rows(2)
+                    Tiptap::make(__('nova-cms::content_blocks.image_caption'), 'caption')
+                        ->buttons([
+                            'bold',
+                            'italic',
+                            'link',
+                        ])
                         ->translatable()
                         ->stacked(),
 
