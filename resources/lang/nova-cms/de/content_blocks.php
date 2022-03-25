@@ -73,6 +73,7 @@ return [
     'move_slide_to_the_right' => 'Slide nach rechts rücken',
     'name' => 'Name',
     'navigation_headline' => 'Überschrift Navigation',
+    'open_link_in_new_tab' => 'Link in neuem Tab/Fenster öffnen',
     'optional' => 'Optional',
     'orientation' => 'Format',
     'people' => 'Personen',

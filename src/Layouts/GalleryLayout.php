@@ -13,7 +13,7 @@ use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Text;
 use Manogi\Tiptap\Tiptap;
 
 class GalleryLayout extends Layout
@@ -68,6 +68,11 @@ class GalleryLayout extends Layout
             Blocks::make(__('nova-cms::content_blocks.slides'), 'slides')
                 ->addLayout(__('nova-cms::content_blocks.slide'), 'slide', [
                     $imageField,
+
+                    Text::make(__('nova-cms::content_blocks.link'), 'link'),
+
+                    Boolean::make(__('nova-cms::content_blocks.open_link_in_new_tab'), 'open_link_in_new_tab')
+                        ->default(false),
 
                     Tiptap::make(__('nova-cms::content_blocks.image_caption'), 'caption')
                         ->buttons([
