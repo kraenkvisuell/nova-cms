@@ -2,9 +2,9 @@
 
 namespace Kraenkvisuell\NovaCms\Tabs;
 
+use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\BooleanGroup;
 
 class Seo
 {
@@ -16,6 +16,10 @@ class Seo
                 ->onlyOnForms(),
 
             Textarea::make(__('nova-cms::seo.meta_description'), 'meta_description')
+                    ->translatable()
+                    ->onlyOnForms(),
+
+            Textarea::make(__('nova-cms::seo.meta_keywords'), 'meta_keywords')
                     ->translatable()
                     ->onlyOnForms(),
 

@@ -3,9 +3,9 @@
 namespace Kraenkvisuell\NovaCms\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
-use Kraenkvisuell\NovaCmsBlocks\Value\BlocksCast;
 use Kraenkvisuell\NovaCms\Traits\HasContentBlocks;
+use Kraenkvisuell\NovaCmsBlocks\Value\BlocksCast;
+use Spatie\Translatable\HasTranslations;
 
 class Page extends Model
 {
@@ -33,6 +33,7 @@ class Page extends Model
         'slug',
         'browser_title',
         'meta_description',
+        'meta_keywords',
     ];
 
     public function url()
