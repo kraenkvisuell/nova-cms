@@ -28,14 +28,14 @@ class MenuMaker
             ->map(function ($item) use ($onlyActive) {
                 return $this->createMenuItem($item, $onlyActive);
             }) : [];
-        
+
         $isCurrent = $item['value'] && $item['type'] == 'page'
             ? ($item['value']->url() == url()->current())
             : false;
-        
+
         return (object) [
             'url' => ($item['value'] && $item['type'] == 'page') ? $item['value']->url() : $item['value'],
-            'title' => $item['name'],
+            'title' => ($item['value'] && $item['type'] == 'page') ? $item['value']->title : $item['name'],
             'type' => $item['type'],
             'target' => $item['target'],
             'isCurrent' => $isCurrent,
