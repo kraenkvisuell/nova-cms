@@ -10,6 +10,7 @@ use Kraenkvisuell\NovaCms\Fields\Subcaption;
 use Kraenkvisuell\NovaCms\Fields\Topline;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 
@@ -43,6 +44,11 @@ class ImageLayout extends Layout
         }
 
         $fields[] = $imageField;
+
+        $fields[] = Text::make(__('nova-cms::content_blocks.link'), 'link');
+
+        $fields[] = Boolean::make(__('nova-cms::content_blocks.open_link_in_new_tab'), 'open_link_in_new_tab')
+                        ->default(false);
 
         $fields[] = Caption::make();
 
