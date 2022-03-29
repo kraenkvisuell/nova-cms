@@ -3,6 +3,7 @@
 namespace Kraenkvisuell\NovaCms\Layouts;
 
 use Kraenkvisuell\NovaCms\Fields\Anchor;
+use Kraenkvisuell\NovaCms\Fields\Caption;
 use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCms\Fields\Hide;
@@ -74,14 +75,7 @@ class GalleryLayout extends Layout
                     Boolean::make(__('nova-cms::content_blocks.open_link_in_new_tab'), 'open_link_in_new_tab')
                         ->default(false),
 
-                    Tiptap::make(__('nova-cms::content_blocks.image_caption'), 'caption')
-                        ->buttons([
-                            'bold',
-                            'italic',
-                            'link',
-                        ])
-                        ->translatable()
-                        ->stacked(),
+                    Caption::make(),
 
                     $fileField,
                 ])
