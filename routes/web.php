@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Kraenkvisuell\NovaCms\Facades\RoutesHelper;
 
+Route::middleware(['web'])->group(function () {
+    Route::post('/update-cookie-consent', 'Kraenkvisuell\NovaCms\Controllers\CookiesController@update')->name('update-cookies-consent');
+});
+
 if (
     ! Request::is(substr(config('nova.path'), 1).'*')
     && ! Request::is('nova-api/*')

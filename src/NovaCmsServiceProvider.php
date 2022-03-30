@@ -21,10 +21,10 @@ use Kraenkvisuell\NovaCms\Models\Page as PageModel;
 use Kraenkvisuell\NovaCms\Nova\Page;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
-use Kraenkvisuell\NovaCmsBlocks\Value\BlocksCast;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Nova;
 use Manogi\Tiptap\Tiptap;
 use OptimistDigital\NovaSettings\NovaSettings;
@@ -103,6 +103,8 @@ class NovaCmsServiceProvider extends ServiceProvider
                         ->translatable(),
                     Text::make(__('nova-cms::content_blocks.email'), 'email')
                         ->translatable(),
+                    Textarea::make(__('nova-cms::settings.verification_embed_codes'), 'verification_embed_codes'),
+                    Textarea::make(__('nova-cms::settings.analytics_embed_codes'), 'analytics_embed_codes'),
 
                     Blocks::make(__('nova-cms::content_blocks.social_links'), 'social_links')
                         ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
@@ -119,7 +121,7 @@ class NovaCmsServiceProvider extends ServiceProvider
                         ])
                         ->button(__('nova-cms::content_blocks.add_social_link'))
                         ->stacked(),
-            ], []);
+            ], [], 'Website');
 
         require_once __DIR__.'/../helpers/helpers.php';
     }
