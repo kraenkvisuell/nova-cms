@@ -12,6 +12,7 @@ return [
     'functional_explanation' => 'Diese Cookies ermöglichen uns, die Nutzung der Webseite zu analysieren und die Leistung zu verbessern. Wir verwenden diese Cookies ausschließlich zu eigenen Zwecken und geben Daten niemals an Dritte weiter. Eine Deaktivierung dieser Cookies kann dazu führen, dass einige Inhalte, z.B. Videos, nicht mehr dargestellt werden können.',
     'marketing' => 'Marketing',
     'marketing_explanation' => 'Wir genehmigen grundsätzlich keinem anderen Unternehmen, auf unserer Webseite Cookies zu setzen, die von diesen zum Beispiel zu Marketingzwecken verwendet werden könnten.',
+    'reset_cookie_settings' => 'Cookie-Einstellungen erneuern',
     'settings' => 'Einstellungen',
     'verification_embed_codes' => 'Verification Embed Codes',
     'website_title' => 'Website-Titel',
