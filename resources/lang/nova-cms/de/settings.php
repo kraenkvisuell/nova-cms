@@ -2,9 +2,9 @@
 
 return [
     'accept_and_save_cookies' => 'Einstellungen akzeptieren und speichern',
-    'analytics_embed_codes' => 'Embed Codes',
+    'analytics_embed_codes' => 'Analytics Embed Codes',
     'analytics_embed_codes_hint' => 'Benötigen Cookie-Zustimmung',
-    'friendly_analytics_embed_codes' => 'Datenschutz-freundliche Embed Codes',
+    'friendly_analytics_embed_codes' => 'Datenschutz-freundliche Embed Analytics Codes',
     'friendly_analytics_embed_codes_hint' => 'Benötigen KEINE Cookie-Zustimmung',
     'change_cookie_settings' => 'Cookie-Einstellungen verändern',
     'close_cookie_settings' => 'Cookie-Einstellungen schließen',
