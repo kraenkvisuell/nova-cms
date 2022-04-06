@@ -2,20 +2,17 @@
 
 namespace Kraenkvisuell\NovaCms\Nova;
 
-use Eminiarts\Tabs\Tabs;
-use Eminiarts\Tabs\TabsOnEdit;
 use Illuminate\Http\Request;
 use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 use Kraenkvisuell\NovaCms\Tabs\Seo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Timothyasp\Color\Color;
 
 class Page extends \App\Nova\Resource
 {
-    use TabsOnEdit;
-
     public static $model = \Kraenkvisuell\NovaCms\Models\Page::class;
 
     public static $title = 'title';
@@ -41,15 +38,17 @@ class Page extends \App\Nova\Resource
         return parent::applyOrderings($query, ['is_home' => 'desc']);
     }
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
-        $tabs = [];
+        return [
+            Text::make(__('nova-cms::pages.page_title'), 'title')
+                ->translatable(),
 
-        $contentTab = [
-            ContentBlock::field(),
         ];
 
-        $settingsTab = [
+        $fields = [
+            ContentBlock::field(),
+
             Text::make(__('nova-cms::pages.page_title'), 'title')
                 ->translatable(),
 
@@ -63,29 +62,19 @@ class Page extends \App\Nova\Resource
         ];
 
         if (config('nova-pages.has_bg_color')) {
-            $settingsTab[] = Color::make(__('nova-cms::pages.bg_color'), 'bg_color')
+            $fields[] = Color::make(__('nova-cms::pages.bg_color'), 'bg_color')
             ->sketch()
             ->hideFromDetail();
         }
 
         if (config('nova-cms.pages.types')) {
-            $settingsTab[] = Select::make(__('nova-cms::pages.page_type'), 'page_type')
+            $fields[] = Select::make(__('nova-cms::pages.page_type'), 'page_type')
             ->options(config('nova-cms.pages.types'))
             ->hideFromDetail();
         }
 
-        if ($request->resourceId === null) {
-            $tabs[__('nova-cms::settings.settings')] = $settingsTab;
-            $tabs[__('nova-cms::pages.content')] = $contentTab;
-        } else {
-            $tabs[__('nova-cms::pages.content')] = $contentTab;
-            $tabs[__('nova-cms::settings.settings')] = $settingsTab;
-        }
+        // $fields[] = Seo::make();
 
-        $tabs[__('nova-cms::seo.seo')] = Seo::make();
-
-        return [
-            (new Tabs(__('nova-cms::pages.page'), $tabs))->withToolbar(),
-        ];
+        return $fields;
     }
 }

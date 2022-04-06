@@ -2,8 +2,8 @@
 
 namespace Kraenkvisuell\NovaCms\MenuItemTypes;
 
+use KraenkVisuell\MenuBuilder\MenuItemTypes\BaseMenuItemType;
 use Kraenkvisuell\NovaCms\Models\Page;
-use OptimistDigital\MenuBuilder\MenuItemTypes\BaseMenuItemType;
 
 class PageMenuItemType extends BaseMenuItemType
 {
@@ -37,12 +37,12 @@ class PageMenuItemType extends BaseMenuItemType
         return [];
     }
 
-    public static function getDisplayValue($value = null, array $data = null, $locale)
+    public static function getDisplayValue($value, array $data = null, $locale)
     {
         return Page::find($value)->title;
     }
 
-    public static function getValue($value = null, array $data = null, $locale)
+    public static function getValue($value, array $data = null, $locale)
     {
         return Page::find($value);
     }

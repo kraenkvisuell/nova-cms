@@ -22,12 +22,12 @@ use Kraenkvisuell\NovaCms\Nova\Page;
 use Kraenkvisuell\NovaCms\Observers\PageObserver;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use KraenkVisuell\NovaSettings\NovaSettings;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Nova;
 use Manogi\Tiptap\Tiptap;
-use OptimistDigital\NovaSettings\NovaSettings;
 
 class NovaCmsServiceProvider extends ServiceProvider
 {

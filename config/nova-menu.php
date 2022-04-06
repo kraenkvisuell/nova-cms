@@ -7,7 +7,6 @@ return [
     |------------------|
     */
 
-
     /*
     |--------------------------------------------------------------------------
     | Table names
@@ -16,7 +15,6 @@ return [
 
     'menus_table_name' => 'nova_menu_menus',
     'menu_items_table_name' => 'nova_menu_menu_items',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +49,6 @@ return [
         ],
     ],
 
-
     /*
     |--------------------------------------------------------------------------
     | Menu item types
@@ -65,17 +62,11 @@ return [
         \Kraenkvisuell\NovaCms\MenuItemTypes\PageMenuItemType::class,
     ],
 
-
-
-
-
-
     /*
     |--------------------------------|
     | Optional configuration options |
     |--------------------------------|
     */
-
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +77,7 @@ return [
     |
     */
 
-    'resource' => OptimistDigital\MenuBuilder\Nova\Resources\MenuResource::class,
+    'resource' => KraenkVisuell\MenuBuilder\Nova\Resources\MenuResource::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -97,8 +88,7 @@ return [
     |
     */
 
-    'menu_item_model' => OptimistDigital\MenuBuilder\Models\MenuItem::class,
-
+    'menu_item_model' => KraenkVisuell\MenuBuilder\Models\MenuItem::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -110,6 +100,5 @@ return [
     */
 
     'auto_load_migrations' => true,
-
 
 ];
