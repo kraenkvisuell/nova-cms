@@ -2,32 +2,32 @@
 
 namespace Kraenkvisuell\NovaCms;
 
-use Illuminate\Support\ServiceProvider;
-use Kraenkvisuell\NovaCms\Console\CopyConfigFiles;
-use Kraenkvisuell\NovaCms\Console\CopyLanguageFiles;
-use Kraenkvisuell\NovaCms\Console\CopyMigrationFiles;
-use Kraenkvisuell\NovaCms\Console\CreateFirstUser;
-use Kraenkvisuell\NovaCms\Console\DownloadProductionAssets;
-use Kraenkvisuell\NovaCms\Console\DownloadProductionDb;
-use Kraenkvisuell\NovaCms\Console\ForceMix;
-use Kraenkvisuell\NovaCms\Console\Init;
-use Kraenkvisuell\NovaCms\Console\InitPages;
-use Kraenkvisuell\NovaCms\Console\PublishExampleViews;
-use Kraenkvisuell\NovaCms\Console\RemoveExampleViews;
-use Kraenkvisuell\NovaCms\Console\SafelyReplacePackageJson;
-use Kraenkvisuell\NovaCms\Console\SafelyReplaceWebpackMix;
-use Kraenkvisuell\NovaCms\Console\UseTheme;
-use Kraenkvisuell\NovaCms\Models\Page as PageModel;
-use Kraenkvisuell\NovaCms\Nova\Page;
-use Kraenkvisuell\NovaCms\Observers\PageObserver;
-use Kraenkvisuell\NovaCmsBlocks\Blocks;
-use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
+use Laravel\Nova\Nova;
+use Manogi\Tiptap\Tiptap;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Nova;
-use Manogi\Tiptap\Tiptap;
+use Kraenkvisuell\NovaCms\Nova\Page;
+use Illuminate\Support\ServiceProvider;
+use Kraenkvisuell\NovaCms\Console\Init;
+use Kraenkvisuell\NovaCmsBlocks\Blocks;
+use Kraenkvisuell\NovaCms\Console\ForceMix;
+use Kraenkvisuell\NovaCms\Console\UseTheme;
+use Kraenkvisuell\NovaCms\Console\InitPages;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use OptimistDigital\NovaSettings\NovaSettings;
+use Kraenkvisuell\NovaCms\Observers\PageObserver;
+use Kraenkvisuell\NovaCms\Console\CopyConfigFiles;
+use Kraenkvisuell\NovaCms\Console\CreateFirstUser;
+use Kraenkvisuell\NovaCms\Models\Page as PageModel;
+use Kraenkvisuell\NovaCms\Console\CopyLanguageFiles;
+use Kraenkvisuell\NovaCms\Console\CopyMigrationFiles;
+use Kraenkvisuell\NovaCms\Console\RemoveExampleViews;
+use Kraenkvisuell\NovaCms\Console\PublishExampleViews;
+use Kraenkvisuell\NovaCms\Console\DownloadProductionDb;
+use Kraenkvisuell\NovaCms\Console\SafelyReplaceWebpackMix;
+use Kraenkvisuell\NovaCms\Console\DownloadProductionAssets;
+use Kraenkvisuell\NovaCms\Console\SafelyReplacePackageJson;
 
 class NovaCmsServiceProvider extends ServiceProvider
 {

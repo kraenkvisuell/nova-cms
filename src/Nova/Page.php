@@ -3,14 +3,15 @@
 namespace Kraenkvisuell\NovaCms\Nova;
 
 use Eminiarts\Tabs\Tabs;
-use Eminiarts\Tabs\TabsOnEdit;
-use Illuminate\Http\Request;
-use Kraenkvisuell\NovaCms\Facades\ContentBlock;
-use Kraenkvisuell\NovaCms\Tabs\Seo;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
 use Timothyasp\Color\Color;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
+use Eminiarts\Tabs\TabsOnEdit;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Boolean;
+use Kraenkvisuell\NovaCms\Tabs\Seo;
+use Illuminate\Support\Facades\Auth;
+use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 
 class Page extends \App\Nova\Resource
 {
@@ -39,6 +40,11 @@ class Page extends \App\Nova\Resource
     protected static function applyOrderings($query, array $orderings)
     {
         return parent::applyOrderings($query, ['is_home' => 'desc']);
+    }
+
+    public static function authorizedToViewAny(Request $request)
+    {
+        return Auth::user()->cms_role != 'artist';
     }
 
     public function fields(Request $request)
