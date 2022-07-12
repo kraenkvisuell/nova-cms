@@ -18,7 +18,7 @@ function nova_cms_empty_image()
 function nova_cms_mime($id)
 {
     return Cache::rememberForever(
-        'nova_cms_mime.' . $id,
+        'nova_cms_mime.'.$id,
         function () use ($id) {
             return API::getMime($id);
         }
@@ -27,8 +27,10 @@ function nova_cms_mime($id)
 
 function nova_cms_ratio($id)
 {
+    Cache::forget('nova_cms_ratio.'.$id);
+
     return Cache::rememberForever(
-        'nova_cms_ratio.' . $id,
+        'nova_cms_ratio.'.$id,
         function () use ($id) {
             return API::getRatio($id);
         }
@@ -40,11 +42,16 @@ function nova_cms_extension($id)
     return API::getExtension($id);
 }
 
-function nova_cms_image($id, $imgSize = null)
+function nova_cms_image($id, $imgSize = null, $forceGifResize = false)
 {
     return Cache::rememberForever(
-        'nova_cms_image.' . $id . '.' . $imgSize,
-        function () use ($id, $imgSize) {
+        'nova_cms_image.'.$id.'.'.$imgSize.'.'.$forceGifResize,
+
+        function () use ($id, $imgSize, $forceGifResize) {
+            if (!$forceGifResize) {
+                $imgSize = nova_cms_extension($id) == 'gif' ? null : $imgSize;
+            }
+            
             return API::getFiles($id, $imgSize, false);
         }
     );
@@ -53,7 +60,7 @@ function nova_cms_image($id, $imgSize = null)
 function nova_cms_file($id)
 {
     return Cache::rememberForever(
-        'nova_cms_file.' . $id,
+        'nova_cms_file.'.$id,
         function () use ($id) {
             return API::getFiles($id);
         }
@@ -107,7 +114,7 @@ function nova_cms_parse_link($link)
         return $link;
     }
 
-    return 'https://' . $link;
+    return 'https://'.$link;
 }
 
 function nova_cms_setting($slug)
@@ -117,7 +124,7 @@ function nova_cms_setting($slug)
     $jsonCheck = json_decode($setting);
 
     if (is_object($jsonCheck) && property_exists($jsonCheck, app()->getLocale())) {
-        if (!$jsonCheck->{app()->getLocale()}) {
+        if (! $jsonCheck->{app()->getLocale()}) {
             if (property_exists($jsonCheck, config('translatable.fallback_locale'))) {
                 return $jsonCheck->{config('translatable.fallback_locale')};
             }
@@ -154,16 +161,16 @@ function nova_cms_magify_links($str, $open_urls_in_new_tab = false)
                 && substr($url, 0, 4) != 'ftp:'
                 && substr($url, 0, 7) != 'mailto:'
             ) {
-                $newUrl = 'http://' . $url;
+                $newUrl = 'http://'.$url;
                 if ($open_urls_in_new_tab) {
                     $newUrl .= '" target="_blank';
                 }
-                $str = str_replace('"' . $url . '"', '"' . $newUrl . '"', $str);
+                $str = str_replace('"'.$url.'"', '"'.$newUrl.'"', $str);
             }
 
             if ($open_urls_in_new_tab && substr($url, 0, 4) == 'http') {
-                $newUrl = $url . '" target="_blank';
-                $str = str_replace('"' . $url . '"', '"' . $newUrl . '"', $str);
+                $newUrl = $url.'" target="_blank';
+                $str = str_replace('"'.$url.'"', '"'.$newUrl.'"', $str);
             }
         }
     }
@@ -176,7 +183,7 @@ function nova_cms_obfuscate_emails($str)
     $regex = "[^0-9][_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})";
     if (preg_match_all("/$regex/siU", $str, $matches)) {
         foreach ($matches[0] as $email) {
-            $obfuscatedEmail = '<span obfuscated-email>' . base64_encode($email) . '</span>';
+            $obfuscatedEmail = '<span obfuscated-email>'.base64_encode($email).'</span>';
             $str = str_replace($email, $obfuscatedEmail, $str);
         }
     }
@@ -190,7 +197,7 @@ function nova_cms_anonymize_embed_code($str)
     if (preg_match_all("/$regex/siU", $str, $matches)) {
         foreach ($matches[1] as $src) {
             $newSrc = $src;
-            if (stristr($src, 'vimeo') && !stristr($src, 'dnt=1')) {
+            if (stristr($src, 'vimeo') && ! stristr($src, 'dnt=1')) {
                 if (stristr($src, '?')) {
                     $newSrc .= '&';
                 } else {
