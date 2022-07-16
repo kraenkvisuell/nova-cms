@@ -27,8 +27,6 @@ function nova_cms_mime($id)
 
 function nova_cms_ratio($id)
 {
-    Cache::forget('nova_cms_ratio.'.$id);
-
     return Cache::rememberForever(
         'nova_cms_ratio.'.$id,
         function () use ($id) {
@@ -48,10 +46,10 @@ function nova_cms_image($id, $imgSize = null, $forceGifResize = false)
         'nova_cms_image.'.$id.'.'.$imgSize.'.'.$forceGifResize,
 
         function () use ($id, $imgSize, $forceGifResize) {
-            if (!$forceGifResize) {
+            if (! $forceGifResize) {
                 $imgSize = nova_cms_extension($id) == 'gif' ? null : $imgSize;
             }
-            
+
             return API::getFiles($id, $imgSize, false);
         }
     );
