@@ -117,21 +117,27 @@ function nova_cms_parse_link($link)
 
 function nova_cms_setting($slug)
 {
-    $setting = nova_get_setting($slug);
+    return Cache::remember(
+        'nova_cms_setting.'.$slug.'.'.app()->getLocale(),
+        now()->addSeconds(10),
+        function () use ($slug) {
+            $setting = nova_get_setting($slug);
 
-    $jsonCheck = json_decode($setting);
+            $jsonCheck = json_decode($setting);
 
-    if (is_object($jsonCheck) && property_exists($jsonCheck, app()->getLocale())) {
-        if (! $jsonCheck->{app()->getLocale()}) {
-            if (property_exists($jsonCheck, config('translatable.fallback_locale'))) {
-                return $jsonCheck->{config('translatable.fallback_locale')};
+            if (is_object($jsonCheck) && property_exists($jsonCheck, app()->getLocale())) {
+                if (! $jsonCheck->{app()->getLocale()}) {
+                    if (property_exists($jsonCheck, config('translatable.fallback_locale'))) {
+                        return $jsonCheck->{config('translatable.fallback_locale')};
+                    }
+                }
+
+                return $jsonCheck->{app()->getLocale()};
             }
+
+            return ContentParser::produceAttribute($setting);
         }
-
-        return $jsonCheck->{app()->getLocale()};
-    }
-
-    return ContentParser::produceAttribute($setting);
+    );
 }
 
 function nova_cms_currently_on_home()
