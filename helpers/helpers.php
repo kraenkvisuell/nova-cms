@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Cache;
-use Kraenkvisuell\NovaCms\Facades\ContentParser;
-use Kraenkvisuell\NovaCms\Facades\MenuMaker;
+use Illuminate\Support\Str;
 use Kraenkvisuell\NovaCmsMedia\API;
+use Illuminate\Support\Facades\Cache;
+use Kraenkvisuell\NovaCms\Facades\MenuMaker;
+use Kraenkvisuell\NovaCms\Facades\ContentParser;
 
 function nova_cms_menu($slug)
 {
@@ -37,7 +38,13 @@ function nova_cms_ratio($id)
 
 function nova_cms_extension($id)
 {
-    return API::getExtension($id);
+    return Cache::rememberForever(
+        'nova_cms_extension.'.$id,
+
+        function () use ($id) {
+            return API::getExtension($id);
+        }
+    );
 }
 
 function nova_cms_image($id, $imgSize = null, $forceGifResize = false)
@@ -51,6 +58,23 @@ function nova_cms_image($id, $imgSize = null, $forceGifResize = false)
             }
 
             return API::getFiles($id, $imgSize, false);
+        }
+    );
+}
+
+function nova_cms_local_path($id, $imgSize = null, $forceGifResize = false)
+{
+    Cache::forget('nova_cms_image_path.'.$id.'.'.$imgSize.'.'.$forceGifResize);
+
+    return Cache::rememberForever(
+        'nova_cms_image_path.'.$id.'.'.$imgSize.'.'.$forceGifResize,
+
+        function () use ($id, $imgSize, $forceGifResize) {
+            $url = nova_cms_image($id, $imgSize, $forceGifResize);
+
+            $url = Str::after($url, config('app.url').'/storage/');
+
+            return 'public/'.$url;
         }
     );
 }
