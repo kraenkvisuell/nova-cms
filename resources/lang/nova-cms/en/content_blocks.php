@@ -34,6 +34,7 @@ return [
     'downloads' => 'Downloads',
     'email' => 'E-mail',
     'embed_code' => 'Embed Code',
+    'embed_url' => 'Embed URL (Youtube, Vimeo etc.)',
     'entry' => 'Eintrag',
     'file' => 'file',
     'gallery' => 'Galerie',
