@@ -103,6 +103,9 @@ class NovaCmsServiceProvider extends ServiceProvider
                         ->translatable(),
                     Text::make(__('nova-cms::content_blocks.email'), 'email')
                         ->translatable(),
+                    Text::make(__('nova-cms::settings.newsletter_form_link'), 'newsletter_form_link'),
+                    Text::make(__('nova-cms::settings.newsletter_form_link_text'), 'newsletter_form_link_text')
+                        ->translatable(),
                     Textarea::make(__('nova-cms::settings.verification_embed_codes'), 'verification_embed_codes'),
                     Textarea::make(__('nova-cms::settings.analytics_embed_codes'), 'analytics_embed_codes')
                         ->help(__('nova-cms::settings.analytics_embed_codes_hint')),
