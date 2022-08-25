@@ -56,16 +56,16 @@ class Page extends \App\Nova\Resource
         ];
 
         $settingsTab = [
-            Text::make(__('nova-cms::pages.page_title'), 'title')
+            Text::make(ucfirst(__('nova-cms::pages.page_title')), 'title')
                 ->translatable(),
 
-            Text::make(__('nova-cms::pages.slug'), 'slug')
+            Text::make(ucfirst(__('nova-cms::pages.slug')), 'slug')
                 ->translatable()
                 ->help(__('nova-cms::pages.slug_explanation')),
 
-            Boolean::make(__('nova-cms::pages.is_home'), 'is_home'),
+            Boolean::make(ucfirst(__('nova-cms::pages.is_home')), 'is_home'),
 
-            Boolean::make(__('nova-cms::pages.published'), 'is_published'),
+            Boolean::make(ucfirst(__('nova-cms::pages.published')), 'is_published'),
         ];
 
         if (config('nova-pages.has_bg_color')) {
