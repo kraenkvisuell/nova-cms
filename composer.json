@@ -17,7 +17,7 @@
         "php": "^7.3.0|^8.0",
         "coderello/laravel-nova-lang": "^1.6",
         "eminiarts/nova-tabs": "^1.3.1",
-        "kraenkvisuell/nova-cms-blocks": "^1.1.3",
+        "kraenkvisuell/nova-cms-blocks": "^1.1.5",
         "kraenkvisuell/nova-cms-media": "^2.1.3",
         "kraenkvisuell/nova-menu-builder": "^7.0",
         "kraenkvisuell/nova-settings": "^4.0",
