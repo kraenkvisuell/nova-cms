@@ -33,11 +33,20 @@ class ContentBlock
 
         foreach (config('nova-cms.content-blocks.'.$config) as $layout) {
             // Add full class path when short form is used
-            if (!stristr($layout, '\\')) {
-                $layout = '\Kraenkvisuell\NovaCms\Layouts\\'.$layout.'Layout';
+            
+            if ($layout) {
+                if (!stristr($layout, '\\')) {
+                    $layout = '\Kraenkvisuell\NovaCms\Layouts\\'.$layout.'Layout';
+                }
+                
+                try {
+                    $field->addLayout($layout);
+                } catch (\Throwable $th) {
+                    //ray($th);
+                }
+                
             }
-
-            $field->addLayout($layout);
+            
         }
 
         return $field;

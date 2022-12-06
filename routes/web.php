@@ -16,5 +16,5 @@ Route::middleware(['web'])->group(function () {
         Route::get('/{locale}'.RoutesHelper::prefix().'/{page}', 'Kraenkvisuell\NovaCms\Controllers\PagesController@show')->name('nova-page-multi');
         Route::get(RoutesHelper::prefix().'/', 'Kraenkvisuell\NovaCms\Controllers\PagesController@show')->name('nova-page-single-home');
         Route::get(RoutesHelper::prefix().'/{page}', 'Kraenkvisuell\NovaCms\Controllers\PagesController@show')->name('nova-page-single');
-    }
+    }   
 });
