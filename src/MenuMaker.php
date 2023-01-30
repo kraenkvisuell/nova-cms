@@ -36,6 +36,7 @@ class MenuMaker
         return (object) [
             'url' => ($item['value'] && $item['type'] == 'page') ? $item['value']->url() : $item['value'],
             'title' => ($item['value'] && $item['type'] == 'page') ? $item['value']->title : $item['name'],
+            'name' => $item['name'],
             'type' => $item['type'],
             'target' => $item['target'],
             'isCurrent' => $isCurrent,
