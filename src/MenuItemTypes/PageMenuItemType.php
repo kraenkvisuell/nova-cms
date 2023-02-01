@@ -37,12 +37,12 @@ class PageMenuItemType extends BaseMenuItemType
         return [];
     }
 
-    public static function getDisplayValue($value = null, array $data = null, $locale)
+    public static function getDisplayValue($value = null, array $data = null, $locale = 'de')
     {
         return Page::find($value)->title;
     }
 
-    public static function getValue($value = null, array $data = null, $locale)
+    public static function getValue($value = null, array $data = null, $locale = 'de')
     {
         return Page::find($value);
     }
