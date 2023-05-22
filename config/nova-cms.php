@@ -56,6 +56,7 @@ return [
         'open_urls_in_new_tab' => false,
         'with_subcaptions' => false,
         'with_toplines' => false,
+        'with_headline_for_folded' => false,
         'with_collapsed_fields' => false,
         'with_bottom_links' => true,
         'sound_with_subtitle' => false,

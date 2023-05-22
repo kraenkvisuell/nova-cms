@@ -7,6 +7,7 @@ use Kraenkvisuell\NovaCms\Fields\BottomLinks;
 use Kraenkvisuell\NovaCms\Fields\ContentPosition;
 use Kraenkvisuell\NovaCms\Fields\EditorText;
 use Kraenkvisuell\NovaCms\Fields\Headline;
+use Kraenkvisuell\NovaCms\Fields\HeadlineForFolded;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCms\Fields\Hide;
 use Kraenkvisuell\NovaCms\Fields\Topline;
@@ -34,6 +35,10 @@ class TextLayout extends Layout
 
         if (config('nova-cms.content.with_toplines')) {
             $fields[] = Topline::make();
+        }
+
+        if (config('nova-cms.content.with_headline_for_folded')) {
+            $fields[] = HeadlineForFolded::make();
         }
 
         $fields = array_merge($fields, [

@@ -40,6 +40,7 @@ return [
     'gallery' => 'Galerie',
     'headline_link' => 'Link für Überschrift',
     'headline' => 'Überschrift',
+    'headline_for_folded' => 'Titel für eingeklappten Inhalt',
     'hero_explanation' => '(große Galerie, oft bildschirmfüllend)',
     'hero' => 'Hero',
     'hidden' => 'Versteckt',
