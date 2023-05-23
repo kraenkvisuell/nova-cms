@@ -13,6 +13,7 @@ use Kraenkvisuell\NovaCms\Fields\Headline;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Kraenkvisuell\NovaCms\Fields\HeadlineLink;
 use Kraenkvisuell\NovaCmsBlocks\Layouts\Layout;
+use Kraenkvisuell\NovaCms\Fields\HeadlineForFolded;
 
 class PeopleLayout extends Layout
 {
@@ -35,6 +36,10 @@ class PeopleLayout extends Layout
 
         if (config('nova-cms.content.with_toplines')) {
             $fields[] = Topline::make();
+        }
+
+        if (config('nova-cms.content.with_headline_for_folded')) {
+            $fields[] = HeadlineForFolded::make();
         }
 
         return array_merge($fields, [
