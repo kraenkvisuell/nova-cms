@@ -141,13 +141,14 @@ function nova_cms_parse_link($link)
 
 function nova_cms_setting($slug)
 {
+    Cache::forget('nova_cms_setting.'.$slug.'.'.app()->getLocale());
     return Cache::remember(
         'nova_cms_setting.'.$slug.'.'.app()->getLocale(),
         now()->addSeconds(10),
         function () use ($slug) {
             $setting = nova_get_setting($slug);
 
-            $jsonCheck = json_decode($setting);
+            $jsonCheck = is_string($setting) ? json_decode($setting) : $setting;
 
             if (is_object($jsonCheck) && property_exists($jsonCheck, app()->getLocale())) {
                 if (! $jsonCheck->{app()->getLocale()}) {
