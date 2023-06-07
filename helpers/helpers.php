@@ -141,7 +141,6 @@ function nova_cms_parse_link($link)
 
 function nova_cms_setting($slug)
 {
-    Cache::forget('nova_cms_setting.'.$slug.'.'.app()->getLocale());
     return Cache::remember(
         'nova_cms_setting.'.$slug.'.'.app()->getLocale(),
         now()->addSeconds(10),
