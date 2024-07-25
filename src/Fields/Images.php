@@ -2,6 +2,7 @@
 
 namespace Kraenkvisuell\NovaCms\Fields;
 
+use Laravel\Nova\Fields\Text;
 use Kraenkvisuell\NovaCmsBlocks\Blocks;
 use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 use Laravel\Nova\Fields\Number;
@@ -29,6 +30,10 @@ class Images
 
             Textarea::make(__('nova-cms::content_blocks.credits'), 'credits')
                 ->rows(2)
+                ->translatable()
+                ->stacked(),
+
+            Text::make('Alt', 'alt')
                 ->translatable()
                 ->stacked(),
         ];

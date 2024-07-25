@@ -14,7 +14,13 @@ trait HasContentBlocks
 
         $contentBlocks = collect([]);
 
-        $this->{$field}->each(function ($item) use (&$contentBlocks) {
+        $content = $this->{$field};
+
+        if (is_array($content)) {
+            $content = collect($content);
+        }
+
+        $content->each(function ($item) use (&$contentBlocks) {
             $contentBlocks->push(
                 (object) [
                     'block' => $item->name(),
