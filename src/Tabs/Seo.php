@@ -13,7 +13,7 @@ class Seo
     {
         $ogImageField = MediaLibrary::make(__('nova-cms::content_blocks.og_image'), 'og_image')
             ->types(['Image'])
-            ->stacked();
+            ->onlyOnForms();
 
         if (config('nova-cms.content.media.upload_only')) {
             $ogImageField->uploadOnly();
