@@ -5,11 +5,20 @@ namespace Kraenkvisuell\NovaCms\Tabs;
 use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Kraenkvisuell\NovaCmsMedia\MediaLibrary;
 
 class Seo
 {
     public static function make()
     {
+        $ogImageField = MediaLibrary::make(__('nova-cms::content_blocks.og_image'), 'og_image')
+            ->types(['Image'])
+            ->stacked();
+
+        if (config('nova-cms.content.media.upload_only')) {
+            $ogImageField->uploadOnly();
+        }
+
         return [
             Text::make(__('nova-cms::seo.browser_title'), 'browser_title')
                 ->translatable()
@@ -33,6 +42,16 @@ class Seo
                         'follow' => true,
                     ])
                     ->onlyOnForms(),
+
+            Text::make(__('nova-cms::seo.og_title'), 'og_title')
+                ->translatable()
+                ->onlyOnForms(),
+
+            Textarea::make(__('nova-cms::seo.og_description'), 'og_description')
+                ->translatable()
+                ->onlyOnForms(),
+
+            $ogImageField,
         ];
     }
 }
