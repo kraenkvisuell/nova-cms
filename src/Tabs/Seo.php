@@ -43,11 +43,11 @@ class Seo
                     ])
                     ->onlyOnForms(),
 
-            Text::make(__('nova-cms::seo.og_title'), 'og_title')
+            Text::make(__('nova-cms::content_blocks.og_title'), 'og_title')
                 ->translatable()
                 ->onlyOnForms(),
 
-            Textarea::make(__('nova-cms::seo.og_description'), 'og_description')
+            Textarea::make(__('nova-cms::content_blocks.og_description'), 'og_description')
                 ->translatable()
                 ->onlyOnForms(),
 

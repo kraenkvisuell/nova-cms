@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3ccd91e-5188-439b-bcc1-b0fea6ac0927" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/nova-cms/de/content_blocks.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/nova-cms/de/content_blocks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/nova-cms/en/content_blocks.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/nova-cms/en/content_blocks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tabs/Seo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tabs/Seo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +213,7 @@
       <workItem from="1693843116710" duration="1066000" />
       <workItem from="1696436587266" duration="635000" />
       <workItem from="1696516812248" duration="22000" />
-      <workItem from="1721914932199" duration="2740000" />
+      <workItem from="1721914932199" duration="2935000" />
     </task>
     <servers />
   </component>
