@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Kraenkvisuell\NovaCms\Tabs\Seo;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Kraenkvisuell\NovaCms\Facades\ContentBlock;
 
 class Page extends \App\Nova\Resource
@@ -93,5 +94,15 @@ class Page extends \App\Nova\Resource
         return [
             (new Tabs(__('nova-cms::pages.page'), $tabs))->withToolbar(),
         ];
+    }
+
+    public static function redirectAfterUpdate(NovaRequest $request, $resource)
+    {
+        return '/resources/pages';
+    }
+
+    public static function redirectAfterCreate(NovaRequest $request, $resource)
+    {
+        return '/resources/pages';
     }
 }

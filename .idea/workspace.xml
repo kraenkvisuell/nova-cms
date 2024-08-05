@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3ccd91e-5188-439b-bcc1-b0fea6ac0927" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Nova/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Nova/Page.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +215,7 @@
       <workItem from="1696436587266" duration="635000" />
       <workItem from="1696516812248" duration="22000" />
       <workItem from="1721914932199" duration="4378000" />
-      <workItem from="1722864123444" duration="211000" />
+      <workItem from="1722864123444" duration="593000" />
     </task>
     <servers />
   </component>
