@@ -2,6 +2,7 @@
 
 return [
     'accept_and_save_cookies' => 'Einstellungen akzeptieren und speichern',
+    'analytics_body_embed_codes' => 'Analytics Body Embed Codes',
     'analytics_embed_codes_hint' => 'Benötigen Cookie-Zustimmung',
     'analytics_embed_codes' => 'Analytics Embed Codes',
     'change_cookie_settings' => 'Cookie-Einstellungen verändern',
