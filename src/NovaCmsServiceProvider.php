@@ -40,30 +40,30 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         config(['view.paths' => $viewPaths]);
 
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang/nova-cms', 'nova-cms');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang/nova-cms', 'nova-cms');
 
         $this->loadJsonTranslationsFrom(resource_path('lang/vendor/nova'));
 
         $this->publishes([
-            __DIR__.'/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
+            __DIR__ . '/../resources/lang/nova-cms' => resource_path('lang/vendor/nova-cms'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views/live', 'nova-cms');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/live', 'nova-cms');
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->publishes([
-            __DIR__.'/../config/nova-cms.php' => config_path('nova-cms.php'),
+            __DIR__ . '/../config/nova-cms.php' => config_path('nova-cms.php'),
         ], 'cms');
 
         $this->publishes([
-            __DIR__.'/../config/nova-pages.php' => config_path('nova-pages.php'),
+            __DIR__ . '/../config/nova-pages.php' => config_path('nova-pages.php'),
         ], 'pages');
 
         $this->publishes([
-            __DIR__.'/../config/nova-menu.php' => config_path('nova-menu.php'),
+            __DIR__ . '/../config/nova-menu.php' => config_path('nova-menu.php'),
         ], 'menu');
 
         config(['nova-menu.locales' => config('translatable.locales')]);
@@ -95,41 +95,43 @@ class NovaCmsServiceProvider extends ServiceProvider
 
         NovaSettings::addSettingsFields([
 
-                    Text::make(__('nova-cms::settings.website_title'), 'website_title')
-                        ->translatable(),
-                    Tiptap::make(__('nova-cms::content_blocks.address'), 'address')
-                        ->translatable(),
-                    Text::make(__('nova-cms::content_blocks.phone'), 'phone')
-                        ->translatable(),
-                    Text::make(__('nova-cms::content_blocks.email'), 'email')
-                        ->translatable(),
-                    Text::make(__('nova-cms::settings.newsletter_form_link'), 'newsletter_form_link'),
-                    Text::make(__('nova-cms::settings.newsletter_form_link_text'), 'newsletter_form_link_text')
-                        ->translatable(),
-                    Textarea::make(__('nova-cms::settings.verification_embed_codes'), 'verification_embed_codes'),
-                    Textarea::make(__('nova-cms::settings.analytics_embed_codes'), 'analytics_embed_codes')
-                        ->help(__('nova-cms::settings.analytics_embed_codes_hint')),
-                    Textarea::make(__('nova-cms::settings.friendly_analytics_embed_codes'), 'friendly_analytics_embed_codes')
-                        ->help(__('nova-cms::settings.friendly_analytics_embed_codes_hint')),
+            Text::make(__('nova-cms::settings.website_title'), 'website_title')
+                ->translatable(),
+            Tiptap::make(__('nova-cms::content_blocks.address'), 'address')
+                ->translatable(),
+            Text::make(__('nova-cms::content_blocks.phone'), 'phone')
+                ->translatable(),
+            Text::make(__('nova-cms::content_blocks.email'), 'email')
+                ->translatable(),
+            Text::make(__('nova-cms::settings.newsletter_form_link'), 'newsletter_form_link'),
+            Text::make(__('nova-cms::settings.newsletter_form_link_text'), 'newsletter_form_link_text')
+                ->translatable(),
+            Textarea::make(__('nova-cms::settings.verification_embed_codes'), 'verification_embed_codes'),
+            Textarea::make(__('nova-cms::settings.analytics_embed_codes'), 'analytics_embed_codes')
+                ->help(__('nova-cms::settings.analytics_embed_codes_hint')),
+            Textarea::make(__('nova-cms::settings.analytics_body_embed_codes'), 'analytics_body_embed_codes')
+                ->help(__('nova-cms::settings.analytics_embed_codes_hint')),
+            Textarea::make(__('nova-cms::settings.friendly_analytics_embed_codes'), 'friendly_analytics_embed_codes')
+                ->help(__('nova-cms::settings.friendly_analytics_embed_codes_hint')),
 
-                    Blocks::make(__('nova-cms::content_blocks.social_links'), 'social_links')
-                        ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
-                            Text::make(__('nova-cms::content_blocks.link_title'), 'link_title')->translatable(),
+            Blocks::make(__('nova-cms::content_blocks.social_links'), 'social_links')
+                ->addLayout(__('nova-cms::content_blocks.link'), 'link', [
+                    Text::make(__('nova-cms::content_blocks.link_title'), 'link_title')->translatable(),
 
-                            Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')->translatable(),
+                    Text::make(__('nova-cms::content_blocks.link_url'), 'link_url')->translatable(),
 
-                            Text::make(__('nova-cms::content_blocks.id'), 'slug'),
+                    Text::make(__('nova-cms::content_blocks.id'), 'slug'),
 
-                            MediaLibrary::make(__('nova-cms::content_blocks.link_icon'), 'link_icon')
-                                ->types(['Image']),
+                    MediaLibrary::make(__('nova-cms::content_blocks.link_icon'), 'link_icon')
+                        ->types(['Image']),
 
-                            Code::make(__('nova-cms::content_blocks.svg_tag'), 'svg_tag')->language('xml'),
-                        ])
-                        ->button(__('nova-cms::content_blocks.add_social_link'))
-                        ->stacked(),
-            ], [], 'Website');
+                    Code::make(__('nova-cms::content_blocks.svg_tag'), 'svg_tag')->language('xml'),
+                ])
+                ->button(__('nova-cms::content_blocks.add_social_link'))
+                ->stacked(),
+        ], [], 'Website');
 
-        require_once __DIR__.'/../helpers/helpers.php';
+        require_once __DIR__ . '/../helpers/helpers.php';
     }
 
     public function register()
@@ -151,17 +153,17 @@ class NovaCmsServiceProvider extends ServiceProvider
         });
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/nova-cms.php',
+            __DIR__ . '/../config/nova-cms.php',
             'nova-cms'
         );
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/nova-pages.php',
+            __DIR__ . '/../config/nova-pages.php',
             'nova-pages'
         );
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/nova-menu.php',
+            __DIR__ . '/../config/nova-menu.php',
             'nova-menu'
         );
     }
