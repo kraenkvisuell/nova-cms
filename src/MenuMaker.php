@@ -33,7 +33,6 @@ class MenuMaker
             ? ($item['value']->url() == url()->current())
             : false;
 
-        dump($item['value']);
         return (object) [
             'url' => ($item['value'] && $item['type'] == 'page') ? $item['value']->url() : $item['value'],
             'title' => ($item['value'] && $item['type'] == 'page') ? ($item['value']->navi_title ?: $item['value']->title) : $item['name'],
