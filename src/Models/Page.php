@@ -16,7 +16,7 @@ class Page extends Model
 
     public function getTable()
     {
-        return config('nova-cms.db_prefix').'pages';
+        return config('nova-cms.db_prefix') . 'pages';
     }
 
     protected $casts = [
@@ -30,6 +30,7 @@ class Page extends Model
 
     public $translatable = [
         'title',
+        'navi_title',
         'slug',
         'browser_title',
         'meta_description',

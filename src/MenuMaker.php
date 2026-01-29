@@ -9,12 +9,12 @@ class MenuMaker
         $menu = collect(
             is_array(nova_get_menu_by_slug($slug)) ? nova_get_menu_by_slug($slug)['menuItems'] : []
         )
-        ->filter(function ($item) use ($onlyActive) {
-            return $onlyActive ? $item['enabled'] : true;
-        })
-        ->map(function ($item) use ($onlyActive) {
-            return $this->createMenuItem($item, $onlyActive);
-        });
+            ->filter(function ($item) use ($onlyActive) {
+                return $onlyActive ? $item['enabled'] : true;
+            })
+            ->map(function ($item) use ($onlyActive) {
+                return $this->createMenuItem($item, $onlyActive);
+            });
 
         return $menu;
     }
@@ -33,9 +33,10 @@ class MenuMaker
             ? ($item['value']->url() == url()->current())
             : false;
 
+        dump($item['value']);
         return (object) [
             'url' => ($item['value'] && $item['type'] == 'page') ? $item['value']->url() : $item['value'],
-            'title' => ($item['value'] && $item['type'] == 'page') ? $item['value']->title : $item['name'],
+            'title' => ($item['value'] && $item['type'] == 'page') ? ($item['value']->navi_title ?: $item['value']->title) : $item['name'],
             'name' => $item['name'],
             'type' => $item['type'],
             'target' => $item['target'],

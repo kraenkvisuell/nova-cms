@@ -60,6 +60,9 @@ class Page extends \App\Nova\Resource
             Text::make(ucfirst(__('nova-cms::pages.page_title')), 'title')
                 ->translatable(),
 
+            Text::make(ucfirst(__('nova-cms::pages.navi_title')), 'navi_title')
+                ->translatable(),
+
             Text::make(ucfirst(__('nova-cms::pages.slug')), 'slug')
                 ->translatable()
                 ->help(__('nova-cms::pages.slug_explanation')),
@@ -71,14 +74,14 @@ class Page extends \App\Nova\Resource
 
         if (config('nova-pages.has_bg_color')) {
             $settingsTab[] = Color::make(__('nova-cms::pages.bg_color'), 'bg_color')
-            ->sketch()
-            ->hideFromDetail();
+                ->sketch()
+                ->hideFromDetail();
         }
 
         if (config('nova-cms.pages.types')) {
             $settingsTab[] = Select::make(__('nova-cms::pages.page_type'), 'page_type')
-            ->options(config('nova-cms.pages.types'))
-            ->hideFromDetail();
+                ->options(config('nova-cms.pages.types'))
+                ->hideFromDetail();
         }
 
         if ($request->resourceId === null) {

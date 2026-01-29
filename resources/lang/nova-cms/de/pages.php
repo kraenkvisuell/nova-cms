@@ -6,6 +6,7 @@ return [
     'content' => 'Inhalt',
     'is_home' => 'Ist Startseite',
     'meta_description' => 'Meta-Description',
+    'navi_title' => 'Seitentitel in Navigation (optional)',
     'page_title' => 'Seitentitel',
     'page_type' => 'Seitentyp',
     'page' => 'Seite',
