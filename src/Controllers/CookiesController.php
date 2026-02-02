@@ -18,6 +18,18 @@ class CookiesController
             session()->forget('analytics_cookies_accepted');
         }
 
+        if (request()->post('analyticsCookiesAccepted')) {
+            session(['analytics_cookies_accepted' => true]);
+        } else {
+            session()->forget('analytics_cookies_accepted');
+        }
+
+        if (request()->post('marketingCookiesAccepted')) {
+            session(['marketing_cookies_accepted' => true]);
+        } else {
+            session()->forget('marketing_cookies_accepted');
+        }
+
         return [
             'success' => true,
         ];
